@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        
     ];
 
     /**
@@ -40,4 +42,40 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(){
+        return $this->belongsTo(Role::class) ;
+    }
+
+    public function assignRole($role){
+        if(is_integer($role)) {
+            $role = Role::findOrFail($role);
+            
+        }else if(is_string($role)) {
+            $role = Role::where('name' , $role)->first();
+        } 
+        if(!$role) {
+            return false ;
+        }
+        return $this->role()->associate($role);
+    }
+
+    public function ableTo($role) {
+        if(is_integer($role)) {
+            $role = Role::findOrFail($role);
+            
+        }else if(is_string($role)) {
+            $role = Role::where('name' , $role)->first();
+        } 
+        if(!$role) {
+            return false ;
+        }
+        return $this->role()->is($role);
+
+    }
+
+    public function getRouteKey()
+    {
+        return 'username' ;
+    }
 }
