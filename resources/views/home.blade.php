@@ -1,23 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <dashboard-ui inline-template>
+        <div class="dashboard">
+            <div class="menu" :class="{'menu--compact' : compact}">
+                <div class="menu__header" >
+                    <div class="user">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+
+                        <div class="user__name">
+                            {{Auth::user()->name}} 
                         </div>
-                    @endif
 
-                    {{ __('You are logged in!') }}
+                        <div class="user__role">
+                            
+                            {{Auth::user()->role->name}}
+                        </div>
+                        
+
+                        <font-awesome-icon @click="compact = !compact" size="lg" class="bars" icon="bars"></font-awesome-icon>
+                    </div>
+    
+                </div>
+    
+                <div class="menu__links">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Manage users</a>
+                    <a href="#">Settings</a>
                 </div>
             </div>
+    
+            <div class="content" :class="{'content--expend' : !compact}">
+                Lorem ipsum dolor sit amet 
+            </div>
         </div>
-    </div>
-</div>
+    </dashboard-ui>
 @endsection
