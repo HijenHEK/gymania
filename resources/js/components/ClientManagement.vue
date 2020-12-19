@@ -12,15 +12,15 @@
     </div>
 
     <div v-if="rows" class="rows">
-        <div v-for="client in clients" :key="client.id" class="user-card">
+        <div v-for="member in members" :key="member.id" class="user-card">
                 <div class="avatar">
-                    <img :src="client.avatar" alt="" srcset="">
+                    <img :src="member.avatar" alt="" srcset="">
                 </div>
                 <div class="name">
-                    {{client.name}}
+                    {{member.name}}
                 </div>
                 <div class="username">
-                    {{client.username}}
+                    {{member.username}}
                 </div>
 
                 <div class="param">
@@ -31,15 +31,15 @@
         </div>
     </div>
     <div v-else class="cards">
-        <div v-for="client in clients" :key="client.id" class="user-card">
+        <div v-for="member in members" :key="member.id" class="user-card">
                 <div class="avatar">
-                    <img :src="client.avatar" alt="" srcset="">
+                    <img :src="member.avatar" alt="" srcset="">
                 </div>
                 <div class="name">
-                    {{client.name}}
+                    {{member.name}}
                 </div>
                 <div class="username">
-                    {{client.username}}
+                    {{member.username}}
                 </div>
 
                 <div class="param">
@@ -57,7 +57,7 @@ export default {
     data(){
         return {
             data : {},
-            clients : {},
+            members : {},
             rows : true,
             query : '',
         }
@@ -65,12 +65,12 @@ export default {
     methods :{
         search(){
             if(this.query == "") {
-                this.clients = this.data 
+                this.members = this.data 
             }else {
 
-                this.clients = this.data.filter((client) => {
-                    if(client.name.includes(this.query) || !this.query){
-                        return client
+                this.members = this.data.filter((member) => {
+                    if(member.name.includes(this.query) || !this.query){
+                        return member
                 }
             })
                     
@@ -81,9 +81,9 @@ export default {
         
     },
     mounted(){
-        axios.get('/clients').then(response => {
+        axios.get('/members').then(response => {
             this.data = response.data
-            this.clients = this.data
+            this.members = this.data
             })
     }
 }

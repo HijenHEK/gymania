@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,4 @@ Auth::routes();
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 
-Route::apiResource('clients', ClientController::class);
+Route::apiResource('members', MemberController::class);

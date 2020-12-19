@@ -12073,7 +12073,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       data: {},
-      clients: {},
+      members: {},
       rows: true,
       query: ''
     };
@@ -12083,11 +12083,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.query == "") {
-        this.clients = this.data;
+        this.members = this.data;
       } else {
-        this.clients = this.data.filter(function (client) {
-          if (client.name.includes(_this.query) || !_this.query) {
-            return client;
+        this.members = this.data.filter(function (member) {
+          if (member.name.includes(_this.query) || !_this.query) {
+            return member;
           }
         });
       }
@@ -12096,9 +12096,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    axios.get('/clients').then(function (response) {
+    axios.get('/members').then(function (response) {
       _this2.data = response.data;
-      _this2.clients = _this2.data;
+      _this2.members = _this2.data;
     });
   }
 });
@@ -48485,18 +48485,18 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "rows" },
-          _vm._l(_vm.clients, function(client) {
-            return _c("div", { key: client.id, staticClass: "user-card" }, [
+          _vm._l(_vm.members, function(member) {
+            return _c("div", { key: member.id, staticClass: "user-card" }, [
               _c("div", { staticClass: "avatar" }, [
                 _c("img", {
-                  attrs: { src: client.avatar, alt: "", srcset: "" }
+                  attrs: { src: member.avatar, alt: "", srcset: "" }
                 })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "name" }, [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(client.name) +
+                    _vm._s(member.name) +
                     "\n                "
                 )
               ]),
@@ -48504,7 +48504,7 @@ var render = function() {
               _c("div", { staticClass: "username" }, [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(client.username) +
+                    _vm._s(member.username) +
                     "\n                "
                 )
               ]),
@@ -48532,18 +48532,18 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "cards" },
-          _vm._l(_vm.clients, function(client) {
-            return _c("div", { key: client.id, staticClass: "user-card" }, [
+          _vm._l(_vm.members, function(member) {
+            return _c("div", { key: member.id, staticClass: "user-card" }, [
               _c("div", { staticClass: "avatar" }, [
                 _c("img", {
-                  attrs: { src: client.avatar, alt: "", srcset: "" }
+                  attrs: { src: member.avatar, alt: "", srcset: "" }
                 })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "name" }, [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(client.name) +
+                    _vm._s(member.name) +
                     "\n                "
                 )
               ]),
@@ -48551,7 +48551,7 @@ var render = function() {
               _c("div", { staticClass: "username" }, [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(client.username) +
+                    _vm._s(member.username) +
                     "\n                "
                 )
               ]),
