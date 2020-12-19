@@ -4,6 +4,8 @@
     <dashboard-ui inline-template>
         <div class="dashboard">
             <div class="menu" :class="{'menu--compact' : compact}">
+
+                
                 <div class="menu__header" >
                     <div class="user">
 
@@ -19,12 +21,13 @@
                         
 
                     </div>
-                    <font-awesome-icon @click="compact = !compact" size="2x" class="icon" icon="bars"></font-awesome-icon>
+                    
+                    <font-awesome-icon @click="compact = !compact" size="2x" class="icon icon--toggle" :icon="compact ? 'bars' : 'times'"></font-awesome-icon>
 
                 </div>
     
                 <div class="menu__links">
-                    <a href="#">
+                    <a class="link" href="#">
                         
                         <span>Dashboard</span> 
 
@@ -32,7 +35,7 @@
 
 
                     </a>
-                    <a href="#">
+                    <a class="link" href="#">
                         
                         <span>clients</span> 
 
@@ -40,7 +43,7 @@
 
 
                     </a>
-                    <a href="#">
+                    <a class="link" href="#">
                         
                         <span>user management</span> 
 
@@ -48,7 +51,7 @@
 
 
                     </a>
-                    <a href="#">
+                    <a class="link" href="#">
                         
                         <span>Settings</span> 
 
@@ -57,6 +60,27 @@
 
                     </a>
                     
+                </div>
+
+
+                <div class="menu__footer">
+                    <div class="menu__links">
+                        
+                        <a class="link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <span>{{ __('Logout') }}</span>
+                                        <font-awesome-icon size="lg" class="icon icon--power" icon="power-off"></font-awesome-icon>
+
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                    </div>
+                    <div class="brand">
+                        Gymania
+                    </div>
                 </div>
             </div>
     

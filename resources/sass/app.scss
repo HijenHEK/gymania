@@ -1,11 +1,13 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu');
 
+@import url('https://fonts.googleapis.com/css2?family=Changa');
 // Variables
-@import 'variables';
+// @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// // Bootstrap
+// @import '~bootstrap/scss/bootstrap';
 
 
 
@@ -36,6 +38,7 @@ html , body {
 
 main {
     height: 100%;
+    font-family: 'Ubuntu' , sans-serif;
 }
 
 #app {

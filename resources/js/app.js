@@ -24,10 +24,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faDesktop } from '@fortawesome/free-solid-svg-icons'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faCogs } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faUserCog } from '@fortawesome/free-solid-svg-icons'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faBars,faCogs,faDesktop, faUserCog , faUsers]);
+library.add([faBars,faTimes,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
