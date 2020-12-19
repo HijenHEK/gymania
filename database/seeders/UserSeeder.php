@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
         $admin->assignRole('Admin');
         $admin->save();
 
-        User::factory()->count(10)->create();
+
+        Member::factory()->count(10)->create();
     }
 }

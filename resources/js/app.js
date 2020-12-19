@@ -8,8 +8,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import axios from 'axios';
-window.axios = axios ;
 
 
 /**
@@ -30,16 +28,13 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faCogs } from '@fortawesome/free-solid-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faUserCog } from '@fortawesome/free-solid-svg-icons'
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faGripLines } from '@fortawesome/free-solid-svg-icons'
 import { faThLarge } from '@fortawesome/free-solid-svg-icons'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faBars,faTrash , faThLarge , faGripLines,
-    faEdit ,faTimes,faPowerOff,
-    faCogs,faDesktop, faUserCog , faUsers]);
+library.add([faBars,faTimes, faThLarge , faEdit , faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -55,6 +50,7 @@ Vue.component('dashboard-ui', require('./components/DashboardUi.vue').default);
 import VueRouter from 'vue-router' 
 
 Vue.use(VueRouter)
+
 import {router} from './router.js'
 
 const app = new Vue({

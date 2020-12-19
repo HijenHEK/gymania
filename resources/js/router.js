@@ -1,10 +1,10 @@
 import MainBoard from './components/MainBoard.vue'
-import ClientManagement from './components/ClientManagement.vue'
+import MembersManagement from './components/MembersManagement.vue'
 import VueRouter from 'vue-router'
 
 const routes = [
   { path: '/', component: MainBoard },
-  { path: '/clients', component: ClientManagement }
+  { path: '/members', component: MembersManagement }
 ]
 
 export const router = new VueRouter({

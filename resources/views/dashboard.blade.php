@@ -35,9 +35,9 @@
 
 
                     </router-link>
-                    <router-link tag="a" class="link" to="/clients">
+                    <router-link tag="a" class="link" to="/members">
                         
-                        <span>clients</span> 
+                        <span>Members</span> 
 
                         <font-awesome-icon size="lg" class="icon" icon="users"></font-awesome-icon>
 
@@ -45,7 +45,7 @@
                     </router-link>
                     <a class="link" href="#">
                         
-                        <span>user management</span> 
+                        <span>Staff Management</span> 
 
                         <font-awesome-icon size="lg" class="icon" icon="user-cog"></font-awesome-icon>
 
