@@ -35,7 +35,6 @@
         letter-spacing: 0.05rem;
         display: flex;
         flex-direction: column;
-
     }
     .menu__header {
         padding: 2rem 1rem;
@@ -52,13 +51,9 @@
         flex: 100%;
         height: 100%;
         padding: 2rem 2rem 2rem 5rem;
-
     }
-
     .content--expend {
-        
         padding: 2rem;
-
     }
     
     .brand {
@@ -77,11 +72,9 @@
     .user__role {
         font-size: 0.8rem;
     }
-    
     .icon {
         margin-left: auto ;
         cursor: pointer;
-        
     }
     .menu__links {
         display: flex;
@@ -89,27 +82,21 @@
         font-size: 1.1rem;
         flex: 100%;
     }
-
-
     .menu__links .link  {
         padding: 0.5rem 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    
     .menu__links .link:hover {
         background: rgb(39, 50, 59);
         color: white;
-
     }
     .icon--toggle {
         color: white;
-        
     }
     .icon--power {
         color: rgb(231, 66, 66);
-        
     }
     .menu__links--active {
         color : rgb(55,181,74);
