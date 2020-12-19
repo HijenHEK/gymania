@@ -8,5 +8,7 @@ const routes = [
 ]
 
 export const router = new VueRouter({
+   mode: 'abstract',
+
   routes 
 })

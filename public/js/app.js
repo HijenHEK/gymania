@@ -63918,6 +63918,7 @@ var routes = [{
   component: _components_ClientManagement_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
+  mode: 'abstract',
   routes: routes
 });
 
