@@ -27,22 +27,22 @@
                 </div>
     
                 <div class="menu__links">
-                    <a class="link" href="#">
+                    <router-link tag="a" class="link" to="/">
                         
                         <span>Dashboard</span> 
 
                         <font-awesome-icon size="lg" class="icon" icon="desktop"></font-awesome-icon>
 
 
-                    </a>
-                    <a class="link" href="#">
+                    </router-link>
+                    <router-link tag="a" class="link" to="/clients">
                         
                         <span>clients</span> 
 
                         <font-awesome-icon size="lg" class="icon" icon="users"></font-awesome-icon>
 
 
-                    </a>
+                    </router-link>
                     <a class="link" href="#">
                         
                         <span>user management</span> 
@@ -85,7 +85,7 @@
             </div>
     
             <div class="content" :class="{'content--expend' : !compact}">
-                Lorem ipsum dolor sit amet 
+                <router-view></router-view>
             </div>
         </div>
     </dashboard-ui>

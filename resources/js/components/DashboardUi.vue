@@ -116,6 +116,12 @@
     }
 
 
+    .router-link-exact-active.router-link-active {
+        color: rgb(55,181,74);
+    }
+        .router-link-exact-active.router-link-active:hover {
+        color: rgb(55,181,74);
+    }
     @media (max-width : 800px) {
         .menu {
             position: absolute;
