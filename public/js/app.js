@@ -16475,7 +16475,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.dashboard[data-v-7ae4372d] {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    position: relative;\n}\n.menu[data-v-7ae4372d] {\n    height: 100%;\n    width: 20rem;\n    background-color: rgb(43, 43, 43);\n    color: white;\n    transition: all 0.1s ease;\n}\n.menu__header[data-v-7ae4372d] {\n    padding: 1rem 1rem;\n    font-size: 1.1rem;\n}\n.menu--compact[data-v-7ae4372d] {\n    flex: unset;\n    position: absolute;\n    transform: translateX(-16rem);\n    width: 20rem !important;\n    transition: all 0.2s ease;\n}\n.content[data-v-7ae4372d] {\n    flex: 100%;\n    height: 100%;\n    padding: 2rem 2rem 2rem 5rem;\n}\n.content--expend[data-v-7ae4372d] {\n    \n    padding: 2rem;\n}\n.user[data-v-7ae4372d] {\n    display: flex;\n    align-items: center;\n}\n.user__name[data-v-7ae4372d] {\n    margin-right: 0.3rem ;\n}\n.user__role[data-v-7ae4372d] {\n    font-size: 0.8rem;\n}\n.bars[data-v-7ae4372d] {\n    margin-left: auto ;\n    cursor: pointer;\n}\n.menu__links[data-v-7ae4372d] {\n    display: flex;\n    flex-direction: column;\n}\n.menu__links > *[data-v-7ae4372d]  {\n    padding: 0.5rem 1rem;\n}\n.menu__links > *[data-v-7ae4372d]:hover {\n    background: white;\n    color: black;\n}\n@media (max-width : 800px) {\n.menu[data-v-7ae4372d] {\n        position: absolute;\n}\n}\n", ""]);
+exports.push([module.i, "\n.dashboard[data-v-7ae4372d] {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    position: relative;\n}\n.menu[data-v-7ae4372d] {\n    height: 100%;\n    width: 20rem;\n    background-color: rgb(43, 43, 43);\n    color: white;\n    transition: all 0.1s linear;\n}\n.menu__header[data-v-7ae4372d] {\n    padding: 2rem 1rem;\n    display: flex;\n    align-items: center;\n}\n.menu--compact[data-v-7ae4372d] {\n    flex: unset;\n    position: absolute;\n    transform: translateX(-16rem);\n    transition: all 0.1s linear;\n}\n.content[data-v-7ae4372d] {\n    flex: 100%;\n    height: 100%;\n    padding: 2rem 2rem 2rem 5rem;\n}\n.content--expend[data-v-7ae4372d] {\n    \n    padding: 2rem;\n}\n.user__name[data-v-7ae4372d] {\n    margin-right: 0.3rem ;\n    font-size: 1.2rem;\n}\n.user__role[data-v-7ae4372d] {\n    font-size: 0.8rem;\n}\n.icon[data-v-7ae4372d] {\n    margin-left: auto ;\n    cursor: pointer;\n}\n.menu__links[data-v-7ae4372d] {\n    display: flex;\n    flex-direction: column;\n    font-size: 1.1rem;\n}\n.menu__links > *[data-v-7ae4372d]  {\n    padding: 0.5rem 1rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.menu__links > *[data-v-7ae4372d]:hover {\n    background: white;\n    color: black;\n}\n@media (max-width : 800px) {\n.menu[data-v-7ae4372d] {\n        position: absolute;\n}\n}\n", ""]);
 
 // exports
 
@@ -60450,7 +60450,11 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBars"]);
+
+
+
+
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add([_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCogs"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faDesktop"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCog"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUsers"]]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"]);
 Vue.component('dashboard-ui', __webpack_require__(/*! ./components/DashboardUi.vue */ "./resources/js/components/DashboardUi.vue")["default"]);
 /**

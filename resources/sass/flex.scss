@@ -1,0 +1,117 @@
+.f {
+    display: flex;
+}
+
+.fc {
+    flex-direction: column;
+}
+
+.fcr {
+    flex-direction: column-reverse;
+}
+
+.frr {
+    flex-direction: row-reverse;
+}
+
+.ac {
+    align-items: center;
+}
+
+.as {
+    align-items: flex-start;
+}
+.ae {
+    align-items: flex-end;
+}
+.ast {
+    align-items: stretch;
+}
+.jc {
+    justify-content: center;
+}
+
+.js {
+    justify-content: start;
+}
+.je {
+    justify-content: end;
+}
+.jst {
+    justify-content: stretch;
+}
+.ja {
+    justify-content: space-around;
+}
+.jb {
+    justify-content: space-between;
+}
+
+
+// basis
+
+
+.f100 {
+    flex-basis: 100%;
+}
+.f90 {
+    flex-basis: 90%;
+}
+.f80 {
+    flex-basis: 80%;
+}
+.f70 {
+    flex-basis: 70%;
+}
+.f60 {
+    flex-basis: 60%;
+}
+.f50 {
+    flex-basis: 50%;
+}
+.f40 {
+    flex-basis: 40%;
+}
+.f30 {
+    flex-basis: 30%;
+}
+.f20 {
+    flex-basis: 20%;
+}
+.f10 {
+    flex-basis: 10%;
+}
+
+
+.f95 {
+    flex-basis: 95%;
+}
+.f85 {
+    flex-basis: 85%;
+}
+.f75 {
+    flex-basis: 75%;
+}
+.f65 {
+    flex-basis: 65%;
+}
+.f55 {
+    flex-basis: 55%;
+}
+.f45 {
+    flex-basis: 45%;
+}
+.f35 {
+    flex-basis: 35%;
+}
+.f25 {
+    flex-basis: 25%;
+}
+.f15 {
+    flex-basis: 15%;
+}
+.f5 {
+    flex-basis: 5%;
+}
+
+
