@@ -7,7 +7,7 @@
     <div class="nav">
         <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div>
-            <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success"></font-awesome-icon>
+            <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="modal =true"></font-awesome-icon>
                 &nbsp;
             <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
         </div>
@@ -15,24 +15,28 @@
 
     <div :class="rows ? 'rows' : 'cards'">
         <div v-for="member in members" :key="member.id" @click="selected = member" class="user-card">
+                <div class="id">
+                    #{{member.id}}
+                </div>
                 <div class="avatar">
                     <img :src="member.avatar" alt="" srcset="">
                 </div>
                 <div class="name">
                     {{member.name}}
                 </div>
-                <div class="id">
-                    #{{member.id}}
+                <div class="active-membership">
+                    memberships : {{member.memberships.length}}
                 </div>
 
-                <div class="param">
+                <!-- <div class="param">
                         <font-awesome-icon  size="lg" color="red" class="icon " icon="trash"></font-awesome-icon>
 
                         <font-awesome-icon  size="lg" color="blue" class="icon" icon="edit"></font-awesome-icon>
-                </div>
+                </div> -->
         </div>
     </div>
-    <member-modal v-if="selected" @hide-modal="selected=null" :member="selected"></member-modal>
+    <member-modal v-show="selected" @hide-modal="selected=null" :member="selected"></member-modal>
+    <add-member v-show="modal" @hide-modal="modal=false"></add-member>
     
  </div>
 </template>
@@ -47,6 +51,7 @@ export default {
             selected : null,
             rows : true,
             query : '',
+            modal : false,
         }
     },
     methods :{
@@ -89,6 +94,11 @@ export default {
         display: flex;
         flex-wrap: wrap;
     }
+    .rows > * ,.cards > * {
+        cursor: pointer;
+        -webkit-user-select: none;
+    }
+    
     .cards .user-card {
         margin: 0.5rem;
         padding: 0.5rem;
@@ -143,7 +153,7 @@ export default {
         padding: 0 0.5rem;
     }
     .rows .user-card .id {
-        flex : 0.2;
+        
                 padding: 0 0.5rem;
 
     }

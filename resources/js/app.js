@@ -42,6 +42,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.component('dashboard-ui', require('./components/DashboardUi.vue').default);
 Vue.component('member-modal', require('./components/MemberModal.vue').default);
+Vue.component('add-member', require('./components/AddMember.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

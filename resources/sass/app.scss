@@ -90,3 +90,44 @@ main {
         box-shadow: 0 0 1px 0 rgb(224, 224, 224);
     }
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.form {
+    .inline {
+        margin: 1rem 0 ;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .group {
+            margin-top: 0 ;
+            margin-bottom: 0 ;
+        }
+        .group:not(:first-child) {
+            margin-left : 1rem;
+        }
+        .group:not(:last-child) {
+            margin-right : 1rem;
+        }
+    }
+    .group {
+        width: 100%;
+        margin: 1rem auto;
+        .control {
+            border: none;
+            outline: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 1px 0px rgb(224, 224, 224);
+            width: 100%;
+        }
+    }
+}
+

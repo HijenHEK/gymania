@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,10 @@ class MembershipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Member $member , Request $request)
     {
-        //
+        return $member->addPackages($request->all()) ;
+        
     }
 
     /**
