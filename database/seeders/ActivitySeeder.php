@@ -1,9 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Activity;
 
-class ServiceSeeder extends Seeder
+class ActivitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,30 +14,21 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        Activity::truncate();
 
         Activity::create([
-            'id' => 1,
+            'name' => 'Fitness',
+            'desc' => 'access to gym equipment',
+        ]);
+
+        Activity::create([
             'name' => 'Boxing',
-            'description' => '',
+            'desc' => 'access to the ring and  boxing equipment'
         ]);
 
         Activity::create([
-            'id' => 2,
-            'name' => 'Yoga',
-            'description' => ''
+            'name' => 'swimming',
+            'desc' => 'access to the pool',
         ]);
 
-        Activity::create([
-            'id' => 3,
-            'name' => 'Fitness Only',
-            'description' => 'Use gym of equipments',
-        ]);
-
-        Activity::create([
-            'id' => 4,
-            'name' => 'Muai Thai',
-            'description' => ''
-        ]);
     }
 }

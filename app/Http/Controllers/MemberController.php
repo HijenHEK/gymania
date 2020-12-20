@@ -11,6 +11,6 @@ class MemberController extends Controller
     //
 
     public function index(){
-        return Member::orderBy('created_at' , 'ASC')->get() ;
+        return Member::all();
     }
 }
