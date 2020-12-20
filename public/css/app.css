@@ -22,6 +22,7 @@ li {
 html,
 body {
   height: 100%;
+  position: relative;
 }
 
 main {
@@ -31,5 +32,53 @@ main {
 
 #app {
   height: 100%;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon--success {
+  color: #358835;
+}
+
+.icon--primary {
+  color: #135bb9;
+}
+
+.icon--toggle {
+  color: white;
+}
+
+.icon--power {
+  color: #e74242;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(29, 38, 45, 0.5);
+}
+
+.modal .icon--close {
+  position: absolute;
+  margin: 5rem;
+  top: 0;
+  right: 0;
+}
+
+.modal .content {
+  background-color: #e0e0e0;
+  width: 30rem;
+  height: 40rem;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 0 #e0e0e0;
 }
 

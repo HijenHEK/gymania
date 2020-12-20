@@ -17,7 +17,7 @@
 </script>
 
 
-<style scoped >
+<style scoped>
     .dashboard {
         display: flex;
         width: 100%;
@@ -78,10 +78,9 @@
         font-size: 0.8rem;
     }
     
-    .icon {
+    .menu__links .icon , .icon--toggle {
         margin-left: auto ;
         cursor: pointer;
-        
     }
     .menu__links {
         display: flex;
@@ -103,14 +102,7 @@
         color: white;
 
     }
-    .icon--toggle {
-        color: white;
-        
-    }
-    .icon--power {
-        color: rgb(231, 66, 66);
-        
-    }
+    
     .menu__links--active {
         color : rgb(55,181,74);
     }

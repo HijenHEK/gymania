@@ -14,7 +14,7 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        
+        return Membership::with(['user' , 'package'])->orderBy('expried_at' , 'ASC')->get();
     }
 
     /**

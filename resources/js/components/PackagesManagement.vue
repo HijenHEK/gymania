@@ -7,22 +7,18 @@
     <div class="nav">
         <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div>
-            <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success"></font-awesome-icon>
-                &nbsp;
-            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
+            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon"></font-awesome-icon>
         </div>
     </div>
 
     <div :class="rows ? 'rows' : 'cards'">
-        <div v-for="member in members" :key="member.id" @click="selected = member" class="user-card">
-                <div class="avatar">
-                    <img :src="member.avatar" alt="" srcset="">
-                </div>
+        <div v-for="p in packages" :key="p.id" class="user-card">
+                
                 <div class="name">
-                    {{member.name}}
+                    {{p.name}}
                 </div>
-                <div class="id">
-                    #{{member.id}}
+                <div class="username">
+                    {{p.username}}
                 </div>
 
                 <div class="param">
@@ -32,19 +28,16 @@
                 </div>
         </div>
     </div>
-    <member-modal v-if="selected" @hide-modal="selected=null" :member="selected"></member-modal>
     
  </div>
 </template>
 
 <script>
-
 export default {
     data(){
         return {
             data : {},
-            members : {},
-            selected : null,
+            packages : {},
             rows : true,
             query : '',
         }
@@ -52,12 +45,12 @@ export default {
     methods :{
         search(){
             if(this.query == "") {
-                this.members = this.data 
+                this.packages = this.data 
             }else {
 
-                this.members = this.data.filter((member) => {
-                    if(member.name.includes(this.query) || !this.query){
-                        return member
+                this.packages = this.data.filter((p) => {
+                    if(p.name.includes(this.query) || !this.query){
+                        return p
                 }
             })
                     
@@ -68,9 +61,9 @@ export default {
         
     },
     mounted(){
-        axios.get('/members').then(response => {
+        axios.get('/packages').then(response => {
             this.data = response.data
-            this.members = this.data
+            this.packages = this.data
             })
     }
 }
@@ -101,6 +94,8 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        min-width: 10rem;
+
     }
     .cards .user-card .name {
         text-align: center;
@@ -142,7 +137,7 @@ export default {
         flex : 0.2;
         padding: 0 0.5rem;
     }
-    .rows .user-card .id {
+    .rows .user-card .username {
         flex : 0.2;
                 padding: 0 0.5rem;
 
@@ -171,11 +166,11 @@ export default {
     }
     
     .search {
-        font-size: 1rem;
-        padding: 0.5rem 2rem;
+        font-size: 1.1rem;
+        padding: 0.7rem 2rem;
         border-radius: 5px;
         background-color: white;
-                box-shadow: 0 0 1px 0px rgb(223, 223, 223);
+                box-shadow: 0 0 1px 0px rgb(158, 158, 158);
 
         }
 </style>

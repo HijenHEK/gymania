@@ -14,7 +14,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        return Package::with('activity' , 'cycle')->get();
     }
 
     /**

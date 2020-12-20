@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Auth::routes();
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::apiResource('members', MemberController::class);
+Route::apiResource('packages', PackageController::class);

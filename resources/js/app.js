@@ -32,14 +32,16 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faBars,faTimes, faThLarge , faEdit , faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
+library.add([faBars,faTimes, faThLarge , faEdit , faPlus , faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
 Vue.component('dashboard-ui', require('./components/DashboardUi.vue').default);
+Vue.component('member-modal', require('./components/MemberModal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

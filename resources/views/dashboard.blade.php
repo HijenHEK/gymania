@@ -43,29 +43,37 @@
 
 
                     </router-link>
-                    <a class="link" href="#">
+                    <router-link tag="a" class="link" to="/packages">
                         
-                        <span>Staff Management</span> 
+                        <span>Packages</span> 
 
-                        <font-awesome-icon size="lg" class="icon" icon="user-cog"></font-awesome-icon>
-
-
-                    </a>
-                    <a class="link" href="#">
-                        
-                        <span>Settings</span> 
-
-                        <font-awesome-icon size="lg" class="icon" icon="cogs"></font-awesome-icon>
+                        <font-awesome-icon size="lg" class="icon" icon="th-large"></font-awesome-icon>
 
 
-                    </a>
+                    </router-link>
+                    
                     
                 </div>
 
 
                 <div class="menu__footer">
                     <div class="menu__links">
+                        <a class="link" href="#">
                         
+                            <span>Staff Management</span> 
+    
+                            <font-awesome-icon size="lg" class="icon" icon="user-cog"></font-awesome-icon>
+    
+    
+                        </a>
+                        <a class="link" href="#">
+                            
+                            <span>Settings</span> 
+    
+                            <font-awesome-icon size="lg" class="icon" icon="cogs"></font-awesome-icon>
+    
+    
+                        </a>
                         <a class="link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
