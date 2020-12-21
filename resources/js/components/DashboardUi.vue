@@ -52,6 +52,7 @@
         flex: 100%;
         height: 100%;
         padding: 2rem 2rem 2rem 5rem;
+        overflow: scroll;
 
     }
 

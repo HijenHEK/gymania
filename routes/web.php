@@ -29,3 +29,5 @@ Route::apiResource('packages', PackageController::class);
 
 
 Route::post('members/{member}/memberships', [MembershipController::class , 'store']);
+Route::get('members/{member}/memberships', [MembershipController::class , 'index']);
+

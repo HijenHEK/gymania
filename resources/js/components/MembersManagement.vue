@@ -4,7 +4,7 @@
 
 
 
-    <div class="nav">
+    <div v-if="!selected" class="nav">
         <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div>
             <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="modal =true"></font-awesome-icon>
@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div :class="rows ? 'rows' : 'cards'">
+    <div v-if="!selected" :class="rows ? 'rows' : 'cards'">
         <div v-for="member in members" :key="member.id" @click="selected = member" class="user-card">
                 <div class="id">
                     #{{member.id}}
@@ -35,7 +35,7 @@
                 </div> -->
         </div>
     </div>
-    <member-modal v-show="selected" @hide-modal="selected=null" :member="selected"></member-modal>
+    <single-member v-if="selected" @back="selected=null" :member="selected"></single-member>
     <add-member v-show="modal" @hide-modal="modal=false"></add-member>
     
  </div>

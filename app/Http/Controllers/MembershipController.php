@@ -13,8 +13,11 @@ class MembershipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Member $member)
     {
+        if($member){
+            return $member->memberships()->with(['package' , 'package.cycle' , 'package.activity'])->get();
+        }
         return Membership::with(['user' , 'package'])->orderBy('expried_at' , 'ASC')->get();
     }
 

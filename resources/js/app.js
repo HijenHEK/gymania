@@ -8,7 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-
+Vue.use(require('vue-moment'));
 
 /**
  * The following block of code may be used to automatically register your
@@ -33,15 +33,17 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faBars,faTimes, faThLarge , faEdit , faPlus , faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
+library.add([faBars,faTimes, faThLarge , faEdit , faPlus , faArrowLeft,
+    faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
 Vue.component('dashboard-ui', require('./components/DashboardUi.vue').default);
-Vue.component('member-modal', require('./components/MemberModal.vue').default);
+Vue.component('single-member', require('./components/SingleMember.vue').default);
 Vue.component('add-member', require('./components/AddMember.vue').default);
 
 /**
