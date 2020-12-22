@@ -7,7 +7,7 @@
     <div v-if="!selected" class="nav">
         <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div>
-            <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="modal =true"></font-awesome-icon>
+            <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="modal ='addMember'"></font-awesome-icon>
                 &nbsp;
             <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
         </div>
@@ -36,7 +36,8 @@
         </div>
     </div>
     <single-member v-if="selected" @back="selected=null" :member="selected"></single-member>
-    <add-member v-show="modal" @hide-modal="modal=false"></add-member>
+    <cu-member v-if="modal=='addMember'" @hide-modal="modal=null" @next-step="addPackagesModal"></cu-member>
+    <add-package v-if="modal=='addpackage'" @hide-modal="modal=null" :member="createdMember" ></add-package>
     
  </div>
 </template>
@@ -51,10 +52,16 @@ export default {
             selected : null,
             rows : true,
             query : '',
-            modal : false,
+            modal : null,
+            createdMember : null ,
         }
     },
     methods :{
+        addPackagesModal(id){
+            this.createdMember = id
+
+            this.modal='addpackage' 
+        },
         search(){
             if(this.query == "") {
                 this.members = this.data 

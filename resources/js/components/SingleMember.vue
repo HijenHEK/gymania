@@ -34,9 +34,9 @@
                     </div>
                     <div class="param">
 
-                        <font-awesome-icon  size="lg"  class="icon icon--danger" icon="plus"></font-awesome-icon>
+                        <font-awesome-icon  size="lg"  class="icon icon--danger" icon="plus" @click="addPackagesModal"></font-awesome-icon>
 
-                        <font-awesome-icon  size="lg"  class="icon icon--primary" icon="edit"></font-awesome-icon>
+                        <font-awesome-icon  size="lg"  class="icon icon--primary" icon="edit" @click="editMemberModal"></font-awesome-icon>
 
                     </div>
                     
@@ -71,7 +71,9 @@
                     </div>
                 </div>
         </div>  
-    
+        <add-package :member="member.id" v-show="modal=='addpackage'" @hide-modal="modal=null"></add-package>
+        <cu-member v-show="modal=='editMember'" :member="member" action="edit" @hide-modal="modal=null" ></cu-member>
+
   </div>
 </template>
 
@@ -81,13 +83,19 @@ export default {
     data(){
         return {
             memberships : [],
+            modal : null,
         }
     },
     computed : {
         
     },
     methods : {
-        
+        addPackagesModal(){
+            this.modal='addpackage' 
+        },
+        editMemberModal(){
+            this.modal='editMember' 
+        },
         back(){
             this.$emit('back');
         },
@@ -127,7 +135,10 @@ export default {
 
         width: 100%;
     }
+.info {
+    min-width: 200px;
     
+}
 .info > * {
     display: flex;
     padding: 0.2rem 0;
@@ -149,8 +160,8 @@ export default {
     flex-basis: 7rem;
 }
 .info > * .control {
-
     flex-grow: 0.5;
+    flex-shrink: 0.5;
 }
 
 
@@ -190,7 +201,7 @@ export default {
         flex-basis: 4rem;
         flex-grow: 1;
         flex-shrink: 1;
-        padding: 0.5rem;
+        padding: 1rem 0.5rem;
         font-size: 0.9rem;
         word-wrap: none;
         box-shadow: 0 0 1px 0px rgb(158, 158, 158);
@@ -223,6 +234,10 @@ export default {
             order: 1;
             margin-top: 0;
             margin-right: 0;
+
+        }
+        .info {
+                margin: 0 auto;
 
         }
         .header .avatar {

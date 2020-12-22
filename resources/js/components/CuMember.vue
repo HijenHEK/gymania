@@ -6,18 +6,18 @@
 
 <div class="content">
     
-    <form v-if="step==1"  class="form" @submit.prevent="addMember" @keydown="form.onKeydown($event)" enctype="multipart/form-data">
+    <form class="form" @submit.prevent=" action == 'edit' ? update() :create()" @keydown="form.onKeydown($event)" enctype="multipart/form-data">
         <div class="group">
             
             <div class="file-upload">
-                <img :src="this.avatar" ref="avatar" class="mx-auto avatar">
+                <img :src="member ? member.avatar : this.avatar" ref="avatar" class="mx-auto avatar">
                 <div class="upload-text">Change avatar ?</div>
             <input @change="changeAvatar" name="avatar" type="file"  class="file-input" />
             </div>
         </div> 
           <div class="group">
             <label for="name"></label>
-            <input v-model="form.name" ref="add"  type="text" name="name" placeholder="name"
+            <input v-model="form.name" ref="add" type="text" name="name" placeholder="name"
               class="control" >
             <div v-if="form.errors.has('name')" class="error"> 
                 {{form.errors.get('name')}}
@@ -71,37 +71,11 @@
          
           
 
-          <button :disabled="form.busy" type="submit" class="btn-green">add!</button>
+          <button :disabled="form.busy" type="submit" class="btn-green">   {{   action == 'edit' ? 'update !' : 'Create !' }}</button>
                 
            
         </form>
-        <div v-else-if="step==2" class="adding-packages">
-            <div class="body form">
-                        <h3 class="header">you can add packages now !</h3>
 
-                <div class="select-package group">
-                <input type="text" name="package" id="packages" class="control" v-model="packageQuery" @keyup="searchPackages($event)" placeholder="search and select packages">
-                <div v-if="searchedPackages" class="packages-list">
-                    <div v-for="p in searchedPackages" :key="p.id" @click="selectPackage(p)" class="package control">
-                        {{p.name}}
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="selectedPackages.length" class="selected-packages group">
-                <div class="control">packages to include :</div>    
-                <div v-for="p in selectedPackages" @click="removePackage(p.index)" :key="p.index" class="package selected control">
-                    {{p.name}}
-                </div>
-            </div>
-            </div>
-
-            <div class="footer">
-                <button class="btn-gray" @click="hideModal">skip</button>
-
-                <button class="btn-green" @click="addPackages">add packages</button>
-            </div>
-        </div>
     </div>
 </div>
 </template>
@@ -110,41 +84,37 @@
 import Form from 'vform'
 
 export default {
-    props : ['member'],
+    props : {
+        member : {
+            type : Object ,
+            default : null
+        },
+        action : {
+            type : String ,
+            default : 'add'
+        }
+    },
     data(){
         return{
             form : new Form({
-                name : '',
-                username : '',
-                email : '',
-                phone : '',
-                age : '',
-                gender : '',
-                address : '',
+                name : this.member ? this.member.name : '',
+                username : this.member ? this.member.username : '',
+                email : this.member ? this.member.email : '',
+                phone : this.member ? this.member.phone : '',
+                age : this.member ? this.member.age : '',
+                gender : this.member ? this.member.gender : '',
+                address : this.member ? this.member.address : '',
             }),
-            step: 1 ,
-            packages : {} ,
-            packageQuery : '' ,
-            memberCreated : {} ,
-            selectedPackages : [] ,
-            searchedPackages : {} ,
+            created : {} ,
             avatar : '/storage/avatars/default.jpg',
+            
         }
     },
     methods : {
         hideModal(){
-            this.step = 1 ;
             this.$emit('hide-modal');
         },
-        // isNumber(evt){
-        //     if(! isFinite(event.key)) {
-        //         if(evt.target.value.length == 1 ) {
-        //             evt.target.value = ""
-        //         }else {
-        //             evt.target.value = evt.target.value.slice(0,-1)
-        //         }
-        //     }
-        // },
+
         changeAvatar(evt){
             var reader = new FileReader();
                 
@@ -157,52 +127,20 @@ export default {
             if(this.step == 2) this.step = 1 
             else this.step++
         },
-        addMember(){
+        update(){
+            this.form.post('/members/'+this.member.id)
+        },
+        create(){
             this.form.post('/members').then((response)=>{
-                this.memberCreated = response.data
-                this.nextStep()
+                this.created = response.data
+                this.$emit('next-step' , this.created.id)
             })
         },
-        getPackages(){
-            axios.get('/packages').then((response)=>{
-            this.packages = response.data
-            
-        })
         
-        },
-        searchPackages(e){
-            this.searchedPackages =  this.packages.filter((p)=>{
-                if( p.name.includes(this.packageQuery) && !this.selectedPackages.includes(p)) return p
-            })
-
-            if(this.packageQuery.length == 0) this.searchedPackages = {}
-
-            if(e.keyCode == 13 && this.searchedPackages){
-                this.selectPackage(this.searchedPackages[0])
-            }
-            
-        },
-        selectPackage(p){
-            this.selectedPackages.push(p)
-            this.searchedPackages = {}
-        },
-        removePackage(p){
-            this.selectedPackages.splice(p,1)
-        },
-        addPackages(){
-
-            
-                axios.post('/members/'+this.memberCreated.id+'/memberships' , this.selectedPackages)
-                .then(  response => console.log(response.data) )
-
-
-                this.hideModal();
-        }
         
     },
     
     mounted(){
-        this.getPackages()
     }
 }
 </script>
@@ -281,6 +219,8 @@ export default {
     cursor: pointer;
     
 }
+
+/* packages */
 .select-package {
     margin-bottom: 0.5rem;
     position: relative;
