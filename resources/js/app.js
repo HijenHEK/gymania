@@ -46,6 +46,9 @@ Vue.component('dashboard-ui', require('./components/DashboardUi.vue').default);
 Vue.component('single-member', require('./components/SingleMember.vue').default);
 Vue.component('cu-member', require('./components/CuMember.vue').default);
 Vue.component('add-package', require('./components/AddPackage.vue').default);
+Vue.component('cu-package', require('./components/CuPackage.vue').default);
+Vue.component('select-data', require('./components/SelectData.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

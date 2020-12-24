@@ -168,6 +168,7 @@ export default {
 
     .header .avatar {
         width: 15rem;
+        height:  15rem;
         min-width: 5rem;
         margin: 2rem;
         border-radius: 100%;

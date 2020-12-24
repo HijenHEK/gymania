@@ -7,12 +7,15 @@
     <div class="nav">
         <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div>
+            <font-awesome-icon  size="lg" @click="modal='package'" icon="plus" class="icon"></font-awesome-icon>
+                &nbsp;            
+
             <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon"></font-awesome-icon>
         </div>
     </div>
 
-    <div :class="rows ? 'rows' : 'cards'">
-        <div v-for="p in packages" :key="p.id" class="user-card">
+    <div :class="{'cards' : !rows}">
+        <div v-for="p in packages" :key="p.id"   :class="!rows ? 'data-card' : 'data'" @click="edit(p)">
                 
                 <div class="name">
                     {{p.name}}
@@ -28,7 +31,8 @@
                 </div>
         </div>
     </div>
-    
+    <cu-package v-if="modal=='package'" :selected="selected" @hide-modal="hide()"></cu-package>
+
  </div>
 </template>
 
@@ -36,10 +40,12 @@
 export default {
     data(){
         return {
+            selected : null,
             data : {},
             packages : {},
             rows : true,
             query : '',
+            modal : null,
         }
     },
     methods :{
@@ -57,6 +63,16 @@ export default {
                 }
             
             
+        },
+        edit(p){
+            console.log(p)
+            this.selected = p 
+            this.modal = "package"
+        },
+
+        hide(){
+            this.selected = null 
+            this.modal = null
         }
         
     },
@@ -78,88 +94,86 @@ export default {
         margin: 0 auto;
         padding: 1rem 0;
     }
+    
+    .data {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 0.5rem 0;
+        box-shadow: 0 0 2px 1px rgb(158, 158, 158);
+        width: 100%;
+        max-width: 1100px;
+        margin: 0.5rem auto;
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+                cursor: pointer;
+        padding: 0 1rem;
+
+    }
+    .data > * {
+        flex-basis: 4rem;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+        word-wrap: none;
+        vertical-align: middle;
+        cursor: pointer;
+
+    }
     .cards {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
-    .cards .user-card {
-        margin: 0.5rem;
-        padding: 0.5rem;
-        box-shadow: 0 0 1px 0px rgb(158, 158, 158);
-        border-radius: 5px;
-        max-width: 12rem;
-        background-color: white;
-        height: 16rem;
-        display: flex;
+    .data-card {
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        min-width: 10rem;
+        width: 12rem;
+        height: 17rem;
+        display: flex;
+        background-color: white;
+        margin: 0.5rem;
+        border-radius: 10px;
+        box-shadow: 0 0 2px 0 rgb(158, 158, 158)   ;
+        padding: 1rem 0.5rem;
+        cursor: pointer;
+    }
+    .data-card > * {
+        
+        padding: 0.5rem 0;
+        word-wrap: none;
 
     }
-    .cards .user-card .name {
-        text-align: center;
+    .data-card .avatar {
+        width: 8rem;
+        height: 8rem;
     }
     .avatar {
-        width: 80%;
-        margin: 0 auto;
-        border-radius: 100%;
+        width: 4rem;
+        height: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        
-    }
-    .cards .avatar img {
-            width: 100%;
-    }
+        border-radius: 100%;
+        flex-grow: unset;
+        flex-basis: unset;
 
-    .rows {
-        display: flex;
-        flex-wrap: wrap;
+    }
+    .id {
+        flex-basis: 3rem;
+        flex-grow: 0.1;
+    }
+    .avatar img {
         width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
     }
-    .rows .user-card {
-        width: 100%;
-        margin: 0.2rem;
-        padding: 0.3rem 1rem;
-        box-shadow: 0 0 1px 0px rgb(158, 158, 158);
-        border-radius: 5px;
-        background-color: white;
-        height: 5rem;
+    .param {
         display: flex;
-        align-items: center;
+        justify-content: flex-end;
     }
-    .rows .user-card .name {
-        text-align: center;
-        flex : 0.2;
-        padding: 0 0.5rem;
-    }
-    .rows .user-card .username {
-        flex : 0.2;
-                padding: 0 0.5rem;
-
-    }
-    .rows .avatar {
-                padding: 0 0.5rem;
-
-        height:  80%;
-        width: unset;
-        margin: unset;
-        
-    }
-    .rows .avatar img {
-            height:  100%;
-    }
-
-    .rows .user-card .param {
-        margin-left: auto ;
-        padding: 0 0.5rem;
-
-    }
-
     .param .icon {
         margin: 0.2rem;
         cursor: pointer;

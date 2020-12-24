@@ -14,7 +14,7 @@ class CycleController extends Controller
      */
     public function index()
     {
-        //
+        return Cycle::all();
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
+use App\Models\Cycle;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,21 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'fee' => 'required|regex:/^[0-9]+(?:\.[0-9]+)?$/',
+            'cycle' => 'required|exists:cycles,id',
+            'activity' => 'required|exists:activities,id',
+        ]);
+        $package = Package::create([
+            'name' => Request('name'),
+            'fee' => Request('fee'),
+            'cycle_id' =>  Request('cycle'),
+            'activity_id' =>  Request('activity'),
+        ]);
+        // $package->activity()->associate(Activity::findOrFail(Request('activity')));
+        // $package->cycle()->associate(Cycle::findOrFail(Request('cycle')));
+        return $package ;
     }
 
     /**
@@ -48,7 +64,21 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'fee' => 'required|regex:/^[0-9]+(?:\.[0-9]+)?$/',
+            'cycle' => 'required|exists:cycles,id',
+            'activity' => 'required|exists:activities,id',
+        ]);
+        $package->update([
+            'name' => Request('name'),
+            'fee' => Request('fee'),
+            'cycle_id' =>  Request('cycle'),
+            'activity_id' =>  Request('activity'),
+        ]);
+        // $package->activity()->associate(Activity::findOrFail(Request('activity')));
+        // $package->cycle()->associate(Cycle::findOrFail(Request('cycle')));
+        return $package ;
     }
 
     /**

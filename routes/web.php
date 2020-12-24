@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CycleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MembershipController;
@@ -26,6 +28,8 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::apiResource('members', MemberController::class);
 Route::apiResource('packages', PackageController::class);
+Route::apiResource('cycles', CycleController::class);
+Route::apiResource('activities', ActivityController::class);
 
 
 Route::post('members/{member}/memberships', [MembershipController::class , 'store']);

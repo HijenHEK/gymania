@@ -10,7 +10,7 @@
         <div class="group">
             
             <div class="file-upload">
-                <img :src="member ? member.avatar : this.avatar" ref="avatar" class="mx-auto avatar">
+                <img :src="this.avatar ? this.avatar : member ? member.avatar : '' " ref="avatar" class="mx-auto avatar">
                 <div class="upload-text">Change avatar ?</div>
             <input @change="changeAvatar" name="avatar" type="file"  class="file-input" />
             </div>
@@ -82,7 +82,7 @@
 
 <script>
 import Form from 'vform'
-
+import { serialize } from 'object-to-formdata'
 export default {
     props : {
         member : {
@@ -104,9 +104,10 @@ export default {
                 age : this.member ? this.member.age : '',
                 gender : this.member ? this.member.gender : '',
                 address : this.member ? this.member.address : '',
+                avatar : this.member ? this.member.avatar : '/storage/avatars/default.jpg'
             }),
             created : {} ,
-            avatar : '/storage/avatars/default.jpg',
+            avatar : '',
             
         }
     },
@@ -116,6 +117,7 @@ export default {
         },
 
         changeAvatar(evt){
+            this.form.avatar = evt.target.files[0];
             var reader = new FileReader();
                 
             reader.onload = (e) => {
@@ -128,10 +130,25 @@ export default {
             else this.step++
         },
         update(){
-            this.form.post('/members/'+this.member.id)
+            this.form.submit('post','/members/'+this.member.id,{
+                transformRequest: [function (data, headers) {
+                data['_method'] = 'PUT';
+                return serialize(data)
+                }],
+              onUploadProgress: e => {
+              }
+            }).then((response)=>{
+                this.$emit('hide-modal')
+            })
         },
         create(){
-            this.form.post('/members').then((response)=>{
+            this.form.submit('post' , '/members' ,{
+              transformRequest: [function (data, headers) {
+                return serialize(data)
+                }],
+              onUploadProgress: e => {
+              }
+            }).then((response)=>{
                 this.created = response.data
                 this.$emit('next-step' , this.created.id)
             })
