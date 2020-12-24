@@ -7,7 +7,7 @@
 <div class="content">
     <div class="body form">
     
-                <h3 class="header">Create a new Package</h3>
+                <h3 class="header">{{selected ? 'Update the '+selected.name : 'Create a new'}}  Package</h3>
 
                 <form @submit.prevent="selected ? update() : create()" @keydown="form.onKeydown($event)">
 

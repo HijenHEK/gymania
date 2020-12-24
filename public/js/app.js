@@ -12075,7 +12075,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.searched = this.packages.filter(function (p) {
-        if (p.name.includes(_this2.query) && !_this2.selected.includes(p)) return p;
+        if (p.name.toLowerCase().includes(_this2.query.toLowerCase()) && !_this2.selected.includes(p)) return p;
       });
       if (this.query.length == 0) this.searched = {};
 
@@ -12656,6 +12656,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -12689,7 +12690,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.searched = this.fetched.filter(function (item) {
-        if (item.name.includes(_this2.query)) return item;
+        if (item.name.toLowerCase().includes(_this2.query.toLowerCase())) return item;
       });
       if (this.query.length == 0) this.searched = {};
 
@@ -17275,7 +17276,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.form[data-v-325502e0] {\n        width: 20rem;\n        margin: 0 auto;\n}\n.select-package[data-v-325502e0] {\n    margin-bottom: 0.5rem;\n    position: relative;\n}\n.packages-list[data-v-325502e0] {\n    position: absolute;\n    width: 100%;\n}\n.adding-packages[data-v-325502e0] {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n}\n.adding-packages  .footer[data-v-325502e0] {\n    margin: 0 auto;\n    width: 100%;\n    display: flex;\n    justify-content: flex-end;\n}\n.package[data-v-325502e0] {\n    background: rgb(155, 155, 155);\n    cursor: pointer;\n}\n.package-list .package[data-v-325502e0]:first-child{\n    background: rgb(209, 209, 209);\n}\n.package.selected[data-v-325502e0] {\n    background: rgb(207, 207, 207);\n}\n", ""]);
+exports.push([module.i, "\n.form[data-v-325502e0] {\n        width: 20rem;\n        margin: 0 auto;\n}\n.select-package[data-v-325502e0] {\n    margin-bottom: 0.5rem;\n    position: relative;\n}\n.packages-list[data-v-325502e0] {\n    position: absolute;\n    width: 100%;\n}\n.adding-packages[data-v-325502e0] {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n}\n.adding-packages  .footer[data-v-325502e0] {\n    margin: 0 auto;\n    width: 100%;\n    display: flex;\n    justify-content: flex-end;\n}\n.package[data-v-325502e0] {\n    background: rgb(155, 155, 155);\n    cursor: pointer;\n}\n.package-list .package[data-v-325502e0]:first-child{\n    background: rgb(209, 209, 209);\n}\n.package.selected[data-v-325502e0] {\n    background: rgb(207, 207, 207);\n}\n\n", ""]);
 
 // exports
 
@@ -50568,6 +50569,7 @@ var render = function() {
                 type: "text",
                 name: "package",
                 id: "packages",
+                autocomplete: "off",
                 placeholder: "search and select packages"
               },
               domProps: { value: _vm.query },
@@ -51058,7 +51060,15 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
         _c("div", { staticClass: "body form" }, [
-          _c("h3", { staticClass: "header" }, [_vm._v("Create a new Package")]),
+          _c("h3", { staticClass: "header" }, [
+            _vm._v(
+              _vm._s(
+                _vm.selected
+                  ? "Update the " + _vm.selected.name
+                  : "Create a new"
+              ) + "  Package"
+            )
+          ]),
           _vm._v(" "),
           _c(
             "form",
@@ -51575,7 +51585,8 @@ var render = function() {
               placeholder:
                 _vm.data == "activities"
                   ? "select an activity"
-                  : "select a cycle"
+                  : "select a cycle",
+              autocomplete: "off"
             },
             domProps: { value: _vm.query },
             on: {

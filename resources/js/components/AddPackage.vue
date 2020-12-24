@@ -9,7 +9,7 @@
                             <h3 class="header">you can add packages now !</h3>
 
                     <div class="select-package group">
-                        <input type="text" name="package" id="packages" class="control" v-model="query" @keyup="search($event)" placeholder="search and select packages">
+                        <input type="text" name="package" id="packages" class="control" v-model="query" autocomplete="off" @keyup="search($event)" placeholder="search and select packages">
                         <div v-if="searched" class="packages-list">
                             <div v-for="p in searched" :key="p.id" @click="select(p)" class="package control">
                                 {{p.name}}
@@ -57,7 +57,7 @@ export default {
         },
         search(e){
             this.searched =  this.packages.filter((p)=>{
-                if( p.name.includes(this.query) && !this.selected.includes(p)) return p
+                if( p.name.toLowerCase().includes(this.query.toLowerCase()) && !this.selected.includes(p)) return p
             })
 
             if(this.query.length == 0) this.searched = {}
@@ -127,4 +127,5 @@ export default {
     background: rgb(207, 207, 207);
 
 }
+
 </style>

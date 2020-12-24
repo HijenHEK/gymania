@@ -5,7 +5,8 @@
     <div class="form">
 
                     <div v-if="!selected" class="select-data group">
-                        <input type="text" name="data" id="data" class="control" v-model="query" @keyup="search($event)" :placeholder="data == 'activities' ? 'select an activity' : 'select a cycle' ">
+                        <input type="text" name="data" id="data" class="control" v-model="query" @keyup="search($event)"
+                         :placeholder="data == 'activities' ? 'select an activity' : 'select a cycle' " autocomplete="off">
                         <div v-if="searched" class="data-list">
                             <div v-for="item in searched" :key="item.id" @click="select(item)" class="data control">
                                 {{item.name}}
@@ -54,7 +55,7 @@ export default {
         
         search(e){
             this.searched =  this.fetched.filter((item)=>{
-                if( item.name.includes(this.query)) return item
+                if( item.name.toLowerCase().includes(this.query.toLowerCase())) return item
             })
 
             if(this.query.length == 0) this.searched = {}
