@@ -34,7 +34,7 @@
                     </div>
                     <div class="param">
 
-                        <font-awesome-icon  size="lg"  class="icon icon--danger" icon="plus" @click="addPackagesModal"></font-awesome-icon>
+                        <font-awesome-icon  size="lg"  class="icon icon--success" icon="plus" @click="addPackagesModal"></font-awesome-icon>
 
                         <font-awesome-icon  size="lg"  class="icon icon--primary" icon="edit" @click="editMemberModal"></font-awesome-icon>
 

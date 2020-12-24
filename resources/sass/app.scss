@@ -48,8 +48,10 @@ main {
 }
 
 
-.icon {
+.icon{
+    opacity: 0.9;
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
     &--success {
         color: rgb(53, 136, 53);
     }
@@ -62,6 +64,10 @@ main {
     }
     &--power {
         color: rgb(231, 66, 66);
+        
+    }
+    &--warning {
+        color: rgb(212, 181, 41);
         
     }
 }
@@ -132,3 +138,61 @@ input[type=number] {
     }
 }
 
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    &--success {
+        background-color: rgb(53, 136, 53);
+        color: white;
+    }
+    &--primary {
+        background-color: rgb(19, 91, 185);
+        color: white;
+
+    }
+    &--white {
+        background-color: white;
+        color: black;
+
+    }
+    &--power {
+        background-color: rgb(231, 66, 66);
+        color: white;
+
+    }
+    &--warning {
+        background-color: rgb(212, 181, 41);
+        color: black;
+
+    }
+    &--lg {
+        font-size: 1.1rem;
+        
+    }
+    &--sm {
+        font-size: 0.8rem;
+    }
+    &--xl {
+        font-size: 1.4rem;
+    }
+}
+.btn:hover{
+    opacity: 1;
+    
+}
+.btn:active {
+    transform: translate(1px ,1px);
+}
+.icon:hover{
+    opacity: 1;
+    transform: scale(1.02);
+    
+}
+.icon:active {
+    transform: translate(1px ,1px);
+}

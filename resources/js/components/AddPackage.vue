@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal ">
     <font-awesome-icon  size="2x" @click="hideModal" color="white" class="icon icon--close" icon="times"></font-awesome-icon>
 
 
@@ -26,9 +26,8 @@
         </div>
 
                 <div class="footer">
-                    <button class="btn-gray" @click="hideModal">skip</button>
 
-                    <button class="btn-green" @click="add">add packages</button>
+                    <button class="btn btn--success" @click="add">add packages</button>
                 </div>
     </div>
   </div>
@@ -91,7 +90,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .form {
         width: 20rem;
         margin: 0 auto;
@@ -107,7 +106,6 @@ export default {
     
 }
 .adding-packages {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -116,7 +114,7 @@ export default {
     margin: 0 auto;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 .package {
     background: rgb(155, 155, 155);

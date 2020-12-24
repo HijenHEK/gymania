@@ -7,10 +7,10 @@
     <div class="nav">
         <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div>
-            <font-awesome-icon  size="lg" @click="modal='package'" icon="plus" class="icon"></font-awesome-icon>
+            <font-awesome-icon  size="lg" @click="modal='package'" icon="plus" class="icon icon--success"></font-awesome-icon>
                 &nbsp;            
 
-            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon"></font-awesome-icon>
+            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
         </div>
     </div>
 

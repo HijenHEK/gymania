@@ -37,7 +37,7 @@
 
                 <div class="footer">
 
-                    <button type="submit" class="btn-green">{{selected ? 'Update' : 'Create'}}</button>
+                    <button type="submit" class="btn btn--success">{{selected ? 'Update' : 'Create'}}</button>
                 </div>
                 </form>
 

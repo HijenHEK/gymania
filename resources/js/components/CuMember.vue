@@ -71,7 +71,7 @@
          
           
 
-          <button :disabled="form.busy" type="submit" class="btn-green">   {{   action == 'edit' ? 'update !' : 'Create !' }}</button>
+          <button :disabled="form.busy" type="submit" class="btn" :class="action == 'edit' ? 'btn--primary' : 'btn--success'">   {{   action == 'edit' ? 'update !' : 'Create !' }}</button>
                 
            
         </form>

@@ -36,7 +36,9 @@ main {
 }
 
 .icon {
+  opacity: 0.9;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 }
 
 .icon--success {
@@ -53,6 +55,10 @@ main {
 
 .icon--power {
   color: #e74242;
+}
+
+.icon--warning {
+  color: #d4b529;
 }
 
 .modal {
@@ -128,5 +134,69 @@ input[type=number] {
   border-radius: 5px;
   box-shadow: 0 0 1px 0px #e0e0e0;
   width: 100%;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.9;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: all 0.1s ease-in-out;
+}
+
+.btn--success {
+  background-color: #358835;
+  color: white;
+}
+
+.btn--primary {
+  background-color: #135bb9;
+  color: white;
+}
+
+.btn--white {
+  background-color: white;
+  color: black;
+}
+
+.btn--power {
+  background-color: #e74242;
+  color: white;
+}
+
+.btn--warning {
+  background-color: #d4b529;
+  color: black;
+}
+
+.btn--lg {
+  font-size: 1.1rem;
+}
+
+.btn--sm {
+  font-size: 0.8rem;
+}
+
+.btn--xl {
+  font-size: 1.4rem;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.btn:active {
+  transform: translate(1px, 1px);
+}
+
+.icon:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.icon:active {
+  transform: translate(1px, 1px);
 }
 

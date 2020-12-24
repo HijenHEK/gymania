@@ -173,10 +173,7 @@ export default {
     .avatar img {
         width: 100%;
     }
-    .param .icon {
-        margin: 0.2rem;
-        cursor: pointer;
-    }
+
     
     .search {
         font-size: 1rem;
