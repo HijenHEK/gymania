@@ -1,6 +1,7 @@
 <template>
   <div class="body form">
     
+
                 <h3 class="header">{{selected ? 'Update the '+selected.name : 'Create a new'}}  cycle</h3>
 
                 <form @submit.prevent="selected ? update() : create()" @keydown="form.onKeydown($event)">
@@ -13,7 +14,14 @@
                             {{form.errors.get('name')}}
                         </div>
                     </div>
-                                        
+                    <div class="group">
+                        <label for="period"></label>
+                        <input v-model="form.period" ref="add" type="number" min="0" max="365" name="period" placeholder="cycle period"
+                        class="control" >
+                        <div v-if="form.errors.has('period')" class="error"> 
+                            {{form.errors.get('period')}}
+                        </div>
+                    </div>                  
                     <div class="group">
                         <label for="desc"></label>
                         <input v-model="form.desc" ref="add"  type="text" name="desc" placeholder="cycle desc"
@@ -23,10 +31,10 @@
                         </div>
                     </div>
 
-                <div class="footer">
+                    <div class="footer">
 
-                    <button type="submit" class="btn btn--success">{{selected ? 'Update' : 'Create'}}</button>
-                </div>
+                        <button type="submit" class="btn btn--success">{{selected ? 'Update' : 'Create'}}</button>
+                    </div>
                 </form>
 
                 
@@ -49,6 +57,7 @@ export default {
         return {
             form : new Form({
                 name : this.selected ? this.selected.name : '',
+                period : this.selected ? this.selected.period : '',
                 desc :  this.selected ? this.selected.desc : ''
             })
         }

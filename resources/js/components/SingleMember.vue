@@ -43,7 +43,7 @@
                 </div>
                 <div class="content">
                     
-                    <div v-for="membership in memberships" :key="membership.id" class="membership" :class="membership.status">
+                    <div v-for="membership in memberships" :key="membership.id" class="membership" :class="membership.statuses[0].name">
                             <div class="id">
                                 # {{membership.id}}
                             </div>                            
@@ -60,13 +60,13 @@
                                 {{membership.package.activity.name}}
                             </div>
                             <div class="status">
-                                 {{membership.status}}
+                                 {{membership.statuses[0].name}}
                             </div>
                             <div class="created">
                                  created : {{membership.created_at | moment("MMM Do YYYY")}}
                             </div>
                             <div class="expires_at">
-                                 expiers :{{membership.expired_at}}
+                                 expiers : {{membership.expired_at | moment( "from" , "now")}}
                             </div>
                     </div>
                 </div>
@@ -212,11 +212,14 @@ export default {
 
     }
     .active {
-        box-shadow: 0 0 2px 1px rgb(29, 173, 16);
+        box-shadow: 0 0 2px 1px rgb(38, 141, 28);
         width: 100%;
         background-color: white;
-        
-
+    }
+        .expired {
+        box-shadow: 0 0 2px 1px rgb(190, 48, 29);
+        width: 100%;
+        background-color: white;
     }
     .active > * {
         color: white;
@@ -224,7 +227,12 @@ export default {
         box-shadow: 0 0 2px 0px white;
 
     }
+    .expired > * {
+        color: white;
+        background-color: rgb(190, 48, 29) ;
+        box-shadow: 0 0 2px 0px white;
 
+    }
     @media (max-width : 800px) {
         .header {
             flex-direction: column;

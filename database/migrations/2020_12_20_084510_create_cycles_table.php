@@ -18,7 +18,6 @@ class CreateCyclesTable extends Migration
             $table->string('name');
             $table->integer('period')->default(1);
             $table->text('desc')->nullable();
-            $table->string('status')->default("active");
 
             $table->timestamps();
         });

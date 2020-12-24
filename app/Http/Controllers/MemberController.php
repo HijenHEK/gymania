@@ -11,7 +11,7 @@ class MemberController extends Controller
     //
 
     public function index(){
-        return Member::latest()->with('memberships')->get();
+        return Member::latest()->with('memberships' )->get();
     }
     public function store(){
         Request()->validate([

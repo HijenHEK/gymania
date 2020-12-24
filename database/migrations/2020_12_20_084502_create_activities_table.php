@@ -17,7 +17,6 @@ class CreateActivitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('desc')->nullable();
-            $table->string('status')->default("active");
 
             $table->timestamps();
         });

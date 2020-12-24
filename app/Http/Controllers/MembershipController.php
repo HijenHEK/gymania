@@ -16,9 +16,9 @@ class MembershipController extends Controller
     public function index(Member $member)
     {
         if($member){
-            return $member->memberships()->with(['package' , 'package.cycle' , 'package.activity'])->get();
+            return $member->memberships()->with(['package' , 'statuses' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->get();
         }
-        return Membership::with(['user' , 'package'])->orderBy('expried_at' , 'ASC')->get();
+        return Membership::with(['user' , 'statuses' , 'package'])->orderBy('expired_at' , 'ASC')->get();
     }
 
     /**

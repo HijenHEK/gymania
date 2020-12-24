@@ -19,7 +19,6 @@ class CreatePackagesTable extends Migration
             $table->foreignId('cycle_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->decimal('fee');
-            $table->string('status')->default("active");
 
             $table->timestamps();
         });

@@ -34,7 +34,7 @@
 
                     <button type="submit" class="btn btn--success">{{selected ? 'Update' : 'Create'}}</button>
                 </div>
-                </form>
+            </form>
 
                 
                 
@@ -69,7 +69,7 @@ export default {
         
     
         select(type , data){
-            if(type=='activities') {
+            if(type == 'activities') {
                 this.activity = data
             }else if (type == 'cycles') {
                 this.cycle = data
@@ -80,12 +80,14 @@ export default {
 
         create(){
 
-            
-                this.form.post('/packages?activity='+this.activity.id+'&cycle='+this.cycle.id)
+                    
+                    
+                    this.form.post('/packages?activity='+this.activity.id+'&cycle='+this.cycle.id)
                 .then( response => {
                     
-                })
+                    })
 
+            
 
         },
         update(){

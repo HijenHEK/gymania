@@ -8,9 +8,11 @@
                         <input type="text" name="data" id="data" class="control" v-model="query" @keyup="search($event)"
                          :placeholder="data == 'activities' ? 'select an activity' : 'select a cycle' " autocomplete="off">
                         <div v-if="searched" class="data-list">
+
                             <div v-for="item in searched" :key="item.id" @click="select(item)" class="data control">
                                 {{item.name}}
                             </div>
+                        
                         </div>
                     </div>
 
@@ -69,6 +71,7 @@ export default {
         select(item){
             this.selected = item
             this.searched = {}
+            console.log(this.data)
             this.$emit('selected', this.data , this.selected)
         },
 

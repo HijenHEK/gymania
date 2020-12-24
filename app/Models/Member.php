@@ -17,7 +17,15 @@ class Member extends Model
         
       
         foreach($data as $package){
-            $this->memberships()->create(['package_id' => $package['id']]);
+            
+            $m = $this->memberships()->create([
+                'package_id' => $package['id'],
+                'expired_at' => now()->addDays(Package::findOrFail($package['id'])->cycle->period)   
+                ]);
+
+            $m->setStatus('active');
+                
+
         }
         
     }

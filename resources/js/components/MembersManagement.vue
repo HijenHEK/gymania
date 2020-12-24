@@ -9,14 +9,14 @@
         <div>
             <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="modal ='addMember'"></font-awesome-icon>
                 &nbsp;
-            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
+            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'" class="icon icon--primary"></font-awesome-icon>
         </div>
     </div>
 
     <div v-if="!selected" :class="{'cards' : !rows}" >
         <div v-for="member in members" :key="member.id" @click="selected = member"  :class="!rows ? 'data-card' : 'data'">
                 <div class="id">
-                    #{{member.id}}
+                    # {{member.id}}
                 </div>
                 <div class="avatar">
                     <img :src="member.avatar" alt="" srcset="">

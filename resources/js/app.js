@@ -52,6 +52,7 @@ Vue.component('cu-package', require('./components/CuPackage.vue').default);
 Vue.component('select-data', require('./components/SelectData.vue').default);
 Vue.component('modal-ui', require('./components/ModalUi.vue').default);
 Vue.component('cu-activity', require('./components/CuActivity.vue').default);
+Vue.component('cu-cycle', require('./components/CuCycle.vue').default);
 
 
 /**

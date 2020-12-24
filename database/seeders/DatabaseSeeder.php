@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Member;
+use App\Models\Membership;
 use App\Models\Package;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
 
 
         Member::all()->map->memberships()->map->create(['package_id'=>rand(1,3)]);
+        Membership::all()->map->setStatus('active');
 
 
         Role::where('name' , 'Admin')->first()->allowTo('manage_users');
