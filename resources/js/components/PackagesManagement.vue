@@ -20,15 +20,18 @@
                 <div class="name">
                     {{p.name}}
                 </div>
+                
+                <div class="activity">
+                    {{p.activity.name}}
+                </div>
                 <div class="username">
-                    {{p.username}}
+                    {{p.fee}} dt
+                </div>
+                <div class="cycle">
+                    paid  {{p.cycle.name}}
                 </div>
 
-                <div class="param">
-                        <font-awesome-icon  size="lg" color="red" class="icon " icon="trash"></font-awesome-icon>
-
-                        <font-awesome-icon  size="lg" color="blue" class="icon" icon="edit"></font-awesome-icon>
-                </div>
+                
         </div>
     </div>
     <cu-package v-if="modal=='package'" :selected="selected" @hide-modal="hide()"></cu-package>
@@ -132,7 +135,7 @@ export default {
         flex-direction: column;
         align-items: center;
         width: 12rem;
-        height: 17rem;
+        height: 15rem;
         display: flex;
         background-color: white;
         margin: 0.5rem;
@@ -140,6 +143,10 @@ export default {
         box-shadow: 0 0 2px 0 rgb(158, 158, 158)   ;
         padding: 1rem 0.5rem;
         cursor: pointer;
+    }
+    .data-card .name {
+        flex: 100%;
+        font-size: 1.1rem;
     }
     .data-card > * {
         

@@ -4,7 +4,7 @@
 
 
 
-<div class="content adding-packages">
+<div class="content">
     <div class="body form">
     
                 <h3 class="header">Create a new Package</h3>
@@ -107,11 +107,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .form {
         width: 20rem;
         margin: 0 auto;
+        height: 100%;
         
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
     }
 .select-package {
     margin-bottom: 0.5rem;
@@ -122,18 +127,7 @@ export default {
     width: 100%;
     
 }
-.adding-packages {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.adding-packages  .footer {
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
+
 .package {
     background: rgb(155, 155, 155);
     cursor: pointer;

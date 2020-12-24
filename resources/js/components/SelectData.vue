@@ -2,9 +2,8 @@
 
 
 
-    <div class="body form">
+    <div class="form">
 
-            <div class="activity">
                     <div v-if="!selected" class="select-data group">
                         <input type="text" name="data" id="data" class="control" v-model="query" @keyup="search($event)" :placeholder="data == 'activities' ? 'select an activity' : 'select a cycle' ">
                         <div v-if="searched" class="data-list">
@@ -17,7 +16,6 @@
                     <div v-if="selected" class="data selected control" @click="remove()">
                         {{selected.name}}
                     </div>
-            </div>
         </div>
 
 </template>
@@ -84,7 +82,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .form {
         width: 20rem;
         margin: 0 auto;
@@ -95,7 +93,7 @@ export default {
     position: relative;
 }
 .selected {
-    margin-bottom: 0.5 ;
+    margin: 0.5rem 0;
 }
 .data-list {
     position: absolute;
