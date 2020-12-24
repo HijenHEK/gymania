@@ -1,13 +1,13 @@
 <template>
   <div class="body form">
     
-                <h3 class="header">{{selected ? 'Update the '+selected.name : 'Create a new'}}  activity</h3>
+                <h3 class="header">{{selected ? 'Update the '+selected.name : 'Create a new'}}  cycle</h3>
 
                 <form @submit.prevent="selected ? update() : create()" @keydown="form.onKeydown($event)">
 
                     <div class="group">
                         <label for="name"></label>
-                        <input v-model="form.name" ref="add" type="text" name="name" placeholder="activity name"
+                        <input v-model="form.name" ref="add" type="text" name="name" placeholder="cycle name"
                         class="control" >
                         <div v-if="form.errors.has('name')" class="error"> 
                             {{form.errors.get('name')}}
@@ -16,7 +16,7 @@
                                         
                     <div class="group">
                         <label for="desc"></label>
-                        <input v-model="form.desc" ref="add"  type="text" name="desc" placeholder="activity desc"
+                        <input v-model="form.desc" ref="add"  type="text" name="desc" placeholder="cycle desc"
                         class="control" >
                         <div v-if="form.errors.has('desc')" class="error"> 
                             {{form.errors.get('desc')}}
@@ -58,7 +58,7 @@ export default {
     create(){
 
             
-                this.form.post('/activities')
+                this.form.post('/cycles')
                 .then( response => {
                     
                 })
@@ -66,7 +66,7 @@ export default {
 
         },
         update(){
-            this.form.put('/activities/'+this.selected.id)
+            this.form.put('/cycles/'+this.selected.id)
                 .then( response => {
                     
                 })

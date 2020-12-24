@@ -14,7 +14,7 @@ class CycleController extends Controller
      */
     public function index()
     {
-        return Cycle::all();
+        return Cycle::latest()->get();
     }
 
     /**
@@ -25,7 +25,14 @@ class CycleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|max:50',
+            'desc' => 'min:2|max:255',
+            'period' => 'required|Integer'
+            
+        ]);
+
+        return Cycle::create($request->all());
     }
 
     /**
@@ -48,7 +55,14 @@ class CycleController extends Controller
      */
     public function update(Request $request, Cycle $cycle)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|max:50',
+            'desc' => 'min:2|max:255',
+            'period' => 'required|Integer'
+            
+        ]);
+
+        return $cycle->update($request->all());
     }
 
     /**

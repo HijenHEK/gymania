@@ -14,7 +14,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return Activity::all();
+        return Activity::latest()->get();
 
     }
 
@@ -26,7 +26,13 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|max:50',
+            'desc' => 'min:2|max:255',
+            
+        ]);
+        
+        return Activity::create($request->all());
     }
 
     /**
@@ -49,7 +55,13 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|max:50',
+            'desc' => 'min:2|max:255',
+            
+        ]);
+        
+        return $activity->update($request->all());
     }
 
     /**

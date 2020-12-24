@@ -51,6 +51,22 @@
 
 
                     </router-link>
+                    <router-link tag="a" class="link" to="/activities">
+                        
+                        <span>Activities</span> 
+
+                        <font-awesome-icon size="lg" class="icon" icon="dumbbell"></font-awesome-icon>
+
+
+                    </router-link>
+                    <router-link tag="a" class="link" to="/cycles">
+                        
+                        <span>Cycles</span> 
+
+                        <font-awesome-icon size="lg" class="icon" icon="calendar-day"></font-awesome-icon>
+
+
+                    </router-link>
                     
                     
                 </div>

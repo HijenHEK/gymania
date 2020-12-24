@@ -34,10 +34,12 @@ import { faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add([faBars,faTimes, faThLarge , faEdit , faPlus , faArrowLeft,
-    faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers]);
+    faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers , faDumbbell , faCalendarDay]);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
