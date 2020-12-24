@@ -71,8 +71,10 @@
                     </div>
                 </div>
         </div>  
-        <add-package :member="member.id" v-show="modal=='addpackage'" @hide-modal="modal=null"></add-package>
-        <cu-member v-show="modal=='editMember'" :member="member" action="edit" @hide-modal="modal=null" ></cu-member>
+        <modal-ui v-if="modal" @hide-modal="modal=null">
+        <add-package :member="member.id" v-show="modal=='addpackage'" ></add-package>
+        <cu-member v-show="modal=='editMember'" :member="member" action="edit"  ></cu-member>
+        </modal-ui>
 
   </div>
 </template>

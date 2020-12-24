@@ -1,14 +1,13 @@
 <template>
-
-    <div class="body form">
+  <div class="body form">
     
-                <h3 class="header">{{selected ? 'Update the '+selected.name : 'Create a new'}}  Package</h3>
+                <h3 class="header">{{selected ? 'Update the '+selected.name : 'Create a new'}}  activity</h3>
 
                 <form @submit.prevent="selected ? update() : create()" @keydown="form.onKeydown($event)">
 
                     <div class="group">
                         <label for="name"></label>
-                        <input v-model="form.name" ref="add" type="text" name="name" placeholder="Package name"
+                        <input v-model="form.name" ref="add" type="text" name="name" placeholder="activity name"
                         class="control" >
                         <div v-if="form.errors.has('name')" class="error"> 
                             {{form.errors.get('name')}}
@@ -22,11 +21,11 @@
                     </div>
                     
                     <div class="group">
-                        <label for="fee"></label>
-                        <input v-model="form.fee" ref="add"  type="text" name="fee" placeholder="Package fee"
+                        <label for="desc"></label>
+                        <input v-model="form.desc" ref="add"  type="text" name="desc" placeholder="activity desc"
                         class="control" >
-                        <div v-if="form.errors.has('fee')" class="error"> 
-                            {{form.errors.get('fee')}}
+                        <div v-if="form.errors.has('desc')" class="error"> 
+                            {{form.errors.get('desc')}}
                         </div>
                     </div>
 
@@ -40,7 +39,7 @@
                 
 
 
-        </div>
+</div>
 </template>
 
 <script>
@@ -54,34 +53,18 @@ export default {
     },
     data() {
         return {
-            activity :  this.selected ? this.selected.activity : null ,
-            cycle : this.selected ? this.selected.cycle : null ,
             form : new Form({
                 name : this.selected ? this.selected.name : '',
-                fee :  this.selected ? this.selected.fee : ''
+                desc :  this.selected ? this.selected.desc : ''
             })
         }
     },
     methods : {
-        hideModal(){
-            this.$emit('hide-modal');
-        },
-        
-    
-        select(type , data){
-            if(type=='activities') {
-                this.activity = data
-            }else if (type == 'cycles') {
-                this.cycle = data
-            }
-            
 
-        },
-
-        create(){
+    create(){
 
             
-                this.form.post('/packages?activity='+this.activity.id+'&cycle='+this.cycle.id)
+                this.form.post('/activities')
                 .then( response => {
                     
                 })
@@ -89,7 +72,7 @@ export default {
 
         },
         update(){
-            this.form.put('/packages/'+this.selected.id+'?activity='+this.activity.id+'&cycle='+this.cycle.id)
+            this.form.put('/activities/'+this.selected.id)
                 .then( response => {
                     
                 })

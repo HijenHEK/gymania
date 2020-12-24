@@ -36,8 +36,10 @@
         </div>
     </div>
     <single-member v-if="selected" @back="selected=null" :member="selected"></single-member>
-    <cu-member v-if="modal=='addMember'" @hide-modal="modal=null" @next-step="addPackagesModal"></cu-member>
-    <add-package v-if="modal=='addpackage'" @hide-modal="modal=null" :member="createdMember" ></add-package>
+    <modal-ui v-if="modal" @hide-modal="modal=null">
+        <cu-member v-if="modal=='addMember'" @hide-modal="modal=null" @next-step="addPackagesModal"></cu-member>
+        <add-package v-if="modal=='addpackage'" @hide-modal="modal=null" :member="createdMember" ></add-package>
+    </modal-ui>
     
  </div>
 </template>

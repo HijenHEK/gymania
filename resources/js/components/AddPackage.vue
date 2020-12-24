@@ -1,11 +1,6 @@
 <template>
-  <div class="modal ">
-    <font-awesome-icon  size="2x" @click="hideModal" color="white" class="icon icon--close" icon="times"></font-awesome-icon>
 
-
-
-<div class="content adding-packages">
-    <div class="body form">
+    <div class="body form adding-packages">
                             <h3 class="header">you can add packages now !</h3>
 
                     <div class="select-package group">
@@ -23,14 +18,14 @@
                         {{p.name}}
                     </div>
                 </div>
-        </div>
 
                 <div class="footer">
 
                     <button class="btn btn--success" @click="add">add packages</button>
                 </div>
-    </div>
-  </div>
+        </div>
+
+                
 </template>
 
 <script>
@@ -103,16 +98,18 @@ export default {
 .packages-list {
     position: absolute;
     width: 100%;
+    z-index: 100;
     
 }
 .adding-packages {
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .adding-packages  .footer {
-    margin: 0 auto;
     width: 100%;
+    margin-top: auto ;
     display: flex;
     justify-content: flex-end;
 }

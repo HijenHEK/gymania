@@ -1,10 +1,6 @@
 <template>
-  <div class="modal">
-    <font-awesome-icon  size="2x" @click="hideModal" color="white" class="icon icon--close" icon="times"></font-awesome-icon>
+  
 
-
-
-<div class="content">
     
     <form class="form" @submit.prevent=" action == 'edit' ? update() :create()" @keydown="form.onKeydown($event)" enctype="multipart/form-data">
         <div class="group">
@@ -76,8 +72,7 @@
            
         </form>
 
-    </div>
-</div>
+
 </template>
 
 <script>

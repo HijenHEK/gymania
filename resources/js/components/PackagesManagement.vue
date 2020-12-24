@@ -34,7 +34,10 @@
                 
         </div>
     </div>
-    <cu-package v-if="modal=='package'" :selected="selected" @hide-modal="hide()"></cu-package>
+
+    <modal-ui v-if="modal"  @hide-modal="hide()">
+        <cu-package v-if="modal=='package'" :selected="selected"></cu-package>
+    </modal-ui>
 
  </div>
 </template>
