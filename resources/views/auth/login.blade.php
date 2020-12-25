@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="sign">
+    <div class="brand">
+            Gymania
+       
+    </div>
     <div class="aside">
         <div class="header">{{ __('Login') }}</div>
         <form class="form" method="POST" action="{{ route('login') }}">
@@ -13,7 +17,7 @@
                     <input id="username" type="text" class="control my @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                     @error('username')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -25,7 +29,7 @@
                     <input id="password" type="password" class="control my @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -42,7 +46,7 @@
             </div>
 
             <div class="param">
-                    <button type="submit" class="btn btn--primary my">
+                    <button type="submit" class="btn btn--success btn--lg my">
                         {{ __('Login') }}
                     </button>
 

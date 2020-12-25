@@ -104,27 +104,32 @@ input[type=number] {
 .sign {
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   background: url(/images/bg1.jpg?ef0cb58d8961969bff756deef86079fb);
   /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, rgba(67, 198, 172, 0.4), rgba(25, 22, 84, 0.5)), url(/images/bg1.jpg?ef0cb58d8961969bff756deef86079fb);
+  background: linear-gradient(to left, rgba(27, 34, 73, 0.6), rgba(44, 44, 44, 0.7)), url(/images/bg1.jpg?ef0cb58d8961969bff756deef86079fb);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.sign .header {
-  font-size: 1.2rem;
-  margin: 2rem 0;
-  text-align: center;
+.sign .brand {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  padding: 5rem;
+  align-self: start;
+  margin-top: 10%;
+  color: #3db43d;
 }
 
 .sign .aside {
   color: white;
-  width: 350px;
-  height: 400px;
-  margin-right: 20%;
-  margin-bottom: 10%;
+  min-width: 320px;
+  min-height: 400px;
+  margin-right: 10%;
+  margin-bottom: 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -132,6 +137,12 @@ input[type=number] {
   background-color: rgba(34, 34, 34, 0.9);
   padding: 3rem;
   border-radius: 10px;
+}
+
+.sign .aside .header {
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  text-align: center;
 }
 
 .sign .aside .form {
@@ -259,12 +270,80 @@ input[type=number] {
 
 @media (max-width: 800px) {
   .sign {
-    justify-content: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .sign .brand {
+    max-width: 100vw;
+    padding: unset;
+    align-self: unset;
+    margin-top: 10%;
+    padding: 2rem 0;
+    text-align: center;
   }
 
   .sign .aside {
+    max-width: 100vw;
     margin-right: unset;
     margin-bottom: unset;
   }
+}
+
+.error {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 0px rgba(255, 255, 255, 0.479);
+  color: white;
+  background-color: #e74242;
+}
+
+.alert {
+  border: none;
+  outline: none;
+  opacity: 0.9;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.alert--success {
+  background-color: #358835;
+  color: white;
+}
+
+.alert--primary {
+  background-color: #135bb9;
+  color: white;
+}
+
+.alert--white {
+  background-color: white;
+  color: black;
+}
+
+.alert--danger {
+  background-color: #e74242;
+  color: white;
+}
+
+.alert--warning {
+  background-color: #d4b529;
+  color: black;
+}
+
+.alert--lg {
+  font-size: 1.1rem;
+}
+
+.alert--sm {
+  font-size: 0.8rem;
+}
+
+.alert--xl {
+  font-size: 1.4rem;
 }
 
