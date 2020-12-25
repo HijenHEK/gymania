@@ -39,6 +39,7 @@ Route::apiResource('activities', ActivityController::class);
 
 Route::post('members/{member}/memberships', [MembershipController::class , 'store']);
 Route::get('members/{member}/memberships', [MembershipController::class , 'index']);
+Route::get('/memberships', [MembershipController::class , 'index']);
 
 Route::post('membership/{membership}/suspend', [MembershipStatusController::class , 'suspend']);
 Route::post('membership/{membership}/activate', [MembershipStatusController::class , 'activate']);

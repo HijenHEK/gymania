@@ -56,6 +56,8 @@ Vue.component('select-data', require('./components/SelectData.vue').default);
 Vue.component('modal-ui', require('./components/ModalUi.vue').default);
 Vue.component('cu-activity', require('./components/CuActivity.vue').default);
 Vue.component('cu-cycle', require('./components/CuCycle.vue').default);
+Vue.component('dashboard-card', require('./components/DashboardCard.vue').default);
+Vue.component('bars-chart', require('./components/BarsChart.vue').default);
 
 
 /**

@@ -272,7 +272,7 @@ input[type=number] {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         
         .aside {
             max-width: 100vw;
