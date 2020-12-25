@@ -178,20 +178,20 @@ export default {
     min-width: 200px;
     
 }
-.info > * {
-    display: flex;
-    padding: 0.2rem 0;
-            border-bottom: 1px solid rgb(202, 202, 202);
+    .info > * {
+        display: flex;
+        padding: 0.2rem 0;
+                border-bottom: 1px solid rgb(202, 202, 202);
 
-}
+    }
 
-.info > * >* {
-    flex-basis: 7rem;
-}
-.info > * .control {
-    flex-grow: 0.5;
-    flex-shrink: 0.5;
-}
+    .info > * >* {
+        flex-basis: 7rem;
+    }
+    .info > * .control {
+        flex-grow: 0.5;
+        flex-shrink: 0.5;
+    }
 
 
 
@@ -297,7 +297,7 @@ export default {
         box-shadow: 0 0 2px 0px white;
 
     }
-    @media (max-width : 800px) {
+    @media (max-width : 900px) {
         .header {
             flex-direction: column;
             justify-content: center;
@@ -326,6 +326,23 @@ export default {
         .header .info {
             order: 3;
                                     margin-bottom: 1rem;
+
+        }
+    }
+    @media (max-width : 450px) {
+        .info {
+            min-width: unset;
+        }
+        .info > * {
+            display: flex;
+            flex-direction: column;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgb(202, 202, 202);
+
+        }
+        .info > * > * {
+            flex-basis: unset ;
+            padding: 0.4rem 0;
 
         }
     }

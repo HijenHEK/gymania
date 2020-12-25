@@ -7,7 +7,7 @@
             }
         },
         mounted() {
-
+            this.compact = window.innerWidth < 800 ;
             window.addEventListener('resize' , ()=> {{
                 if(window.innerWidth < 800) this.compact = true ;
                 else this.compact = false;
