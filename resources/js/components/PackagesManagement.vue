@@ -36,7 +36,7 @@
     </div>
 
     <modal-ui v-if="modal"  @hide-modal="hide()">
-        <cu-package v-if="modal=='package'" :selected="selected"></cu-package>
+        <cu-package v-if="modal=='package'" :selected="selected" @done="hide()"></cu-package>
     </modal-ui>
 
  </div>
@@ -79,14 +79,23 @@ export default {
         hide(){
             this.selected = null 
             this.modal = null
+        },
+        getPackages(){
+            axios.get('/packages').then(response => {
+            this.data = response.data
+            this.packages = this.data
+            })
+
         }
         
     },
     mounted(){
-        axios.get('/packages').then(response => {
-            this.data = response.data
-            this.packages = this.data
+        
+        Echo.channel('updates')
+            .listen('PackageUpdate' , (e)=>{
+                this.getPackages()
             })
+        thi.getPackages()
     }
 }
 </script>

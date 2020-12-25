@@ -81,7 +81,13 @@ export default {
 
     },
     mounted() {
-        this.get();
+        Echo.channel('updates')
+            .listen('CycleUpdate' , (e)=>{
+                this.getPackages()
+            }).listen('ActivityUpdate' , (e)=>{
+                this.get()
+            })
+        thi.get()
     }
 }
 </script>

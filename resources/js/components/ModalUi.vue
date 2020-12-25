@@ -1,8 +1,8 @@
-<template>
-    <div class="modal ">
+<template @done="hideModal">
+    <div class="modal " >
     <font-awesome-icon  size="2x" @click="hideModal" color="white" class="icon icon--close" icon="times"></font-awesome-icon>
     <div class="content">
-        <slot></slot>
+        <slot ></slot>
     </div>
     </div>
 </template>

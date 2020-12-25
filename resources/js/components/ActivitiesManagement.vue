@@ -32,7 +32,7 @@
     </div>
 
     <modal-ui v-if="modal"  @hide-modal="hide()">
-        <cu-activity v-if="modal=='activity'" :selected="selected"></cu-activity>
+        <cu-activity v-if="modal=='activity'" @done="hide()" :selected="selected"></cu-activity>
     </modal-ui>
 
  </div>
@@ -75,14 +75,23 @@ export default {
         hide(){
             this.selected = null 
             this.modal = null
+        },
+        getActivities(){
+            axios.get('/activities').then(response => {
+                    this.data = response.data
+                    this.activities = this.data
+                })
         }
         
     },
     mounted(){
-        axios.get('/activities').then(response => {
-            this.data = response.data
-            this.activities = this.data
+        
+        Echo.channel('updates')
+        .listen('ActivityUpdate' , (e)=>{
+                this.getActivities()
             })
+        this.getActivities()
+
     }
 }
 </script>

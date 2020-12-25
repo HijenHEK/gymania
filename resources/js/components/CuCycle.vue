@@ -63,7 +63,8 @@ export default {
         }
     },
     methods : {
-
+    
+            
     create(){
 
             
@@ -77,7 +78,7 @@ export default {
         update(){
             this.form.put('/cycles/'+this.selected.id)
                 .then( response => {
-                    
+                    this.$emit('done')
                 })
         }
     },

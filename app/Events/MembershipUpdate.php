@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class StatusUpdatedGlobal implements ShouldBroadcast
+class MembershipUpdate implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -21,7 +21,8 @@ class StatusUpdatedGlobal implements ShouldBroadcast
      */
     public function __construct()
     {
-        //
+        event(new MemberUpdate());
+
     }
 
     /**

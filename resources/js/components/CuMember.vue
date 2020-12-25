@@ -107,9 +107,7 @@ export default {
         }
     },
     methods : {
-        hideModal(){
-            this.$emit('hide-modal');
-        },
+        
 
         changeAvatar(evt){
             this.form.avatar = evt.target.files[0];
@@ -133,7 +131,7 @@ export default {
               onUploadProgress: e => {
               }
             }).then((response)=>{
-                this.$emit('hide-modal')
+                this.$emit('done')
             })
         },
         create(){

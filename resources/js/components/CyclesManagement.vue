@@ -33,8 +33,8 @@
         </div>
     </div>
 
-    <modal-ui v-if="modal"  @hide-modal="hide()">
-        <cu-cycle v-if="modal=='cycle'" :selected="selected"></cu-cycle>
+    <modal-ui v-if="modal" @hide-modal="modal=null" >
+        <cu-cycle v-if="modal=='cycle'" :selected="selected" @done="hide()"></cu-cycle>
     </modal-ui>
 
  </div>
@@ -77,14 +77,21 @@ export default {
         hide(){
             this.selected = null 
             this.modal = null
+        },
+        getCycles(){
+            axios.get('/cycles').then(response => {
+                this.data = response.data
+                this.cycles = this.data
+                })
         }
         
     },
     mounted(){
-        axios.get('/cycles').then(response => {
-            this.data = response.data
-            this.cycles = this.data
+        Echo.channel('updates')
+            .listen('CycleUpdate' , (e)=>{
+                this.getCycles()
             })
+        this.getCycles()
     }
 }
 </script>

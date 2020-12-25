@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Events\MembershipUpdate;
 use App\Models\Membership;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function(){
             Membership::currentStatus('active')->where('expired_at' , '<' , now())->get()->map->setStatus('expired');
             Membership::currentStatus('suspended')->get()->map->expand(1);
+            event(new MembershipUpdate());
         })->dailyAt('23:00');
     }
 

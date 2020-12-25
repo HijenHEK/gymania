@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ActivityUpdate;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,8 @@ class ActivityController extends Controller
             'desc' => 'min:2|max:255',
             
         ]);
-        
+        event(new ActivityUpdate());
+
         return Activity::create($request->all());
     }
 
@@ -60,7 +62,8 @@ class ActivityController extends Controller
             'desc' => 'min:2|max:255',
             
         ]);
-        
+        event(new ActivityUpdate());
+
         return $activity->update($request->all());
     }
 

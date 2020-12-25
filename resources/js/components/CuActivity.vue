@@ -68,7 +68,8 @@ export default {
         update(){
             this.form.put('/activities/'+this.selected.id)
                 .then( response => {
-                    
+                                       this.$emit('done')
+
                 })
         }
     },

@@ -35,10 +35,10 @@
                 </div> -->
         </div>
     </div>
-    <single-member v-if="selected" @back="selected=null" :member="selected"></single-member>
+    <single-member v-if="selected" @back="selected=null" :id="selected.id"></single-member>
     <modal-ui v-if="modal" @hide-modal="modal=null">
-        <cu-member v-if="modal=='addMember'" @hide-modal="modal=null" @next-step="addPackagesModal"></cu-member>
-        <add-package v-if="modal=='addpackage'" @hide-modal="modal=null" :member="createdMember" ></add-package>
+        <cu-member v-if="modal=='addMember'" @done="modal=null" @next-step="addPackagesModal"></cu-member>
+        <add-package v-if="modal=='addpackage'" @done="modal=null" :member="createdMember" ></add-package>
     </modal-ui>
     
  </div>
@@ -78,14 +78,21 @@ export default {
                 }
             
             
+        },
+        getMembers(){
+            axios.get('/members').then(response => {
+            this.data = response.data
+            this.members = this.data
+            })
         }
         
     },
     mounted(){
-        axios.get('/members').then(response => {
-            this.data = response.data
-            this.members = this.data
+        Echo.channel('updates')
+            .listen('MemberUpdate' , (e)=>{
+                this.getMembers()
             })
+        this.getMembers()
     }
 }
 </script>

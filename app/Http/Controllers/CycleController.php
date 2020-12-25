@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CycleUpdate;
 use App\Models\Cycle;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,8 @@ class CycleController extends Controller
             
         ]);
 
+        event(new CycleUpdate());
+
         return Cycle::create($request->all());
     }
 
@@ -61,6 +64,7 @@ class CycleController extends Controller
             'period' => 'required|Integer'
             
         ]);
+        event(new CycleUpdate());
 
         return $cycle->update($request->all());
     }

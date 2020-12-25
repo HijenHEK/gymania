@@ -40,9 +40,7 @@ export default {
         }
     },
     methods : {
-        hideModal(){
-            this.$emit('hide-modal');
-        },
+
         get(){
             axios.get('/packages').then((response)=>{
             this.packages = response.data
@@ -73,13 +71,18 @@ export default {
 
             
                 axios.post('/members/'+this.member+'/memberships' , this.selected)
-                .then(  response => console.log(response.data) )
+                .then(  response => {
+                    this.$emit('done');
+                })
 
 
-                this.hideModal();
         }
     },
     mounted() {
+        Echo.channel('updates')
+        .listen('PackageUpdate' , (e)=>{
+                this.get()
+            })
         this.get();
     }
 }

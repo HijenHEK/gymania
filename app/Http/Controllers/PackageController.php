@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MembershipUpdate;
+use App\Events\PackageUpdate;
 use App\Models\Activity;
 use App\Models\Cycle;
+use App\Models\Membership;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
@@ -41,6 +44,8 @@ class PackageController extends Controller
         ]);
         // $package->activity()->associate(Activity::findOrFail(Request('activity')));
         // $package->cycle()->associate(Cycle::findOrFail(Request('cycle')));
+        event(new PackageUpdate());
+        
         return $package ;
     }
 
@@ -78,6 +83,7 @@ class PackageController extends Controller
         ]);
         // $package->activity()->associate(Activity::findOrFail(Request('activity')));
         // $package->cycle()->associate(Cycle::findOrFail(Request('cycle')));
+        event(new PackageUpdate());
         return $package ;
     }
 

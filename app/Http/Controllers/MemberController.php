@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MemberUpdate;
 use App\Models\Member;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -12,6 +13,9 @@ class MemberController extends Controller
 
     public function index(){
         return Member::latest()->with('memberships' )->get();
+    }
+    public function show(Member $member){
+        return $member;
     }
     public function store(){
         Request()->validate([
@@ -30,7 +34,8 @@ class MemberController extends Controller
             $m->avatar = $av;
         $m->save();
         }
-        
+        event(new MemberUpdate());
+
         return $m ;
     }
 
@@ -56,7 +61,8 @@ class MemberController extends Controller
             $member->avatar = $av;
             $member->save();
         }
-        
+        event(new MemberUpdate());
+
         return $member ;
     }
 }

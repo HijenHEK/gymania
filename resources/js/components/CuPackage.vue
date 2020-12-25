@@ -63,10 +63,7 @@ export default {
         }
     },
     methods : {
-        hideModal(){
-            this.$emit('hide-modal');
-        },
-        
+
     
         select(type , data){
             if(type == 'activities') {
@@ -84,7 +81,7 @@ export default {
                     
                     this.form.post('/packages?activity='+this.activity.id+'&cycle='+this.cycle.id)
                 .then( response => {
-                    
+                        this.$emit('done')
                     })
 
             
@@ -93,7 +90,8 @@ export default {
         update(){
             this.form.put('/packages/'+this.selected.id+'?activity='+this.activity.id+'&cycle='+this.cycle.id)
                 .then( response => {
-                    
+                        this.$emit('done')
+
                 })
         }
     },

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MembershipUpdate;
+use App\Events\MemberUpdate;
 use App\Models\Member;
 use App\Models\Membership;
 use Illuminate\Http\Request;
@@ -29,8 +31,9 @@ class MembershipController extends Controller
      */
     public function store(Member $member , Request $request)
     {
-        return $member->addPackages($request->all()) ;
-        
+        $member->addPackages($request->all()) ;
+        event(new MembershipUpdate());
+        return $member ;
     }
 
     /**

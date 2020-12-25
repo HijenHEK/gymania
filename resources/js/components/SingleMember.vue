@@ -88,8 +88,8 @@
                 </div>
         </div>  
         <modal-ui v-if="modal" @hide-modal="modal=null">
-        <add-package :member="member.id" v-show="modal=='addpackage'" ></add-package>
-        <cu-member v-show="modal=='editMember'" :member="member" action="edit"  ></cu-member>
+            <add-package :member="member.id" v-show="modal=='addpackage'"  @done="modal=null" ></add-package>
+            <cu-member v-show="modal=='editMember'" :member="member" action="edit" @done="modal=null" ></cu-member>
         </modal-ui>
 
   </div>
@@ -97,11 +97,12 @@
 
 <script>
 export default {
-    props : ['member'],
+    props : ['id'],
     data(){
         return {
             memberships : [],
             modal : null,
+            member : {}
         }
     },
     computed : {
@@ -127,18 +128,22 @@ export default {
             this.$emit('back');
         },
         getMemberships(){
-            axios.get('/members/'+this.member.id+'/memberships').then(response => this.memberships = response.data)
+            axios.get('/members/'+this.id+'/memberships').then(response => this.memberships = response.data)
+        },
+        getMember(){
+            axios.get('/members/'+this.id).then(response => this.member = response.data)
         }
     },
     mounted(){
         console.log(Echo)
         Echo.channel('updates')
-        .listen('StatusUpdatedGlobal', (e) => {
-            console.log('hey')
+        .listen('MembershipUpdate', (e) => {
             this.getMemberships()
-
+        }).listen('MemberUpdate', (e) => {
+            this.getMember()
         });
         this.getMemberships()
+        this.getMember()
     }
 }
 </script>
@@ -191,8 +196,8 @@ export default {
 
 
     .header .avatar {
-        width: 15rem;
-        height:  15rem;
+        max-width: 15rem;
+        max-height:  15rem;
         min-width: 5rem;
         margin: 2rem;
         border-radius: 100%;
@@ -235,16 +240,29 @@ export default {
         text-align: center;
     }
 
-    .param {
+    .membership .param {
     
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
 
-}
-.param > * {
-    margin: 0 0.5rem;
-}
+    }
+    .membership .param > * {
+        margin: 0 0.5rem;
+    }
+    .header .param {
+    
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-self: flex-start;
+    margin: 3rem ;
+
+
+    }
+    .header .param > * {
+        margin:0.5rem;
+    }
     .active {
         box-shadow: 0 0 2px 1px  rgb(45, 133, 38);
         width: 100%;
@@ -287,10 +305,12 @@ export default {
             padding-top: 0 ;
             margin-top: 0 ;
         }
-        .param {
+        .header .param {
             order: 1;
             margin-top: 0;
             margin-right: 0;
+            margin-bottom : 1rem;
+    align-self: flex-end;
 
         }
         .info {
