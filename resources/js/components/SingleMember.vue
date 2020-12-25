@@ -131,6 +131,13 @@ export default {
         }
     },
     mounted(){
+        console.log(Echo)
+        Echo.channel('updates')
+        .listen('StatusUpdatedGlobal', (e) => {
+            console.log('hey')
+            this.getMemberships()
+
+        });
         this.getMemberships()
     }
 }

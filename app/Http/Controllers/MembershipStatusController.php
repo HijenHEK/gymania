@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StatusUpdatedGlobal;
 use App\Models\Membership;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ class MembershipStatusController extends Controller
     //
 
     public function suspend(Membership $membership) {
+        event(new StatusUpdatedGlobal());
         return $membership->setStatus('suspended');
     }
     public function activate(Membership $membership) {
