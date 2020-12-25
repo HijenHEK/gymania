@@ -32,11 +32,12 @@ this project is for my uni assignment and its a work in progress
 
 ## run the servers
 
-<strong> we need to serve our app and run the websockets server </strong>
+<strong> we need to serve our app and run the websockets server + scheduled cron</strong>
 
 
     $ php artisan serve
     $ php artisan websockets:serve
+    $ php artisan schedule:work
 
     
 
