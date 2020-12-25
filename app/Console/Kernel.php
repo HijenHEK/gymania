@@ -28,7 +28,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function(){
             Membership::currentStatus('active')->where('expired_at' , '<' , now())->get()->map->setStatus('expired');
-        })->dailyAt('23:23');
+            Membership::currentStatus('suspended')->get()->map->expand(1);
+        })->dailyAt('23:00');
     }
 
     /**

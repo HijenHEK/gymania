@@ -20,7 +20,7 @@ class Member extends Model
             
             $m = $this->memberships()->create([
                 'package_id' => $package['id'],
-                'expired_at' => now()->addDays(Package::findOrFail($package['id'])->cycle->period)   
+                'expired_at' => now()->addDays(Package::findOrFail($package['id'])->cycle->period)->setTime(0, 0, 0)  
                 ]);
 
             $m->setStatus('active');

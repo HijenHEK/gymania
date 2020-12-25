@@ -19,7 +19,6 @@ class CreateMembershipsTable extends Migration
             $table->foreignId('member_id')->constrained()->onDelete('cascade');
             $table->foreignId('package_id')->constrained()->onDelete('cascade');
             $table->timestamp('expired_at')->nullable();
-            $table->timestamp('suspended_at')->nullable();
             $table->timestamps();
         });
     }

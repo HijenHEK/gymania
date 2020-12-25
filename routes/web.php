@@ -5,6 +5,7 @@ use App\Http\Controllers\CycleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\MembershipStatusController;
 use App\Http\Controllers\PackageController;
 use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
@@ -35,3 +36,6 @@ Route::apiResource('activities', ActivityController::class);
 Route::post('members/{member}/memberships', [MembershipController::class , 'store']);
 Route::get('members/{member}/memberships', [MembershipController::class , 'index']);
 
+Route::post('membership/{membership}/suspend', [MembershipStatusController::class , 'suspend']);
+Route::post('membership/{membership}/activate', [MembershipStatusController::class , 'activate']);
+Route::post('membership/{membership}/renew', [MembershipStatusController::class , 'renew']);

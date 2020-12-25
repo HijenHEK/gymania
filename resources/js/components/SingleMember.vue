@@ -59,14 +59,30 @@
                             <div class="activity">
                                 {{membership.package.activity.name}}
                             </div>
-                            <div class="status">
-                                 {{membership.statuses[0].name}}
-                            </div>
+                            
                             <div class="created">
-                                 created : {{membership.created_at | moment("MMM Do YYYY")}}
+                                 created  {{membership.created_at | moment("MMM Do YYYY")}}
                             </div>
-                            <div class="expires_at">
-                                 expiers : {{membership.expired_at | moment( "from" , "now")}}
+                            <div v-if="membership.statuses[0].name !='suspended'" class="expires_at">
+                                {{membership.statuses[0].name == "active" ? 'expiers' : 'expired'}}  {{membership.expired_at | moment( "from" , "now")}}
+                            </div>
+                            <div v-else>
+                                suspended {{membership.statuses[0].created_at | moment("MMM Do YYYY")}}
+                            </div>
+
+                            <div class="param">
+
+                                <font-awesome-icon v-if="membership.statuses[0].name == 'suspended'"  size="lg" color="white"   
+                                class="icon " icon="play-circle" title="reactivate membership" @click="activate(membership)"></font-awesome-icon>
+
+                                <font-awesome-icon v-if="membership.statuses[0].name == 'active'" size="lg"  color="white"  
+                                class="icon " icon="pause-circle" title="suspend membership" @click="suspend(membership)"></font-awesome-icon>
+                                
+                                <font-awesome-icon v-if="membership.statuses[0].name == 'expired'"  size="lg" color="white"   
+                                class="icon " icon="retweet" title="renew membership" @click="renew(membership)"></font-awesome-icon>
+
+                                <font-awesome-icon  size="lg"   color="white" class="icon " icon="edit" title="edit membership"></font-awesome-icon>
+
                             </div>
                     </div>
                 </div>
@@ -94,6 +110,15 @@ export default {
     methods : {
         addPackagesModal(){
             this.modal='addpackage' 
+        },
+        activate(m){
+            axios.post('membership/'+m.id+'/activate')
+        },
+        suspend(m){
+            axios.post('membership/'+m.id+'/suspend')
+        },
+        renew(m){
+            axios.post('membership/'+m.id+'/renew')
         },
         editMemberModal(){
             this.modal='editMember' 
@@ -147,17 +172,7 @@ export default {
             border-bottom: 1px solid rgb(202, 202, 202);
 
 }
-.param {
-    align-self: flex-start;
-    margin : 3rem;
-    margin-left: auto;
-    display: flex;
-    flex-wrap: nowrap;
 
-}
-.param > * {
-    margin: 0.5rem;
-}
 .info > * >* {
     flex-basis: 7rem;
 }
@@ -209,27 +224,51 @@ export default {
         word-wrap: none;
         box-shadow: 0 0 1px 0px rgb(158, 158, 158);
         vertical-align: middle;
+        justify-content: center;
+        text-align: center;
+    }
 
-    }
+    .param {
+    
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+}
+.param > * {
+    margin: 0 0.5rem;
+}
     .active {
-        box-shadow: 0 0 2px 1px rgb(38, 141, 28);
+        box-shadow: 0 0 2px 1px  rgb(45, 133, 38);
         width: 100%;
         background-color: white;
     }
-        .expired {
-        box-shadow: 0 0 2px 1px rgb(190, 48, 29);
-        width: 100%;
-        background-color: white;
-    }
+    
     .active > * {
         color: white;
-        background-color: rgb(21, 131, 11) ;
+        background-color: rgb(45, 133, 38) ;
         box-shadow: 0 0 2px 0px white;
 
     }
+        .expired {
+        box-shadow: 0 0 2px 1px rgb(197, 48, 28) ;
+        width: 100%;
+        background-color: white;
+    }
     .expired > * {
         color: white;
-        background-color: rgb(190, 48, 29) ;
+        background-color: rgb(197, 48, 28) ;
+        box-shadow: 0 0 2px 0px white;
+
+    }
+    .suspended {
+        box-shadow: 0 0 2px 1px rgb(105,105,105) ;
+        width: 100%;
+        background-color: white;
+    }
+    .suspended > * {
+        color: rgb(255, 255, 255);
+        background-color: rgb(105, 105, 105) ;
         box-shadow: 0 0 2px 0px white;
 
     }

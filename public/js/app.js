@@ -13181,6 +13181,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['member'],
   data: function data() {
@@ -13193,6 +13209,15 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addPackagesModal: function addPackagesModal() {
       this.modal = 'addpackage';
+    },
+    activate: function activate(m) {
+      axios.post('membership/' + m.id + '/activate');
+    },
+    suspend: function suspend(m) {
+      axios.post('membership/' + m.id + '/suspend');
+    },
+    renew: function renew(m) {
+      axios.post('membership/' + m.id + '/renew');
     },
     editMemberModal: function editMemberModal() {
       this.modal = 'editMember';
@@ -17883,7 +17908,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.single-member[data-v-7b3a7026] {\n    width: 100%;\n    padding: 0.5rem;\n            height: 100%;\n}\n.member-info[data-v-7b3a7026] {\n        background-color: white;\n        box-shadow: 0 0 2px 1px rgb(231, 231, 231);\n        height: 100%;\n        padding: 1rem;\n        margin: 1rem 0;\n        border-radius: 5px;\n        width: 100%;\n}\n.header[data-v-7b3a7026] {\n        margin: 0.5rem;\n        padding: 0.5rem;\n        display: flex;\n        justify-content: flex-start;\n        align-items: center;\n        \n\n        width: 100%;\n}\n.info[data-v-7b3a7026] {\n    min-width: 200px;\n}\n.info > *[data-v-7b3a7026] {\n    display: flex;\n    padding: 0.2rem 0;\n            border-bottom: 1px solid rgb(202, 202, 202);\n}\n.param[data-v-7b3a7026] {\n    align-self: flex-start;\n    margin : 3rem;\n    margin-left: auto;\n    display: flex;\n    flex-wrap: nowrap;\n}\n.param > *[data-v-7b3a7026] {\n    margin: 0.5rem;\n}\n.info > * >*[data-v-7b3a7026] {\n    flex-basis: 7rem;\n}\n.info > * .control[data-v-7b3a7026] {\n    flex-grow: 0.5;\n    flex-shrink: 0.5;\n}\n.header .avatar[data-v-7b3a7026] {\n        width: 15rem;\n        height:  15rem;\n        min-width: 5rem;\n        margin: 2rem;\n        border-radius: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        overflow: hidden;\n}\n.header .avatar img[data-v-7b3a7026] {\n        width: 100%;\n}\n.membership[data-v-7b3a7026] {\n        display: flex;\n        justify-content: space-between;\n        align-items: stretch;\n        flex-wrap: wrap;\n        margin: 0.5rem 0;\n        box-shadow: 0 0 2px 1px rgb(158, 158, 158);\n        width: 100%;\n        background-color: white;\n        border-radius: 5px;\n        overflow: hidden;\n}\n.membership > *[data-v-7b3a7026] {\n        flex-basis: 4rem;\n        flex-grow: 1;\n        flex-shrink: 1;\n        padding: 1rem 0.5rem;\n        font-size: 0.9rem;\n        word-wrap: none;\n        box-shadow: 0 0 1px 0px rgb(158, 158, 158);\n        vertical-align: middle;\n}\n.active[data-v-7b3a7026] {\n        box-shadow: 0 0 2px 1px rgb(38, 141, 28);\n        width: 100%;\n        background-color: white;\n}\n.expired[data-v-7b3a7026] {\n        box-shadow: 0 0 2px 1px rgb(190, 48, 29);\n        width: 100%;\n        background-color: white;\n}\n.active > *[data-v-7b3a7026] {\n        color: white;\n        background-color: rgb(21, 131, 11) ;\n        box-shadow: 0 0 2px 0px white;\n}\n.expired > *[data-v-7b3a7026] {\n        color: white;\n        background-color: rgb(190, 48, 29) ;\n        box-shadow: 0 0 2px 0px white;\n}\n@media (max-width : 800px) {\n.header[data-v-7b3a7026] {\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            padding-top: 0 ;\n            margin-top: 0 ;\n}\n.param[data-v-7b3a7026] {\n            order: 1;\n            margin-top: 0;\n            margin-right: 0;\n}\n.info[data-v-7b3a7026] {\n                margin: 0 auto;\n}\n.header .avatar[data-v-7b3a7026] {\n            order: 2;\n            margin: unset;\n                        margin-bottom: 1rem;\n}\n.header .info[data-v-7b3a7026] {\n            order: 3;\n                                    margin-bottom: 1rem;\n}\n}\n", ""]);
+exports.push([module.i, "\n.single-member[data-v-7b3a7026] {\n    width: 100%;\n    padding: 0.5rem;\n            height: 100%;\n}\n.member-info[data-v-7b3a7026] {\n        background-color: white;\n        box-shadow: 0 0 2px 1px rgb(231, 231, 231);\n        height: 100%;\n        padding: 1rem;\n        margin: 1rem 0;\n        border-radius: 5px;\n        width: 100%;\n}\n.header[data-v-7b3a7026] {\n        margin: 0.5rem;\n        padding: 0.5rem;\n        display: flex;\n        justify-content: flex-start;\n        align-items: center;\n        \n\n        width: 100%;\n}\n.info[data-v-7b3a7026] {\n    min-width: 200px;\n}\n.info > *[data-v-7b3a7026] {\n    display: flex;\n    padding: 0.2rem 0;\n            border-bottom: 1px solid rgb(202, 202, 202);\n}\n.info > * >*[data-v-7b3a7026] {\n    flex-basis: 7rem;\n}\n.info > * .control[data-v-7b3a7026] {\n    flex-grow: 0.5;\n    flex-shrink: 0.5;\n}\n.header .avatar[data-v-7b3a7026] {\n        width: 15rem;\n        height:  15rem;\n        min-width: 5rem;\n        margin: 2rem;\n        border-radius: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        overflow: hidden;\n}\n.header .avatar img[data-v-7b3a7026] {\n        width: 100%;\n}\n.membership[data-v-7b3a7026] {\n        display: flex;\n        justify-content: space-between;\n        align-items: stretch;\n        flex-wrap: wrap;\n        margin: 0.5rem 0;\n        box-shadow: 0 0 2px 1px rgb(158, 158, 158);\n        width: 100%;\n        background-color: white;\n        border-radius: 5px;\n        overflow: hidden;\n}\n.membership > *[data-v-7b3a7026] {\n        flex-basis: 4rem;\n        flex-grow: 1;\n        flex-shrink: 1;\n        padding: 1rem 0.5rem;\n        font-size: 0.9rem;\n        word-wrap: none;\n        box-shadow: 0 0 1px 0px rgb(158, 158, 158);\n        vertical-align: middle;\n        justify-content: center;\n        text-align: center;\n}\n.param[data-v-7b3a7026] {\n    \n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n}\n.param > *[data-v-7b3a7026] {\n    margin: 0 0.5rem;\n}\n.active[data-v-7b3a7026] {\n        box-shadow: 0 0 2px 1px  rgb(45, 133, 38);\n        width: 100%;\n        background-color: white;\n}\n.active > *[data-v-7b3a7026] {\n        color: white;\n        background-color: rgb(45, 133, 38) ;\n        box-shadow: 0 0 2px 0px white;\n}\n.expired[data-v-7b3a7026] {\n        box-shadow: 0 0 2px 1px rgb(197, 48, 28) ;\n        width: 100%;\n        background-color: white;\n}\n.expired > *[data-v-7b3a7026] {\n        color: white;\n        background-color: rgb(197, 48, 28) ;\n        box-shadow: 0 0 2px 0px white;\n}\n.suspended[data-v-7b3a7026] {\n        box-shadow: 0 0 2px 1px rgb(105,105,105) ;\n        width: 100%;\n        background-color: white;\n}\n.suspended > *[data-v-7b3a7026] {\n        color: rgb(255, 255, 255);\n        background-color: rgb(105, 105, 105) ;\n        box-shadow: 0 0 2px 0px white;\n}\n@media (max-width : 800px) {\n.header[data-v-7b3a7026] {\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            padding-top: 0 ;\n            margin-top: 0 ;\n}\n.param[data-v-7b3a7026] {\n            order: 1;\n            margin-top: 0;\n            margin-right: 0;\n}\n.info[data-v-7b3a7026] {\n                margin: 0 auto;\n}\n.header .avatar[data-v-7b3a7026] {\n            order: 2;\n            margin: unset;\n                        margin-bottom: 1rem;\n}\n.header .info[data-v-7b3a7026] {\n            order: 3;\n                                    margin-bottom: 1rem;\n}\n}\n", ""]);
 
 // exports
 
@@ -53009,17 +53034,9 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "status" }, [
-                  _vm._v(
-                    "\n                               " +
-                      _vm._s(membership.statuses[0].name) +
-                      "\n                          "
-                  )
-                ]),
-                _vm._v(" "),
                 _c("div", { staticClass: "created" }, [
                   _vm._v(
-                    "\n                               created : " +
+                    "\n                               created  " +
                       _vm._s(
                         _vm._f("moment")(membership.created_at, "MMM Do YYYY")
                       ) +
@@ -53027,15 +53044,106 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "expires_at" }, [
-                  _vm._v(
-                    "\n                               expiers : " +
-                      _vm._s(
-                        _vm._f("moment")(membership.expired_at, "from", "now")
-                      ) +
-                      "\n                          "
-                  )
-                ])
+                membership.statuses[0].name != "suspended"
+                  ? _c("div", { staticClass: "expires_at" }, [
+                      _vm._v(
+                        "\n                              " +
+                          _vm._s(
+                            membership.statuses[0].name == "active"
+                              ? "expiers"
+                              : "expired"
+                          ) +
+                          "  " +
+                          _vm._s(
+                            _vm._f("moment")(
+                              membership.expired_at,
+                              "from",
+                              "now"
+                            )
+                          ) +
+                          "\n                          "
+                      )
+                    ])
+                  : _c("div", [
+                      _vm._v(
+                        "\n                              suspended " +
+                          _vm._s(
+                            _vm._f("moment")(
+                              membership.statuses[0].created_at,
+                              "MMM Do YYYY"
+                            )
+                          ) +
+                          "\n                          "
+                      )
+                    ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "param" },
+                  [
+                    membership.statuses[0].name == "suspended"
+                      ? _c("font-awesome-icon", {
+                          staticClass: "icon ",
+                          attrs: {
+                            size: "lg",
+                            color: "white",
+                            icon: "play-circle",
+                            title: "reactivate membership"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.activate(membership)
+                            }
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    membership.statuses[0].name == "active"
+                      ? _c("font-awesome-icon", {
+                          staticClass: "icon ",
+                          attrs: {
+                            size: "lg",
+                            color: "white",
+                            icon: "pause-circle",
+                            title: "suspend membership"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.suspend(membership)
+                            }
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    membership.statuses[0].name == "expired"
+                      ? _c("font-awesome-icon", {
+                          staticClass: "icon ",
+                          attrs: {
+                            size: "lg",
+                            color: "white",
+                            icon: "retweet",
+                            title: "renew membership"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.renew(membership)
+                            }
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("font-awesome-icon", {
+                      staticClass: "icon ",
+                      attrs: {
+                        size: "lg",
+                        color: "white",
+                        icon: "edit",
+                        title: "edit membership"
+                      }
+                    })
+                  ],
+                  1
+                )
               ]
             )
           }),
@@ -73189,7 +73297,10 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add([_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faThLarge"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlus"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPowerOff"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCogs"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faDesktop"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCog"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUsers"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faDumbbell"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCalendarDay"]]);
+
+
+
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add([_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTimes"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faThLarge"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlus"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faArrowLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPauseCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlayCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPowerOff"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCogs"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faDesktop"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCog"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUsers"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faDumbbell"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCalendarDay"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faRetweet"]]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"]);
 Vue.component('dashboard-ui', __webpack_require__(/*! ./components/DashboardUi.vue */ "./resources/js/components/DashboardUi.vue")["default"]);
 Vue.component('single-member', __webpack_require__(/*! ./components/SingleMember.vue */ "./resources/js/components/SingleMember.vue")["default"]);

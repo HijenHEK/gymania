@@ -36,10 +36,13 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
+import { faPauseCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import { faRetweet } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faBars,faTimes, faThLarge , faEdit , faPlus , faArrowLeft,
-    faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers , faDumbbell , faCalendarDay]);
+library.add([faBars,faTimes, faThLarge , faEdit , faPlus , faArrowLeft, faPauseCircle , faPlayCircle,
+    faTrash ,faPowerOff,faCogs,faDesktop, faUserCog , faUsers , faDumbbell , faCalendarDay , faRetweet]);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
