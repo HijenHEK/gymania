@@ -82,8 +82,8 @@ export default {
         },
         getPackages(){
             axios.get('/packages').then(response => {
-            this.data = response.data
-            this.packages = this.data
+                this.data = response.data
+                this.packages = this.data
             })
 
         }
@@ -95,7 +95,7 @@ export default {
             .listen('PackageUpdate' , (e)=>{
                 this.getPackages()
             })
-        thi.getPackages()
+        this.getPackages()
     }
 }
 </script>

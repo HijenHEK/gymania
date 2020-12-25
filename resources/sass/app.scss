@@ -106,6 +106,38 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+.sign {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: url('../img/bg1.jpg'); /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, rgba(67, 198, 172, 0.4), rgba(25, 22, 84, 0.5)) , url('../img/bg1.jpg'); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, rgba(67, 198, 172, 0.4), rgba(25, 22, 84, 0.5)) , url('../img/bg1.jpg'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .header {
+        font-size: 1.2rem;
+        margin:2rem 0;
+        text-align: center;
+    }    
+    .aside {
+        color: rgb(255, 255, 255);
+        width : 350px;
+        height: 400px;
+        margin-right : 20% ; 
+        margin-bottom : 10% ; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgba(34, 34, 34, 0.9);
+        padding: 3rem;
+        border-radius: 10px;
+            .form {
+                flex: 100%;
+            }
+    }
+}
+
 .form {
     .inline {
         margin: 1rem 0 ;
@@ -135,9 +167,25 @@ input[type=number] {
             box-shadow: 0 0 1px 0px rgb(224, 224, 224);
             width: 100%;
         }
+        .label {
+            margin: 1rem 0 ;
+        }
+        
+    }
+    .param{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
-
+.my {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    &-1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
 .btn {
     border: none;
     outline: none;
@@ -195,4 +243,19 @@ input[type=number] {
 }
 .icon:active {
     transform: translate(1px ,1px);
+}
+
+
+@media(max-width : 800px) {
+    .sign {
+       
+        justify-content: center;
+        
+        .aside {
+            
+            margin-right : unset ; 
+            margin-bottom : unset ; 
+            
+        }
+    }
 }

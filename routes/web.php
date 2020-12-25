@@ -23,7 +23,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'verify' => false, // Email Verification Routes...
+  ]);
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 

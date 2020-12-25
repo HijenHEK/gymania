@@ -13039,7 +13039,7 @@ __webpack_require__.r(__webpack_exports__);
     Echo.channel('updates').listen('PackageUpdate', function (e) {
       _this3.getPackages();
     });
-    thi.getPackages();
+    this.getPackages();
   }
 });
 
