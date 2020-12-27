@@ -17,42 +17,42 @@ export default {
 
 <style scoped>
     .card {
-        min-width: 100px;
+        min-width: 150px;
         min-height: 100px;
-        width: 200px;
-        height: 100px;
+        max-width: 400px;
+        max-height: 100px;
         display: flex;
         flex-direction: column;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 1rem;
         margin: 0.5rem 1rem;
         }
     .card-blue {
-        background-color: rgba(0, 113, 219, 0.8);
-        box-shadow: 0 0 1px 1px rgb(0, 100, 255);
+        background-color: rgb(40,192,239);
+        box-shadow: 0 0 1px 1px rgb(40,192,239);
                 color: white;
 
         }
         .card-green {
-        background-color: rgba(24, 156, 7, 0.8);
+        background-color:rgb(29,167,90);
         color: white;
-        box-shadow: 0 0 1px 1px rgb(24, 140, 20);
+        box-shadow: 0 0 1px 1px rgb(29,167,90);
         }
         .card-yellow {
-        background-color: rgba(231, 222, 103, 0.8);
-        color: black;
-        box-shadow: 0 0 1px 1px rgb(231, 205, 115);
+        background-color:rgb(243,156,18);
+        color: white;
+        box-shadow: 0 0 1px 1px rgb(243,156,18);
         }
                 .card-red {
-        background-color: rgba(207, 72, 48, 0.8);
+        background-color: rgb(221,75,57);
         color: white;
-        box-shadow: 0 0 1px 1px rgb(207, 60, 60);
+        box-shadow: 0 0 1px 1px rgb(221,75,57);
         }
     .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 600;
         padding: 0 1rem;
         font-family: 'Changa', 'Arial Narrow', Arial, sans-serif;
@@ -64,15 +64,15 @@ export default {
         }
         .side-meta {
             
-            
+            margin-left: 2rem ;
 
         }
 
         @media (max-width : 800px) {
             .header {
         
-        font-size: 1rem;
-        
-        }
+                font-size: 1rem;
+            
+            }
         }
 </style>

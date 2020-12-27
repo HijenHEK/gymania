@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'username' => 'admin' ,
             'email' => 'admin@gymnia.com',
             'password' => Hash::make('adminpassword')
+            
         ]);
 
         $admin->assignRole('Admin');

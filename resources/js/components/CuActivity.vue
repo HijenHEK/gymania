@@ -79,8 +79,8 @@ export default {
 </script>
 
 <style scoped>
-    .form {
-        width: 20rem;
+        .form {
+        max-width: 20rem;
         margin: 0 auto;
         height: 100%;
         

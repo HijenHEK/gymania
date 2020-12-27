@@ -26,6 +26,8 @@ class MemberFactory extends Factory
             'name' => $this->faker->name,
             'username' => $this->faker->unique()->userName,
             'email' => $this->faker->unique()->safeEmail,
+            'avatar' => 'https://i.pravatar.cc/350?u='.rand(1,5000),
+
             'phone' => $this->faker->unique()->phoneNumber,
             'age' => $this->faker->numberBetween(10 , 80) ,
             'gender' => random_int(0,1),

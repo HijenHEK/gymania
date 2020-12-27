@@ -23,7 +23,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        background-color: rgb(231,232,234) ;
+        background-color: rgb(236,240,245);
     }
     .menu {
         height: 100%;

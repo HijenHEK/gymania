@@ -42,8 +42,17 @@ export default {
         width: 30rem;
         height: 40rem;
         padding: 2rem;
+        max-width: 90%;
         border-radius: 5px;
         box-shadow: 0 0 1px 0 rgb(224, 224, 224);
     }
-
+    @media (max-width : 800px) {
+        .icon--close {
+        position: absolute;
+        color: black;
+        margin: 0.5rem;
+        top: 0 ;
+        right : 0 ;
+    }
+    }
 </style>

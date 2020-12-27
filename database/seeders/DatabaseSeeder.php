@@ -36,8 +36,13 @@ class DatabaseSeeder extends Seeder
 
 
         Member::all()->map->memberships()->map->create(['package_id'=>rand(1,3)]);
-        Membership::all()->map->setStatus('active');
+        // Membership::all()->map->setStatus('active');
 
+        foreach (Membership::all() as $membership) {
+            $membership->setStatus('active') ;
+            $membership->expired_at = now()->addDays($membership->package->cycle->period)->setTime(0, 0, 0) ;
+            $membership->save();
+        }
 
         Role::where('name' , 'Admin')->first()->allowTo('manage_users');
 

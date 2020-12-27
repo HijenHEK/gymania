@@ -125,8 +125,8 @@ export default {
   
 }
 .cards > * {
-  flex-basis: 200px;
-  flex-grow: 0.2;
+  flex-basis: 220px;
+  flex-grow: 1;
   flex-shrink: 1;
 }
 </style>

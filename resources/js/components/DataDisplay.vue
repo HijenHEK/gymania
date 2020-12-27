@@ -1,32 +1,29 @@
 <template>
-    <div :class="rows ? 'data' : 'data-card' ">
+    <div>
         <slot></slot>
     </div>
 </template>
-
 <script>
 export default {
-    props : ['rows']
+    
 }
 </script>
 
 <style scoped>
-
-    .data {
+.data {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        margin: 0.5rem 0;
-        box-shadow: 0 0 2px 1px rgb(158, 158, 158);
+        box-shadow: 1px 1px 1px 1px rgb(200, 200, 200)   ;
         width: 100%;
         max-width: 1100px;
-        margin: 0.5rem auto;
+        margin: 0.3rem auto;
         background-color: white;
         border-radius: 5px;
         overflow: hidden;
         cursor: pointer;
-
+        
 
     }
     .data > * {
@@ -36,37 +33,50 @@ export default {
         padding: 1rem 0.5rem;
         font-size: 0.9rem;
         word-wrap: none;
-        vertical-align: middle;
-        padding: 0 1rem;
+        text-align: center;
 
     }
-    
     .data-card {
         flex-direction: column;
         align-items: center;
-        width: 12rem;
-        height: 17rem;
+        justify-content: center;
+        min-width: 12rem;
+        width: 15rem;
+        flex-basis: 15rem;
+        flex-grow: 0.5;
+        max-width: 18rem;
         display: flex;
-        background-color: white;
+        color: rgb(48,59,65);
+        background-color:  rgb(240, 240, 243);
         margin: 0.5rem;
         border-radius: 10px;
-        box-shadow: 0 0 2px 0 rgb(158, 158, 158)   ;
-        padding: 1rem 0.5rem;
+        padding :1rem 0.5rem;
+
+        box-shadow: 1px 1px 1px 1px rgb(200, 200, 200)   ;
         cursor: pointer;
     }
-    .data-card > * {
+    .data:hover ,.data-card:hover {
         
-        padding: 0.5rem 0;
-        word-wrap: none;
+        box-shadow: 1px 1px 1px 2px rgb(200, 200, 200)   ;
+    }
+    .data:active:hover ,.data-card:active:hover {
+        box-shadow: 1px 1px 1px 2px rgb(200, 200, 200)   ;
+    }
+    .data-card > * {
+        width: 100%;
+        padding: 0.2rem 0;
+        text-align: center;
 
     }
     .data-card .avatar {
-        width: 8rem;
-        height: 8rem;
+        width: 10rem;
+        height: 10rem;
+        margin : 1rem;
     }
     .avatar {
-        width: 4rem;
-        height: 4rem;
+
+        width: 3rem;
+        height: 3rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -74,17 +84,33 @@ export default {
         border-radius: 100%;
         flex-grow: unset;
         flex-basis: unset;
+        box-shadow: 0px 0px 1px 1px rgb(212, 212, 212);
+
+    }
+    .data-card .id {
+        flex-basis: unset;
 
     }
     .id {
         flex-basis: 3rem;
         flex-grow: 0.1;
+        font-weight: 600;
     }
+    
     .avatar img {
-        width: 100%;
+        width: 140%;
     }
-    .param .icon {
-        margin: 0.2rem;
-        cursor: pointer;
+    .data-card .avatar img {
+        width: 120%;
+    }
+    .name {
+        font-weight: 600;
+    }
+    .data-card .name {
+    margin-bottom: 1rem;
+        
+    }    
+    .data .avatar {
+        margin : 0.1rem 0.5rem;
     }
 </style>

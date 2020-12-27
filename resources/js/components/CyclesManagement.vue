@@ -15,7 +15,7 @@
     </div>
 
     <div :class="{'cards' : !rows}">
-        <div v-for="c in cycles" :key="c.id"   :class="!rows ? 'data-card' : 'data'" @click="edit(c)">
+        <data-display v-for="c in cycles" :key="c.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(c)">
                 
                 <div class="name">
                     {{c.name}}
@@ -25,12 +25,12 @@
                 <div class="period">
                     {{c.period}} days
                 </div>
-                <div class="desc">
+                <div v-if="c.desc" class="desc">
                     {{c.desc}}
                 </div>
 
                 
-        </div>
+        </data-display>
     </div>
 
     <modal-ui v-if="modal" @hide-modal="modal=null" >
@@ -41,7 +41,10 @@
 </template>
 
 <script>
+import DataDisplay from "./DataDisplay.vue"
+
 export default {
+  components: { DataDisplay },
     data(){
         return {
             selected : null,
@@ -106,93 +109,13 @@ export default {
         padding: 1rem 0;
     }
     
-    .data {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        margin: 0.5rem 0;
-        box-shadow: 0 0 2px 1px rgb(158, 158, 158);
-        width: 100%;
-        max-width: 1100px;
-        margin: 0.5rem auto;
-        background-color: white;
-        border-radius: 5px;
-        overflow: hidden;
-                cursor: pointer;
-        padding: 0 1rem;
-
-    }
-    .data > * {
-        flex-basis: 4rem;
-        flex-grow: 1;
-        flex-shrink: 1;
-        padding: 1rem 0.5rem;
-        font-size: 0.9rem;
-        word-wrap: none;
-        vertical-align: middle;
-        cursor: pointer;
-
-    }
+    
     .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    .data-card {
-        flex-direction: column;
-        align-items: center;
-        width: 12rem;
-        height: 15rem;
-        display: flex;
-        background-color: white;
-        margin: 0.5rem;
-        border-radius: 10px;
-        box-shadow: 0 0 2px 0 rgb(158, 158, 158)   ;
-        padding: 1rem 0.5rem;
-        cursor: pointer;
-    }
-    .data-card .name {
-        flex: 100%;
-        font-size: 1.1rem;
-    }
-    .data-card > * {
-        
-        padding: 0.5rem 0;
-        word-wrap: none;
-
-    }
-    .data-card .avatar {
-        width: 8rem;
-        height: 8rem;
-    }
-    .avatar {
-        width: 4rem;
-        height: 4rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border-radius: 100%;
-        flex-grow: unset;
-        flex-basis: unset;
-
-    }
-    .id {
-        flex-basis: 3rem;
-        flex-grow: 0.1;
-    }
-    .avatar img {
-        width: 100%;
-    }
-    .param {
-        display: flex;
-        justify-content: flex-end;
-    }
-    .param .icon {
-        margin: 0.2rem;
-        cursor: pointer;
-    }
+    
     
     .search {
         font-size: 1.1rem;

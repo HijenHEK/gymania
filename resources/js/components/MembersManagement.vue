@@ -14,26 +14,31 @@
     </div>
 
     <div v-if="!selected" :class="{'cards' : !rows}" >
-        <div v-for="member in members" :key="member.id" @click="selected = member"  :class="!rows ? 'data-card' : 'data'">
-                <div class="id">
-                    # {{member.id}}
-                </div>
-                <div class="avatar">
+        <data-display v-for="member in members" :key="member.id" @click.native="selected = member"  :class="!rows ? 'data-card' : 'data'">
+                <div class="avatar" >
                     <img :src="member.avatar" alt="" srcset="">
+                </div>
+
+                <div class="id">
+                    #{{member.id}}
                 </div>
                 <div class="name">
                     {{member.name}}
                 </div>
-                <div class="active-membership">
-                    memberships : {{member.memberships.length}}
-                </div>
 
+                    <div class="active-membership">
+                        active : {{member.memberships.length}}
+                    </div>
+                    <div class="expired-membership">
+                        expired : {{member.memberships.length}}
+                    </div>
+                
                 <!-- <div class="param">
                         <font-awesome-icon  size="lg" color="red" class="icon " icon="trash"></font-awesome-icon>
 
                         <font-awesome-icon  size="lg" color="blue" class="icon" icon="edit"></font-awesome-icon>
                 </div> -->
-        </div>
+        </data-display>
     </div>
     <single-member v-if="selected" @back="selected=null" :id="selected.id"></single-member>
     <modal-ui v-if="modal" @hide-modal="modal=null">
@@ -45,8 +50,10 @@
 </template>
 
 <script>
+import DataDisplay from './DataDisplay.vue'
 
 export default {
+  components: { DataDisplay },
     data(){
         return {
             data : {},
@@ -107,89 +114,18 @@ export default {
         padding: 1rem 0;
     }
     
-    .data {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        margin: 0.5rem 0;
-        box-shadow: 0 0 2px 1px rgb(158, 158, 158);
-        width: 100%;
-        max-width: 1100px;
-        margin: 0.5rem auto;
-        background-color: white;
-        border-radius: 5px;
-        overflow: hidden;
-                cursor: pointer;
-
-
-    }
-    .data > * {
-        flex-basis: 4rem;
-        flex-grow: 1;
-        flex-shrink: 1;
-        padding: 1rem 0.5rem;
-        font-size: 0.9rem;
-        word-wrap: none;
-        vertical-align: middle;
-        padding: 0 1rem;
-
-    }
     .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    .data-card {
-        flex-direction: column;
-        align-items: center;
-        width: 12rem;
-        height: 17rem;
-        display: flex;
-        background-color: white;
-        margin: 0.5rem;
-        border-radius: 10px;
-        box-shadow: 0 0 2px 0 rgb(158, 158, 158)   ;
-        padding: 1rem 0.5rem;
-        cursor: pointer;
-    }
-    .data-card > * {
-        
-        padding: 0.5rem 0;
-        word-wrap: none;
-
-    }
-    .data-card .avatar {
-        width: 8rem;
-        height: 8rem;
-    }
-    .avatar {
-        width: 4rem;
-        height: 4rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border-radius: 100%;
-        flex-grow: unset;
-        flex-basis: unset;
-
-    }
-    .id {
-        flex-basis: 3rem;
-        flex-grow: 0.1;
-    }
-    .avatar img {
-        width: 100%;
-    }
-
     
     .search {
         font-size: 1rem;
         padding: 0.5rem 2rem;
         border-radius: 5px;
         background-color: white;
-                box-shadow: 0 0 1px 0px rgb(223, 223, 223);
+        box-shadow: 0 0 1px 0px rgb(223, 223, 223);
 
         }
 </style>

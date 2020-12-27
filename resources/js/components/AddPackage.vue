@@ -89,11 +89,7 @@ export default {
 </script>
 
 <style scoped>
-    .form {
-        width: 20rem;
-        margin: 0 auto;
-        
-    }
+   
 .select-package {
     margin-bottom: 0.5rem;
     position: relative;
