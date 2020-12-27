@@ -4,14 +4,8 @@
 
 
 
-    <div v-if="!selected" class="nav">
-        <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
-        <div>
-            <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="modal ='addMember'"></font-awesome-icon>
-                &nbsp;
-            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'" class="icon icon--primary"></font-awesome-icon>
-        </div>
-    </div>
+    <management-nav v-if="!selected" :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='addMember'"/>
+        
 
     <div v-if="!selected" :class="{'cards' : !rows}" >
         <data-display v-for="member in members" :key="member.id" @click.native="selected = member"  :class="!rows ? 'data-card' : 'data'">
@@ -51,16 +45,21 @@
 
 <script>
 import DataDisplay from './DataDisplay.vue'
+import ManagementNav from "./ManagementNav.vue"
 import _ from 'lodash'
+
 export default {
-  components: { DataDisplay },
+  components: { 
+      DataDisplay,
+        ManagementNav
+       },
     data(){
-        return {
+        
+    return {
             data : {},
             members : {},
             selected : null,
             rows : false,
-            query : '',
             modal : null,
             createdMember : null ,
         }
@@ -71,7 +70,8 @@ export default {
 
             this.modal='addpackage' 
         },
-        search : _.debounce(function() {
+
+        search : _.debounce(function(query) {
             // if(this.query == "") {
             //     this.members = this.data 
             // }else {
@@ -83,7 +83,7 @@ export default {
             // })
                     
             //     }
-            axios.get('/members?q='+this.query).then((response) => {
+            axios.get('/members?q='+query).then((response) => {
                 console.log(response.data)
                         this.members = response.data
             })
@@ -108,27 +108,10 @@ export default {
 </script>
 
 <style scoped>
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1000px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 1rem 0;
-    }
-    
-    .cards {
+.cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
-    .search {
-        font-size: 1rem;
-        padding: 0.5rem 2rem;
-        border-radius: 5px;
-        background-color: white;
-        box-shadow: 0 0 1px 0px rgb(223, 223, 223);
-
-        }
+   
 </style>

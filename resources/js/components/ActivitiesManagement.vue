@@ -4,15 +4,8 @@
 
 
 
-    <div class="nav">
-        <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
-        <div>
-            <font-awesome-icon  size="lg" @click="modal='activity'" icon="plus" class="icon icon--success"></font-awesome-icon>
-                &nbsp;            
+    <management-nav v-if="!selected" :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='addMember'"/>
 
-            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
-        </div>
-    </div>
 
     <div :class="{'cards' : !rows}">
         <data-display v-for="a in activities" :key="a.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(a)">
@@ -40,9 +33,12 @@
 
 <script>
 import DataDisplay from './DataDisplay.vue'
+import ManagementNav from "./ManagementNav.vue"
+
 export default {
     components : {
-        DataDisplay 
+        DataDisplay ,
+        ManagementNav
     },
     data(){
         return {
@@ -56,21 +52,24 @@ export default {
         }
     },
     methods :{
-        search(){
-            if(this.query == "") {
-                this.activities = this.data 
-            }else {
+        search : _.debounce(function(query) {
+            // if(this.query == "") {
+            //     this.members = this.data 
+            // }else {
 
-                this.activities = this.data.filter((a) => {
-                    if(a.name.includes(this.query) || !this.query){
-                        return a
-                }
-            })
+            //     this.members = this.data.filter((member) => {
+            //         if(member.name.includes(this.query) || !this.query){
+            //             return member
+            //     }
+            // })
                     
-                }
+            //     }
+            axios.get('/activities?q='+query).then((response) => {
+                console.log(response.data)
+                        this.activities = response.data
+            })
             
-            
-        },
+        }),
         edit(a){
             console.log(a)
             this.selected = a 

@@ -4,15 +4,8 @@
 
 
 
-    <div class="nav">
-        <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
-        <div>
-            <font-awesome-icon  size="lg" @click="modal='cycle'" icon="plus" class="icon icon--success"></font-awesome-icon>
-                &nbsp;            
+        <management-nav v-if="!selected" :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='addMember'"/>
 
-            <font-awesome-icon  size="lg" @click="rows = !rows" :icon="rows ? 'th-large' : 'bars'  " class="icon icon--primary"></font-awesome-icon>
-        </div>
-    </div>
 
     <div :class="{'cards' : !rows}">
         <data-display v-for="c in cycles" :key="c.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(c)">
@@ -42,9 +35,11 @@
 
 <script>
 import DataDisplay from "./DataDisplay.vue"
+import ManagementNav from "./ManagementNav.vue"
+
 
 export default {
-  components: { DataDisplay },
+  components: { DataDisplay , ManagementNav},
     data(){
         return {
             selected : null,
@@ -56,21 +51,24 @@ export default {
         }
     },
     methods :{
-        search(){
-            if(this.query == "") {
-                this.cycles = this.data 
-            }else {
+         search : _.debounce(function(query) {
+            // if(this.query == "") {
+            //     this.members = this.data 
+            // }else {
 
-                this.cycles = this.data.filter((c) => {
-                    if(c.name.includes(this.query) || !this.query){
-                        return c
-                }
-            })
+            //     this.members = this.data.filter((member) => {
+            //         if(member.name.includes(this.query) || !this.query){
+            //             return member
+            //     }
+            // })
                     
-                }
+            //     }
+            axios.get('/cycles?q='+query).then((response) => {
+                console.log(response.data)
+                        this.cycles = response.data
+            })
             
-            
-        },
+        }),
         edit(c){
             console.log(c)
             this.selected = c 

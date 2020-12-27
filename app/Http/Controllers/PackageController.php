@@ -19,6 +19,14 @@ class PackageController extends Controller
      */
     public function index()
     {
+        if(Request('q'))
+        {
+            $key = Request('q');
+            return Package::latest()->where('name' , 'LIKE' , "%{$key}%")
+                        ->orWhere('fee' , 'LIKE' , "%{$key}%")
+                        ->with(['activity' , 'cycle'])->get();
+    
+        }
         return Package::with('activity' , 'cycle')->get();
     }
 

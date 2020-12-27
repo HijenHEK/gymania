@@ -15,6 +15,17 @@ class CycleController extends Controller
      */
     public function index()
     {
+        
+        
+        if(Request('q'))
+        {
+            $key = Request('q');
+            return Cycle::latest()->where('name' , 'LIKE' , "%{$key}%")
+                        ->orWhere('desc' , 'LIKE' , "%{$key}%")
+                        ->orwhere('period' , 'LIKE' , "%{$key}%")
+                        ->get();
+    
+        }
         return Cycle::latest()->get();
     }
 

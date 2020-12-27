@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
     .card {
-        min-width: 150px;
+        min-width: 214px;
         min-height: 100px;
         max-width: 400px;
         max-height: 100px;
@@ -67,12 +67,24 @@ export default {
             margin-left: 2rem ;
 
         }
-
+        
         @media (max-width : 800px) {
             .header {
         
                 font-size: 1rem;
+
+            }
             
+        }
+        @media (max-width : 1320px) {
+            .card {
+                min-width: 350px;
+                
+            }
+        }
+            @media (max-width : 1080px) {
+            .card {
+                min-width: 230px;
             }
         }
 </style>

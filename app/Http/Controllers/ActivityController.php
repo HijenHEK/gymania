@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\ActivityUpdate;
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Action;
 
 class ActivityController extends Controller
 {
@@ -15,6 +16,15 @@ class ActivityController extends Controller
      */
     public function index()
     {
+
+        if(Request('q'))
+        {
+            $key = Request('q');
+            return Activity::latest()->where('name' , 'LIKE' , "%{$key}%")
+                        ->orWhere('desc' , 'LIKE' , "%{$key}%")
+                        ->get();
+    
+        }
         return Activity::latest()->get();
 
     }

@@ -87,7 +87,7 @@ export default {
             }).listen('ActivityUpdate' , (e)=>{
                 this.get()
             })
-        thi.get()
+        this.get()
     }
 }
 </script>

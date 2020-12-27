@@ -256,8 +256,9 @@ export default {
     flex-wrap: nowrap;
     justify-content: center;
     align-self: flex-start;
-    margin: 3rem ;
-
+    
+    margin: 5rem ;
+    margin-left: auto;
 
     }
     .header .param > * {
