@@ -12,11 +12,23 @@ class MemberController extends Controller
     //
 
     public function index(){
+        if(Request('q'))
+        {
+            $key = Request('q');
+            return Member::latest()->where('name' , 'LIKE' , "%{$key}%")
+                        ->orWhere('email' , 'LIKE' , "%{$key}%")
+                        ->orwhere('username' , 'LIKE' , "%{$key}%")
+                        ->orWhere('phone' , 'LIKE' , "%{$key}%")
+                        ->orWhere('address' , 'LIKE' , "%{$key}%")
+                        ->with('memberships' )->get();
+    
+        }
         return Member::latest()->with('memberships' )->get();
     }
     public function show(Member $member){
         return $member;
     }
+    
     public function store(){
         Request()->validate([
                 'name' => 'required|max:255',

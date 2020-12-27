@@ -51,7 +51,7 @@
 
 <script>
 import DataDisplay from './DataDisplay.vue'
-
+import _ from 'lodash'
 export default {
   components: { DataDisplay },
     data(){
@@ -71,21 +71,24 @@ export default {
 
             this.modal='addpackage' 
         },
-        search(){
-            if(this.query == "") {
-                this.members = this.data 
-            }else {
+        search : _.debounce(function() {
+            // if(this.query == "") {
+            //     this.members = this.data 
+            // }else {
 
-                this.members = this.data.filter((member) => {
-                    if(member.name.includes(this.query) || !this.query){
-                        return member
-                }
-            })
+            //     this.members = this.data.filter((member) => {
+            //         if(member.name.includes(this.query) || !this.query){
+            //             return member
+            //     }
+            // })
                     
-                }
+            //     }
+            axios.get('/members?q='+this.query).then((response) => {
+                console.log(response.data)
+                        this.members = response.data
+            })
             
-            
-        },
+        }),
         getMembers(){
             axios.get('/members').then(response => {
             this.data = response.data

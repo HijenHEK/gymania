@@ -35,6 +35,11 @@ main {
   overflow: hidden;
 }
 
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .icon {
   opacity: 0.9;
   cursor: pointer;
