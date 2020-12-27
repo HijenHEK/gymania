@@ -57,23 +57,32 @@ main {
     cursor: pointer;
     transition: all 0.1s ease-in-out;
     &--success {
-        color: rgb(53, 136, 53);
+        color: rgb(29,167,90);
     }
     &--primary {
         color: rgb(19, 91, 185);
 
     }
+    &--light-primary {
+        color :rgb(40,192,239)
+
+    }
+    &--dark {
+        color :rgb(29,38,45); 
+    }
     &--toggle {
         color: white;
     }
     &--power {
-        color: rgb(231, 66, 66);
+        color: rgb(221,75,57);
         
     }
     &--warning {
-        color: rgb(212, 181, 41);
+        color:rgb(243,156,18);
         
     }
+
+
 }
 
 input::-webkit-outer-spin-button,
@@ -185,7 +194,7 @@ input[type=number] {
     border-radius: 10px;
     transition: all 0.1s ease-in-out;
     &--success {
-        background-color: rgb(53, 136, 53);
+        background-color: rgb(29,167,90);
         color: white;
     }
     &--primary {
@@ -193,20 +202,28 @@ input[type=number] {
         color: white;
 
     }
+    &--light-primary {
+        background-color :rgb(40,192,239);
+        color: black;
+
+    }
+    &--dark {
+        background-color :rgb(29,38,45); 
+        color: white;
+    }
     &--white {
         background-color: white;
         color: black;
-
     }
-    &--power {
-        background-color: rgb(231, 66, 66);
+    &--danger {
+        background-color: rgb(221,75,57);
         color: white;
-
+        
     }
     &--warning {
-        background-color: rgb(212, 181, 41);
+        background-color:rgb(243,156,18);
         color: black;
-
+        
     }
     &--lg {
         font-size: 1.1rem;
@@ -268,7 +285,7 @@ input[type=number] {
     border-radius: 5px;
     box-shadow: 0 0 1px 0px rgba(255, 255, 255, 0.479);
     color: white;
-    background-color: rgb(231, 66, 66);
+    background-color: rgb(221,75,57);
 }
 
 .alert {
@@ -278,7 +295,7 @@ input[type=number] {
     padding: 0.5rem 1rem;
     border-radius: 10px;
     &--success {
-        background-color: rgb(53, 136, 53);
+        background-color: rgb(29,167,90);
         color: white;
     }
     &--primary {
@@ -286,20 +303,28 @@ input[type=number] {
         color: white;
 
     }
+    &--light-primary {
+        background-color :rgb(40,192,239);
+        color: black;
+
+    }
+    &--dark {
+        background-color :rgb(29,38,45); 
+        color: white;
+    }
     &--white {
         background-color: white;
         color: black;
-
     }
     &--danger {
-        background-color: rgb(231, 66, 66);
+        background-color: rgb(221,75,57);
         color: white;
-
+        
     }
     &--warning {
-        background-color: rgb(212, 181, 41);
+        background-color:rgb(243,156,18);
         color: black;
-
+        
     }
     &--lg {
         font-size: 1.1rem;

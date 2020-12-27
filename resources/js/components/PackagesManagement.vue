@@ -5,7 +5,7 @@
 
 
         
-        <management-nav v-if="!selected" :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='addMember'"/>
+        <management-nav  :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='package'"/>
 
 
     <div :class="{'cards' : !rows}">

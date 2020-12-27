@@ -47,11 +47,19 @@ main {
 }
 
 .icon--success {
-  color: #358835;
+  color: #1da75a;
 }
 
 .icon--primary {
   color: #135bb9;
+}
+
+.icon--light-primary {
+  color: #28c0ef;
+}
+
+.icon--dark {
+  color: #1d262d;
 }
 
 .icon--toggle {
@@ -59,11 +67,11 @@ main {
 }
 
 .icon--power {
-  color: #e74242;
+  color: #dd4b39;
 }
 
 .icon--warning {
-  color: #d4b529;
+  color: #f39c12;
 }
 
 input::-webkit-outer-spin-button,
@@ -192,7 +200,7 @@ input[type=number] {
 }
 
 .btn--success {
-  background-color: #358835;
+  background-color: #1da75a;
   color: white;
 }
 
@@ -201,18 +209,28 @@ input[type=number] {
   color: white;
 }
 
+.btn--light-primary {
+  background-color: #28c0ef;
+  color: black;
+}
+
+.btn--dark {
+  background-color: #1d262d;
+  color: white;
+}
+
 .btn--white {
   background-color: white;
   color: black;
 }
 
-.btn--power {
-  background-color: #e74242;
+.btn--danger {
+  background-color: #dd4b39;
   color: white;
 }
 
 .btn--warning {
-  background-color: #d4b529;
+  background-color: #f39c12;
   color: black;
 }
 
@@ -276,7 +294,7 @@ input[type=number] {
   border-radius: 5px;
   box-shadow: 0 0 1px 0px rgba(255, 255, 255, 0.479);
   color: white;
-  background-color: #e74242;
+  background-color: #dd4b39;
 }
 
 .alert {
@@ -288,12 +306,22 @@ input[type=number] {
 }
 
 .alert--success {
-  background-color: #358835;
+  background-color: #1da75a;
   color: white;
 }
 
 .alert--primary {
   background-color: #135bb9;
+  color: white;
+}
+
+.alert--light-primary {
+  background-color: #28c0ef;
+  color: black;
+}
+
+.alert--dark {
+  background-color: #1d262d;
   color: white;
 }
 
@@ -303,12 +331,12 @@ input[type=number] {
 }
 
 .alert--danger {
-  background-color: #e74242;
+  background-color: #dd4b39;
   color: white;
 }
 
 .alert--warning {
-  background-color: #d4b529;
+  background-color: #f39c12;
   color: black;
 }
 

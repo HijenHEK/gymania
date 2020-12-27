@@ -3,7 +3,7 @@
     <input type="search" class="search" placeholder="Search" v-model="query" @keyup="search()" id="search">
         <div class="nav-items">
             <font-awesome-icon  size="lg" icon="plus"  class="icon icon--success" @click="displayModal"></font-awesome-icon>
-                &nbsp;
+               
             <font-awesome-icon  size="lg" @click="changeDisplay" :icon="rows ? 'th-large' : 'bars'" class="icon icon--primary"></font-awesome-icon>
         </div>
   </div>
@@ -47,6 +47,9 @@ export default {
         display: flex;
         flex-wrap: nowrap;
         
+    }
+    .nav-items * {
+        margin: 0 0.5rem;
     }
     @media (max-width: 400px) {
            .nav {
