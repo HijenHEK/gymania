@@ -6,6 +6,7 @@ use App\Events\MemberUpdate;
 use App\Models\Member;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MemberController extends Controller
 {
@@ -15,15 +16,18 @@ class MemberController extends Controller
         if(Request('q'))
         {
             $key = Request('q');
-            return Member::latest()->where('name' , 'LIKE' , "%{$key}%")
-                        ->orWhere('email' , 'LIKE' , "%{$key}%")
-                        ->orwhere('username' , 'LIKE' , "%{$key}%")
-                        ->orWhere('phone' , 'LIKE' , "%{$key}%")
-                        ->orWhere('address' , 'LIKE' , "%{$key}%")
-                        ->with('memberships' )->get();
+            
+
+                return Member::latest()->where('name' , 'LIKE' , "%{$key}%")
+                ->orWhere('email' , 'LIKE' , "%{$key}%")
+                ->orwhere('id' , 'LIKE' , "%{$key}%")
+                ->orWhere('phone' , 'LIKE' , "%{$key}%")
+                ->orWhere('address' , 'LIKE' , "%{$key}%")
+                ->with('memberships' )->paginate(10);
+            
     
         }
-        return Member::latest()->with('memberships' )->get();
+        return Request('all')  ? Member::latest()->with('memberships' )->get() : Member::latest()->with('memberships' )->paginate(10) ;
     }
     public function show(Member $member){
         return $member;

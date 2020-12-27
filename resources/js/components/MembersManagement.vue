@@ -1,14 +1,14 @@
 <template>
   
-  <div>
+  <div >
 
 
 
-    <management-nav v-if="!selected" :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='addMember'"/>
+    <management-nav v-show="!selected" :rows="rows" @change-display="rows = !rows" @search="search" @display-modal="modal ='addMember'"/>
         
 
-    <div v-if="!selected" :class="{'cards' : !rows}" >
-        <data-display v-for="member in members" :key="member.id" @click.native="selected = member"  :class="!rows ? 'data-card' : 'data'">
+    <div v-show="!selected" :class="{'cards' : !rows}" >
+        <data-display v-for="member in members.data" :key="member.id" @click.native="selected = member"  :class="!rows ? 'data-card' : 'data'">
                 <div class="avatar" >
                     <img :src="member.avatar" alt="" srcset="">
                 </div>
@@ -34,24 +34,27 @@
                 </div> -->
         </data-display>
     </div>
-    <single-member v-if="selected" @back="selected=null" :id="selected.id"></single-member>
+    <single-member class="pagination" v-if="selected" @back="selected=null" :id="selected.id"></single-member>
     <modal-ui v-if="modal" @hide-modal="modal=null">
         <cu-member v-if="modal=='addMember'" @done="modal=null" @next-step="addPackagesModal"></cu-member>
         <add-package v-if="modal=='addpackage'" @done="modal=null" :member="createdMember" ></add-package>
     </modal-ui>
-    
+            <laravel-vue-pagination :data="members" @pagination="loadData" />
+
  </div>
 </template>
 
 <script>
 import DataDisplay from './DataDisplay.vue'
 import ManagementNav from "./ManagementNav.vue"
+import LaravelVuePagination from "./LaravelVuePagination.vue"
 import _ from 'lodash'
 
 export default {
   components: { 
       DataDisplay,
-        ManagementNav
+        ManagementNav,
+        LaravelVuePagination
        },
     data(){
         
@@ -60,6 +63,7 @@ export default {
             members : {},
             selected : null,
             rows : false,
+            query : '',
             modal : null,
             createdMember : null ,
         }
@@ -70,8 +74,16 @@ export default {
 
             this.modal='addpackage' 
         },
+        loadData(p){
+            if(this.query.length > 0) {
+                this.search(this.query , p)
+            }else {
+                this.getMembers(p)
+            }
+        },
 
-        search : _.debounce(function(query) {
+        search : _.debounce(function(query,page = 1) {
+            this.query=query
             // if(this.query == "") {
             //     this.members = this.data 
             // }else {
@@ -83,16 +95,15 @@ export default {
             // })
                     
             //     }
-            axios.get('/members?q='+query).then((response) => {
+            axios.get('/members?q='+query+'&page='+page).then((response) => {
                 console.log(response.data)
                         this.members = response.data
             })
             
         }),
-        getMembers(){
-            axios.get('/members').then(response => {
-            this.data = response.data
-            this.members = this.data
+        getMembers(page = 1){
+            axios.get('/members?page='+page).then(response => {
+                this.members = response.data
             })
         }
         
@@ -113,5 +124,8 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
     }
-   
+.pagination {
+    margin-top: auto ;
+    margin-bottom: 1rem;
+}
 </style>

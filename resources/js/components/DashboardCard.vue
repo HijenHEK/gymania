@@ -18,12 +18,12 @@ export default {
 <style scoped>
     .card {
         min-width: 214px;
-        min-height: 100px;
         max-width: 400px;
-        max-height: 100px;
+        height: 100%;
         display: flex;
+        border-radius: 5px;        
         flex-direction: column;
-        border-radius: 5px;
+
         padding: 1rem;
         margin: 0.5rem 1rem;
         }

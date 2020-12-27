@@ -4,7 +4,7 @@
   <router-link to="/memberships/active">
       <dashboard-card color="blue" >
           <div class="header">
-            <div class="title">Active memberships</div>
+            <div class="title">Active</div>
             <div class="side-meta">{{activeMemberships.length}}</div>
           </div>
       </dashboard-card>
@@ -12,7 +12,7 @@
     <router-link to="/memberships/expiring">
       <dashboard-card color="red" >
           <div class="header">
-            <div class="title">Expiring memberships</div>
+            <div class="title">Expiring</div>
             <div class="side-meta">{{ExpiringMemberships.length}}</div>
           </div>
       </dashboard-card>
@@ -99,13 +99,13 @@ export default {
         return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       },
     getMemberships(){
-      axios.get('/memberships').then(response=>this.memberships = response.data)
+      axios.get('/memberships?all=true').then(response=>this.memberships = response.data)
     },
       getMembers(){
-      axios.get('/members').then(response=>this.members = response.data)
+      axios.get('/members?all=true').then(response=>this.members = response.data)
     },
       getPackages(){
-      axios.get('/packages').then(response=>this.packages = response.data)
+      axios.get('/packages?all=true').then(response=>this.packages = response.data)
     }
   },
   created(){
@@ -120,13 +120,14 @@ export default {
 .cards {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
-  
 }
 .cards > * {
   flex-basis: 220px;
   flex-grow: 1;
   flex-shrink: 1;
+  height: 100%;
+
 }
 </style>

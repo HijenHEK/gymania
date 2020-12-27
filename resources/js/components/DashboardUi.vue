@@ -51,14 +51,14 @@
     .content {
         flex: 100%;
         height: 100%;
-        padding: 2rem 2rem 2rem 5rem;
+        padding: 1rem 2rem 1rem 5rem;
         overflow: scroll;
 
     }
 
     .content--expend {
         
-        padding: 2rem;
+        padding: 0 1rem;
 
     }
     

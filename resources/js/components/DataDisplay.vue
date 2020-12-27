@@ -40,17 +40,17 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-width: 12rem;
-        width: 15rem;
-        flex-basis: 15rem;
+        min-width: 10rem;
+        width: 12rem;
+        flex-basis: 13rem;
         flex-grow: 0.5;
-        max-width: 18rem;
+        max-width: 15rem;
         display: flex;
         color: rgb(48,59,65);
-        background-color:  rgb(240, 240, 243);
+        background-color:  rgb(240, 240, 240);
         margin: 0.5rem;
         border-radius: 10px;
-        padding :1rem 0.5rem;
+        padding :0.5rem;
 
         box-shadow: 1px 1px 1px 1px rgb(200, 200, 200)   ;
         cursor: pointer;
@@ -64,14 +64,14 @@ export default {
     }
     .data-card > * {
         width: 100%;
-        padding: 0.2rem 0;
+        padding: 0.1rem 0;
         text-align: center;
 
     }
     .data-card .avatar {
-        width: 10rem;
-        height: 10rem;
-        margin : 1rem;
+        width: 8rem;
+        height: 8rem;
+        margin : 0.5rem;
     }
     .avatar {
 
