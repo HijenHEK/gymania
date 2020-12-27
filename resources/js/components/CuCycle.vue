@@ -70,7 +70,7 @@ export default {
             
                 this.form.post('/cycles')
                 .then( response => {
-                    
+                    this.$emit('done')
                 })
 
 

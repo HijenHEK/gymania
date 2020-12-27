@@ -60,7 +60,7 @@ export default {
             
                 this.form.post('/activities')
                 .then( response => {
-                    
+                    this.$emit('done')
                 })
 
 

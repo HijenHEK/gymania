@@ -1,7 +1,7 @@
 <template>
 
     <div class="body form adding-packages">
-                            <h3 class="header">you can add packages now !</h3>
+                <h3 class="header">you can add packages now !</h3>
 
                     <div class="select-package group">
                         <input type="text" name="package" id="packages" class="control" v-model="query" autocomplete="off" @keyup="search($event)" placeholder="search and select packages">
@@ -89,7 +89,20 @@ export default {
 </script>
 
 <style scoped>
-   
+.form {
+        max-width: 20rem;
+        margin: 0 auto;
+        height: 100%;
+        
+    }
+    .header {
+        margin: 2rem 0;
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top : 2rem ;
+    }
 .select-package {
     margin-bottom: 0.5rem;
     position: relative;
@@ -106,18 +119,19 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
 }
-.adding-packages  .footer {
-    width: 100%;
-    margin-top: auto ;
-    display: flex;
-    justify-content: flex-end;
-}
+
 .package {
     background: rgb(155, 155, 155);
     cursor: pointer;
 }
+.packages-list .package {
+    background-color: rgb(40, 40, 40) ;
+    color: white ;    
+    cursor: pointer;
+
+}
 .package-list .package:first-child{
-    background: rgb(209, 209, 209);
+    font-weight: 600;
 }
 .package.selected {
     background: rgb(207, 207, 207);
