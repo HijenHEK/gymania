@@ -163,10 +163,16 @@ input[type=number] {
         .control {
             border: none;
             outline: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            box-shadow: 0 0 1px 0px rgb(224, 224, 224);
+            padding: 0.7rem 1rem;
+            // border-radius: 5px;
+            // background-color: #e0e0e0;
+            background-color: transparent;
+            // box-shadow: 0 1px 3px 1px #b0b0b0;
             width: 100%;
+            border-bottom: 1px solid #b6b6b6;
+        }
+        .control:focus {
+            border: 1px solid #b6b6b6;
         }
         .label {
             margin: 1rem 0 ;

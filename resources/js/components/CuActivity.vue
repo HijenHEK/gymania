@@ -85,6 +85,14 @@ export default {
         height: 100%;
         
     }
+    .header {
+        margin: 2rem 0;
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top : 2rem ;
+    }
     .footer {
         display: flex;
         justify-content: flex-end;

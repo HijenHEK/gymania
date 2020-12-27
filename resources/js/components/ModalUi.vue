@@ -2,7 +2,7 @@
     <div class="modal " >
     <font-awesome-icon  size="2x" @click="hideModal" color="white" class="icon icon--close" icon="times"></font-awesome-icon>
     <div class="content">
-        <slot ></slot>
+        <slot></slot>
     </div>
     </div>
 </template>
@@ -31,6 +31,9 @@ export default {
         align-items: center;
         background-color: rgba(29,38,45,0.5);
     }
+    .header {
+        margin-bottom: 2rem;
+    }
     .icon--close {
         position: absolute;
         margin: 5rem;
@@ -38,14 +41,15 @@ export default {
         right : 0 ;
     }
     .content {
-        background-color: rgb(224, 224, 224);
+        background-color: rgb(240, 240, 240);
         width: 30rem;
-        height: 40rem;
+        min-height: 35rem;
         padding: 2rem;
         max-width: 90%;
         border-radius: 5px;
         box-shadow: 0 0 1px 0 rgb(224, 224, 224);
     }
+    
     @media (max-width : 800px) {
         .icon--close {
         position: absolute;

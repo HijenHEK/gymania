@@ -3,6 +3,11 @@
 
     
     <form class="form" @submit.prevent=" action == 'edit' ? update() :create()" @keydown="form.onKeydown($event)" enctype="multipart/form-data">
+        
+        <h3 class="header">
+            {{   action == 'edit' ? 'Edit ' + member.name : 'Add a new member !' }}
+        </h3>
+        
         <div class="group">
             
             <div class="file-upload">
@@ -55,10 +60,14 @@
           </div>
             
             <div class="inline">
-                <input type="radio" id="male" name="gender" v-model="form.gender" value="1">
+                <div >
+                    <input type="radio" id="male" name="gender" v-model="form.gender" value="1">
                 <label for="male">Male</label><br>
-                <input type="radio" id="female" name="gender" v-model="form.gender" value="0">
+                </div>
+                <div >
+                    <input type="radio" id="female" name="gender" v-model="form.gender" value="0">
                 <label for="female">Female</label><br>
+                </div>
             <div v-if="form.errors.has('gender')" class="error"> 
                 {{form.errors.get('gender')}}
             </div>
@@ -66,8 +75,10 @@
           </div>
          
           
-
+            <div class="footer">
           <button :disabled="form.busy" type="submit" class="btn" :class="action == 'edit' ? 'btn--primary' : 'btn--success'">   {{   action == 'edit' ? 'update !' : 'Create !' }}</button>
+            
+            </div>
                 
            
         </form>
@@ -157,13 +168,20 @@ export default {
 
 <style scoped>
 
-        .form {
+               .form {
         max-width: 20rem;
         margin: 0 auto;
         height: 100%;
         
     }
-
+    .header {
+        margin: 2rem 0;
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top : 2rem ;
+    }
     .file-upload {
         margin: 0.5rem auto;
         cursor: pointer;
@@ -176,6 +194,9 @@ export default {
     justify-content: center;
     overflow: hidden;
 
+}
+.file-upload {
+    box-shadow: 0 0 1px 1px rgb(155, 155, 155);
 }
 .file-upload img{
     width: 100%;
@@ -231,37 +252,5 @@ export default {
     
 }
 
-/* packages */
-.select-package {
-    margin-bottom: 0.5rem;
-    position: relative;
-}
-.packages-list {
-    position: absolute;
-    width: 100%;
-    
-}
-.adding-packages {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.adding-packages  .footer {
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.package {
-    background: rgb(155, 155, 155);
-    cursor: pointer;
-}
-.package-list .package:first-child{
-    background: rgb(209, 209, 209);
-}
-.package.selected {
-    background: rgb(207, 207, 207);
 
-}
 </style>

@@ -113,12 +113,17 @@ export default {
     
 }
 
+.data-list .data {
+    background-color: rgb(40, 40, 40);
+    color: white;    
+}
 .data {
     background: rgb(155, 155, 155);
     cursor: pointer;
+
 }
 .data-list .data:first-child{
-    background: rgb(209, 209, 209);
+    font-weight: 600;
 }
 .data.selected {
     background: rgb(207, 207, 207);

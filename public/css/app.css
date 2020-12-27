@@ -167,10 +167,14 @@ input[type=number] {
 .form .group .control {
   border: none;
   outline: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0 1px 0px #e0e0e0;
+  padding: 0.7rem 1rem;
+  background-color: transparent;
   width: 100%;
+  border-bottom: 1px solid #b6b6b6;
+}
+
+.form .group .control:focus {
+  border: 1px solid #b6b6b6;
 }
 
 .form .group .label {

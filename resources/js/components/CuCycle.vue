@@ -88,15 +88,20 @@ export default {
 </script>
 
 <style scoped>
+
         .form {
         max-width: 20rem;
         margin: 0 auto;
         height: 100%;
         
     }
+    .header {
+        margin: 2rem 0;
+    }
     .footer {
         display: flex;
         justify-content: flex-end;
+        margin-top : 2rem ;
     }
 .select-package {
     margin-bottom: 0.5rem;
