@@ -1,5 +1,5 @@
-<template @done="hideModal">
-    <div class="modal " >
+<template @done="hideModal" >
+    <div class="modal" @click="handle($event)" >
     <font-awesome-icon  size="2x" @click="hideModal" color="white" class="icon icon--close" icon="times"></font-awesome-icon>
     <div class="content">
         <slot></slot>
@@ -7,15 +7,22 @@
     </div>
 </template>
 <script>
-
+import lodash from 'lodash'
 export default {
 
     methods : {
         hideModal(){
             this.$emit('hide-modal');
         },
-        
+        handle : _.debounce(function(e){
+            if(e.target.className.includes('modal')) {
+                this.hideModal();
+            }   
+        })
+    },
+    mounted(){
     }
+    
 }
 </script>
 
@@ -24,6 +31,7 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 800;
         height: 100%;
         width: 100%;
         display: flex;

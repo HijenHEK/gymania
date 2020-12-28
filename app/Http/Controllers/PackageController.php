@@ -23,11 +23,13 @@ class PackageController extends Controller
         {
             $key = Request('q');
             return Package::latest()->where('name' , 'LIKE' , "%{$key}%")
-                        ->orWhere('fee' , 'LIKE' , "%{$key}%")
-                        ->with(['activity' , 'cycle'])->get();
+            ->orWhere('fee' , 'LIKE' , "%{$key}%")
+            ->orWhere('id' , 'LIKE' , "%{$key}%")
+            ->with(['activity' , 'cycle'])->paginate(10);
     
         }
-        return Package::with('activity' , 'cycle')->get();
+        return Request('all')  ? Package::with('activity' , 'cycle')->get() : Package::with('activity' , 'cycle')->paginate(10);
+
     }
 
     /**

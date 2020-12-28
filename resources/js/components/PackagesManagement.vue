@@ -9,7 +9,7 @@
 
 
     <div :class="{'cards' : !rows}">
-        <data-display v-for="p in packages" :key="p.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(p)">
+        <data-display v-for="p in packages.data" :key="p.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(p)">
                 
                 <div class="name">
                     {{p.name}}
@@ -32,19 +32,22 @@
     <modal-ui v-if="modal"  @hide-modal="hide()">
         <cu-package v-if="modal=='package'" :selected="selected" @done="hide()"></cu-package>
     </modal-ui>
+            <laravel-vue-pagination :data="packages" @pagination="loadData" />
 
  </div>
 </template>
 
 <script>
 import DataDisplay from "./DataDisplay.vue";
+import LaravelVuePagination from './LaravelVuePagination.vue';
 import ManagementNav from "./ManagementNav.vue";
 
 export default {
     
     components :  {
         DataDisplay,
-        ManagementNav
+        ManagementNav,
+        LaravelVuePagination
     },
   
     data(){
@@ -58,7 +61,16 @@ export default {
         }
     },
     methods :{
-        search : _.debounce(function(query) {
+        loadData(p){
+            if(this.query.length > 0) {
+                this.search(this.query , p)
+            }else {
+                this.getPackages(p)
+            }
+        },
+        search : _.debounce(function(query ,page =1) {
+            this.query=query
+
             // if(this.query == "") {
             //     this.members = this.data 
             // }else {
@@ -70,7 +82,7 @@ export default {
             // })
                     
             //     }
-            axios.get('/packages?q='+query).then((response) => {
+            axios.get('/packages?q='+query+'&page='+page).then((response) => {
                 console.log(response.data)
                         this.packages = response.data
             })
@@ -86,10 +98,9 @@ export default {
             this.selected = null 
             this.modal = null
         },
-        getPackages(){
-            axios.get('/packages').then(response => {
-                this.data = response.data
-                this.packages = this.data
+        getPackages(page = 1){
+            axios.get('/packages?page='+page).then(response => {
+                this.packages = response.data
             })
 
         }

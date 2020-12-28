@@ -21,11 +21,12 @@ class ActivityController extends Controller
         {
             $key = Request('q');
             return Activity::latest()->where('name' , 'LIKE' , "%{$key}%")
-                        ->orWhere('desc' , 'LIKE' , "%{$key}%")
-                        ->get();
+            ->orWhere('id' , 'LIKE' , "%{$key}%")
+            ->orWhere('desc' , 'LIKE' , "%{$key}%")
+            ->paginate(3);
     
         }
-        return Activity::latest()->get();
+        return Request('all')  ? Activity::latest()->get() : Activity::latest()->paginate(3);
 
     }
 

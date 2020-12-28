@@ -8,7 +8,7 @@
 
 
     <div :class="{'cards' : !rows}">
-        <data-display v-for="c in cycles" :key="c.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(c)">
+        <data-display v-for="c in cycles.data" :key="c.id"   :class="!rows ? 'data-card' : 'data'" @click.native="edit(c)">
                 
                 <div class="name">
                     {{c.name}}
@@ -29,17 +29,19 @@
     <modal-ui v-if="modal" @hide-modal="modal=null" >
         <cu-cycle v-if="modal=='cycle'" :selected="selected" @done="hide()"></cu-cycle>
     </modal-ui>
+            <laravel-vue-pagination :data="cycles" @pagination="loadData" />
 
  </div>
 </template>
 
 <script>
 import DataDisplay from "./DataDisplay.vue"
+import LaravelVuePagination from './LaravelVuePagination.vue'
 import ManagementNav from "./ManagementNav.vue"
 
 
 export default {
-  components: { DataDisplay , ManagementNav},
+  components: { DataDisplay , ManagementNav, LaravelVuePagination},
     data(){
         return {
             selected : null,
@@ -51,7 +53,16 @@ export default {
         }
     },
     methods :{
-         search : _.debounce(function(query) {
+         loadData(p){
+            if(this.query.length > 0) {
+                this.search(this.query , p)
+            }else {
+                this.getCycles(p)
+            }
+        },
+        search : _.debounce(function(query ,page =1) {
+            this.query=query
+
             // if(this.query == "") {
             //     this.members = this.data 
             // }else {
@@ -63,7 +74,7 @@ export default {
             // })
                     
             //     }
-            axios.get('/cycles?q='+query).then((response) => {
+            axios.get('/cycles?q='+query+'&page='+page).then((response) => {
                 console.log(response.data)
                         this.cycles = response.data
             })
@@ -79,10 +90,9 @@ export default {
             this.selected = null 
             this.modal = null
         },
-        getCycles(){
-            axios.get('/cycles').then(response => {
-                this.data = response.data
-                this.cycles = this.data
+        getCycles(page = 1){
+            axios.get('/cycles?page='+page).then(response => {
+                this.cycles = response.data
                 })
         }
         

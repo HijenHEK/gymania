@@ -21,12 +21,14 @@ class CycleController extends Controller
         {
             $key = Request('q');
             return Cycle::latest()->where('name' , 'LIKE' , "%{$key}%")
-                        ->orWhere('desc' , 'LIKE' , "%{$key}%")
-                        ->orwhere('period' , 'LIKE' , "%{$key}%")
-                        ->get();
+            ->orWhere('period' , 'LIKE' , "%{$key}%")
+            ->orWhere('id' , 'LIKE' , "%{$key}%")
+            ->orWhere('desc' , 'LIKE' , "%{$key}%")
+            ->paginate(3);
     
         }
-        return Cycle::latest()->get();
+        return Request('all')  ? Cycle::latest()->get() : Cycle::latest()->paginate(3);
+
     }
 
     /**
