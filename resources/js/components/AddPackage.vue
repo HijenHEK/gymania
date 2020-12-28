@@ -42,7 +42,7 @@ export default {
     methods : {
 
         get(){
-            axios.get('/packages').then((response)=>{
+            axios.get('/packages?all=true').then((response)=>{
             this.packages = response.data
             
             })

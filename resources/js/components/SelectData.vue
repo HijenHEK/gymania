@@ -47,7 +47,7 @@ export default {
     methods : {
 
         get(){
-            axios.get('/'+this.data).then((response)=>{
+            axios.get('/'+this.data+'?all=true').then((response)=>{
                 this.fetched = response.data
                 console.log('/'+this.data  ,this.fetched)
             

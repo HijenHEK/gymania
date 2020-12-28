@@ -19,7 +19,7 @@ class MembershipController extends Controller
     {
         if($member->id){
             
-            return $member->memberships()->with(['package' , 'statuses' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->paginate(10);
+            return $member->memberships()->with(['package' , 'statuses' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->get();
         }
         return Request('all') ? Membership::with(['member' , 'statuses' , 'package'])->orderBy('expired_at' , 'ASC')->get()  : Membership::with(['member' , 'statuses' , 'package'])->orderBy('expired_at' , 'ASC')->paginate(10);
     }

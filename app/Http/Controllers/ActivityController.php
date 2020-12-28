@@ -23,10 +23,10 @@ class ActivityController extends Controller
             return Activity::latest()->where('name' , 'LIKE' , "%{$key}%")
             ->orWhere('id' , 'LIKE' , "%{$key}%")
             ->orWhere('desc' , 'LIKE' , "%{$key}%")
-            ->paginate(3);
+            ->paginate(10);
     
         }
-        return Request('all')  ? Activity::latest()->get() : Activity::latest()->paginate(3);
+        return Request('all')  ? Activity::latest()->get() : Activity::latest()->paginate(10);
 
     }
 

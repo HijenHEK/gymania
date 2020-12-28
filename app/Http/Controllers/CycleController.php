@@ -24,10 +24,10 @@ class CycleController extends Controller
             ->orWhere('period' , 'LIKE' , "%{$key}%")
             ->orWhere('id' , 'LIKE' , "%{$key}%")
             ->orWhere('desc' , 'LIKE' , "%{$key}%")
-            ->paginate(3);
+            ->paginate(10);
     
         }
-        return Request('all')  ? Cycle::latest()->get() : Cycle::latest()->paginate(3);
+        return Request('all')  ? Cycle::latest()->get() : Cycle::latest()->paginate(10);
 
     }
 
