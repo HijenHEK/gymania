@@ -80,14 +80,14 @@
 
                 <div class="menu__footer">
                     <div class="menu__links">
-                        <a class="link" href="#">
+                        <router-link class="link" tag="a" to="/staff" >
                         
                             <span>Staff Management</span> 
     
                             <font-awesome-icon size="lg" class="icon" icon="user-cog"></font-awesome-icon>
     
     
-                        </a>
+                        </router-link>
                         <a class="link" href="#">
                             
                             <span>Settings</span> 

@@ -196,9 +196,8 @@ export default {
 
 
     .header .avatar {
-        max-width: 15rem;
-        max-height:  15rem;
-        min-width: 5rem;
+        width: 12rem;
+        height:  12rem;
         margin: 2rem;
         border-radius: 100%;
         display: flex;
@@ -330,7 +329,7 @@ export default {
 
         }
     }
-    @media (max-width : 450px) {
+    @media (max-width : 350px) {
         .info {
             min-width: unset;
         }

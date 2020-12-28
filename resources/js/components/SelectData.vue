@@ -6,7 +6,7 @@
 
                     <div v-if="!selected" class="select-data group">
                         <input type="text" name="data" id="data" class="control" v-model="query" @keyup="search($event)"
-                         :placeholder="data == 'activities' ? 'select an activity' : 'select a cycle' " autocomplete="off">
+                         :placeholder="placeholder" autocomplete="off">
                         <div v-if="searched" class="data-list">
 
                             <div v-for="item in searched" :key="item.id" @click="select(item)" class="data control">
@@ -42,6 +42,11 @@ export default {
             selected : this.edit,
             query : '' ,
             searched : {} ,
+        }
+    },
+    computed : {
+        placeholder(){
+            return 'select '+this.data
         }
     },
     methods : {
@@ -94,6 +99,7 @@ export default {
 
 <style scoped>
     .form {
+        width: 100%;
         max-width: 20rem;
         margin: 0 auto;
         height: 100%;
@@ -108,6 +114,7 @@ export default {
 }
 .data-list {
     position: absolute;
+    top: 100%;
     z-index: 100;
     width: 100%;
     

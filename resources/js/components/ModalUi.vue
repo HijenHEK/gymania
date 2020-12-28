@@ -15,9 +15,7 @@ export default {
             this.$emit('hide-modal');
         },
         handle : _.debounce(function(e){
-            if(e.target.className.includes('modal')) {
-                this.hideModal();
-            }   
+            if(e.target && e.target.className.length > 1 && e.target.className.includes('modal')) this.hideModal();
         })
     },
     mounted(){

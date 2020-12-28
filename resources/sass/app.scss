@@ -104,14 +104,14 @@ input[type=number] {
         font-weight: 700    ;
         letter-spacing: 0.2rem;
         padding: 5rem;
-        align-self: start;
-        margin-top: 10%;
         color: rgb(61, 180, 61);
+        text-align: center;
     }
     height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
     background: url('../img/bg1.jpg'); /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, rgba(67, 198, 172, 0.4), rgba(25, 22, 84, 0.5)) , url('../img/bg1.jpg'); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, rgba(27, 34, 73, 0.6), rgba(44, 44, 44, 0.7)) , url('../img/bg1.jpg'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -119,27 +119,34 @@ input[type=number] {
     .aside {
         .header {
             font-size: 1.2rem;
-            margin:2rem 0;
+            margin:1rem 0;
             text-align: center;
         } 
         color: rgb(255, 255, 255);
-        min-width : 320px;
-        min-height: 400px;
-        margin-right : 10% ; 
-        margin-bottom : 5% ; 
+        width : 450px;
+        height: 500px;
+        
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         background-color: rgba(34, 34, 34, 0.9);
-        padding: 3rem;
+        padding: 2rem;
         border-radius: 10px;
-            .form {
-                flex: 100%;
+        .form {
+            flex: 100%;
+            .group {
+                .control {
+                    color: white ;
+                }
+            }
+                
             }
     }
 }
-
+.is-invalid {
+    border : 2px solid rgb(221,75,57);
+}
 .form {
     .inline {
         margin: 1rem 0 ;
@@ -161,6 +168,9 @@ input[type=number] {
     .group {
         width: 100%;
         margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        
         .control {
             border: none;
             outline: none;
@@ -170,10 +180,14 @@ input[type=number] {
             background-color: transparent;
             // box-shadow: 0 1px 3px 1px #b0b0b0;
             width: 100%;
+            border: 1px solid transparent;
             border-bottom: 1px solid #b6b6b6;
+
+
         }
         .control:focus {
             border: 1px solid #b6b6b6;
+            
         }
         .label {
             margin: 1rem 0 ;
@@ -328,25 +342,10 @@ input[type=number] {
         font-size: 90%;
     }
     .sign {
-        .brand {
-            max-width: 100vw;
-
-            padding: unset;
-            align-self: unset;
-            margin-top: 10%;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
         
         .aside {
-            max-width: 100vw;
-            margin-right : unset ; 
-            margin-bottom : unset ; 
+            width: 400px;
+            height: 450px;
             
         }
     }
@@ -363,7 +362,6 @@ input[type=number] {
 
             padding: unset;
             align-self: unset;
-            margin-top: 10%;
             padding: 2rem 0;
             text-align: center;
         }
@@ -374,7 +372,8 @@ input[type=number] {
         justify-content: flex-start;
         
         .aside {
-            max-width: 100vw;
+            max-width: 95vw;
+            max-height: 95vw;
             margin-right : unset ; 
             margin-bottom : unset ; 
             

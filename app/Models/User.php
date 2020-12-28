@@ -52,12 +52,14 @@ class User extends Authenticatable
             $role = Role::findOrFail($role);
             
         }else if(is_string($role)) {
-            $role = Role::where('name' , $role)->first();
+            $role = Role::where('name' , $role)->orWhere('id' , $role)->first();
         } 
         if(!$role) {
             return false ;
         }
-        return $this->role()->associate($role);
+        $this->role()->associate($role);
+        $this->save();
+        return $this ;
     }
 
     public function ableTo($role) {

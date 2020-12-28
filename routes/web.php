@@ -7,6 +7,8 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\MembershipStatusController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +37,8 @@ Route::apiResource('members', MemberController::class);
 Route::apiResource('packages', PackageController::class);
 Route::apiResource('cycles', CycleController::class);
 Route::apiResource('activities', ActivityController::class);
+Route::apiResource('users', UserController::class);
+Route::apiResource('roles', RoleController::class);
 
 
 Route::post('members/{member}/memberships', [MembershipController::class , 'store']);
