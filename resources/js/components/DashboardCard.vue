@@ -76,12 +76,7 @@ export default {
             }
             
         }
-        @media (max-width : 1320px) {
-            .card {
-                min-width: 350px;
-                
-            }
-        }
+        
             @media (max-width : 1080px) {
             .card {
                 min-width: 230px;

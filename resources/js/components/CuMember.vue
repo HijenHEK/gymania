@@ -162,6 +162,8 @@ export default {
     },
     
     mounted(){
+
+        this.$root.alert('hello agin from member' , 4)
     }
 }
 </script>

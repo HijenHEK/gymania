@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    <vue-alert :msg="alertMsg" :active="alertActive" 
+    :color="alertColor" :size="alertSize" :type="alertType"></vue-alert>
+
     <dashboard-ui inline-template>
+
         <div class="dashboard">
             <div class="menu" :class="{'menu--compact' : compact}">
 
-                
+
                 <div class="menu__header" >
                     <div class="user">
 
@@ -27,6 +31,7 @@
                 </div>
     
                 <div class="menu__links">
+                    
                     <router-link tag="a" class="link" to="/">
                         
                         <span>Dashboard</span> 
@@ -35,6 +40,7 @@
 
 
                     </router-link>
+
                     <router-link tag="a" class="link" to="/members">
                         
                         <span>Members</span> 
@@ -109,6 +115,7 @@
             </div>
     
             <div class="content" :class="{'content--expend' : !compact}">
+
                 <router-view></router-view>
             </div>
         </div>

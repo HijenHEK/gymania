@@ -58,6 +58,7 @@ Vue.component('cu-activity', require('./components/CuActivity.vue').default);
 Vue.component('cu-cycle', require('./components/CuCycle.vue').default);
 Vue.component('dashboard-card', require('./components/DashboardCard.vue').default);
 Vue.component('bars-chart', require('./components/BarsChart.vue').default);
+Vue.component('vue-alert', require('./components/VueAlert.vue').default);
 
 
 /**
@@ -75,6 +76,33 @@ import {router} from './router.js'
 const app = new Vue({
     el: '#app',
     router,
+    data : {
+        alertActive : false,
+        alertMsg : '',
+        alertType : '',
+        alertColor : '',
+        alertSize : '',
+        alertSeconds : 4,
+    },
+    methods : {
+        alert(msg = 'hello from root !!' , duration = 4 ,data = {
+            color : 'success' ,
+            size : 'lg',
+            type : 'bottom-right-corner',
+
+        }){
+            
+            this.alertActive = true
+            this.alertMsg = msg
+            this.alertType = data.type 
+            this.alertColor = data.color
+            this.alertSize = data.size
+            this.alertSeconds = duration
+            setTimeout(() => {
+                this.alertActive = false
+            }, this.alertSeconds*1000);
+        }
+    }
 });
 router.replace({ path: '*', redirect: '/' })
 

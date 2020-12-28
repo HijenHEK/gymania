@@ -47,6 +47,7 @@ main {
 #app {
     height: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .container {
@@ -276,7 +277,6 @@ input[type=number] {
     outline: none;
     opacity: 0.9;
     padding: 0.5rem 1rem;
-    border-radius: 10px;
     &--success {
         background-color: rgb(29,167,90);
         color: white;

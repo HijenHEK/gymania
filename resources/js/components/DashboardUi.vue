@@ -1,17 +1,30 @@
 
 <script>
     export default {
+        
         data () {
             return {
                 compact : false,
+                // alertActive : false,
+                // alertMsg : ''
             }
+        },
+        methods :{
+            // alert(msg , seconds){
+            //     this.alertActive = true 
+            //     this.alertMsg = msg 
+            //     setTimeout(() => {
+            //         this.alertActive = false
+            //     }, seconds*1000);
+            // }
         },
         mounted() {
             this.compact = window.innerWidth < 800 ;
             window.addEventListener('resize' , ()=> {{
                 if(window.innerWidth < 800) this.compact = true ;
-                else this.compact = false;
-            }})
+                // else this.compact = false;
+            }});
+            // this.alert('hello there !! how are you' , 5 );
         }
     }
 </script>
