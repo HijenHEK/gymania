@@ -80,8 +80,10 @@ export default {
                     
                     
                     this.form.post('/packages?activity='+this.activity.id+'&cycle='+this.cycle.id)
-                .then( response => {
+                .then( (response) => {
                         this.$emit('done')
+                                            this.$root.alert('Package : '+ response.data.name  + ' created successfully' , 3)
+
                     })
 
             
@@ -89,8 +91,10 @@ export default {
         },
         update(){
             this.form.put('/packages/'+this.selected.id+'?activity='+this.activity.id+'&cycle='+this.cycle.id)
-                .then( response => {
+                .then( (response) => {
                         this.$emit('done')
+                                            this.$root.alert('Package : '+ this.selected.name  + ' updated successfully' , 3)
+
 
                 })
         }

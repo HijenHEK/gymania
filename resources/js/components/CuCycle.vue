@@ -70,16 +70,20 @@ export default {
 
             
                 this.form.post('/cycles')
-                .then( response => {
+                .then( (response) => {
                     this.$emit('done')
+                    this.$root.alert('Cycle : '+ response.data.name  + ' created successfully' , 3)
+
                 })
 
 
         },
         update(){
             this.form.put('/cycles/'+this.selected.id)
-                .then( response => {
+                .then( (response) => {
                     this.$emit('done')
+                    this.$root.alert('Cycle : '+this.selected.name + ' updated successfully' , 3)
+
                 })
         }
     },

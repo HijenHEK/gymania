@@ -59,16 +59,19 @@ export default {
 
             
                 this.form.post('/activities')
-                .then( response => {
+                .then( (response) => {
                     this.$emit('done')
+                                        this.$root.alert('Activity : '+ response.data.name  + ' created successfully' , 3)
+
                 })
 
 
         },
         update(){
             this.form.put('/activities/'+this.selected.id)
-                .then( response => {
+                .then( (response) => {
                                        this.$emit('done')
+                    this.$root.alert('Activity : '+ this.selected.name  + ' updated successfully' , 3)
 
                 })
         }

@@ -66,13 +66,16 @@ export default {
         },
         remove(p){
             this.selected.splice(p,1)
+
         },
         add(){
 
             
                 axios.post('/members/'+this.member+'/memberships' , this.selected)
-                .then(  response => {
+                .then(  (response) => {
                     this.$emit('done');
+                    this.$root.alert('Membership'+ `${this.selected.length>1 ? 's' : ''}` + ' added successfully to member #' +this.member , 3)
+
                 })
 
 

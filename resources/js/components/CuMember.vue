@@ -143,6 +143,8 @@ export default {
               }
             }).then((response)=>{
                 this.$emit('done')
+                this.$root.alert('Member : '+this.member.name + ' updated successfully' , 3)
+
             })
         },
         create(){
@@ -155,6 +157,8 @@ export default {
             }).then((response)=>{
                 this.created = response.data
                 this.$emit('next-step' , this.created.id)
+                this.$root.alert('Member : '+response.data.name + ' created successfully' , 3)
+
             })
         },
         
@@ -163,7 +167,6 @@ export default {
     
     mounted(){
 
-        this.$root.alert('hello agin from member' , 4)
     }
 }
 </script>
