@@ -61,7 +61,7 @@ class User extends Authenticatable
         $this->save();
         return $this ;
     }
-
+    
     public function ableTo($role) {
         if(is_integer($role)) {
             $role = Role::findOrFail($role);

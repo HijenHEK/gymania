@@ -26,7 +26,7 @@ class ActivityController extends Controller
             ->paginate(10);
     
         }
-        return Request('all')  ? Activity::latest()->get() : Activity::latest()->paginate(10);
+        return Request('all')  ? Activity::latest()->with('memberships.statuses')->get() : Activity::latest()->paginate(10);
 
     }
 

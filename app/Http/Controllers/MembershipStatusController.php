@@ -35,4 +35,5 @@ class MembershipStatusController extends Controller
         return $membership;
 
     }
+    
 }

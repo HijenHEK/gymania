@@ -28,7 +28,7 @@ class PackageController extends Controller
             ->with(['activity' , 'cycle'])->paginate(10);
     
         }
-        return Request('all')  ? Package::with('activity' , 'cycle')->get() : Package::with('activity' , 'cycle')->paginate(10);
+        return Request('all')  ? Package::with(['activity' , 'cycle' , 'memberships' ,'memberships.statuses'])->get() : Package::with(['activity' , 'cycle', 'memberships' ,'memberships.statuses'])->paginate(10);
 
     }
 

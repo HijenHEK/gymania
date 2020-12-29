@@ -14,4 +14,15 @@ class Activity extends Model
     public function packages() {
         return $this->hasMany(Package::class);
     }
+    public function memberships() {
+        return $this->hasManyThrough(Membership::class , Package::class);
+        // return $this->packages->map->memberships->collapse();
+    }
+    public function membershipsStatusCount() {
+        return $this->packages->map->memberships->collapse()->map->status->countBy() ;
+        // return $this->packages->map->memberships->collapse()->map->status()->where('name','suspended')->count ;
+    }
+    // public function me
+    
+    
 }

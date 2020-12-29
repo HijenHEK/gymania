@@ -37,36 +37,30 @@
     </div>
 
     <div class="main">
-      <!-- <bars-chart :chartdata="data"></bars-chart> -->
+    <div class="activities-chart">
+    <h4 class="header">Active members per Activity</h4>
+    <activities-chart v-if="activities.length > 1 " :activities="activities"></activities-chart> 
+    </div>
     </div>
   </div>
 </template>
 
 <script>
+import ActivitiesChart from './ActivitiesChart.vue'
 export default {
+  components : {
+    ActivitiesChart
+  },
   data(){
     return {
       memberships : {},
       members : {},
       packages : {},
+      activities : {},
     }  
   },
   computed : {
-    data(){
-      return {
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              datasets: [{
-                label: 'Data One',
-              backgroundColor: '#f87979',
-              pointBackgroundColor: 'white',
-              borderWidth: 1,
-              pointBorderColor: '#249EBF',
-              barThickness: 20,
-              
-              data: [5, 10, 15, 25, 45, 70, 115, 185, 70, 75, 70, 60]
-          }]
-        }
-    },
+    
     loaded (){
       return this.memberships.length && this.members.length 
     },
@@ -79,7 +73,6 @@ export default {
     ExpiringMemberships(){
       return this.memberships.filter(e => {
           if(e.expired_at) {
-
             // Split timestamp into [ Y, M, D, h, m, s ]
           var t = e.expired_at.split(/[- :]/);
           // Apply each element to the Date function
@@ -99,19 +92,23 @@ export default {
         return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       },
     getMemberships(){
-      axios.get('/memberships?all=true').then(response=>this.memberships = response.data)
+      axios.get('/memberships?all=true').then((response)=>{this.memberships = response.data})
     },
       getMembers(){
-      axios.get('/members?all=true').then(response=>this.members = response.data)
+      axios.get('/members?all=true').then((response)=>{this.members = response.data})
     },
       getPackages(){
-      axios.get('/packages?all=true').then(response=>this.packages = response.data)
+      axios.get('/packages?all=true').then((response)=>{this.packages = response.data})
+    },
+    getActivities(){
+      axios.get('/activities?all=true').then((response) => {this.activities = response.data})
     }
   },
   created(){
     this.getMemberships()
     this.getMembers()
     this.getPackages()
+    this.getActivities()
   }
 }
 </script>
@@ -128,6 +125,20 @@ export default {
   flex-grow: 1;
   flex-shrink: 1;
   height: 100%;
+
+}
+.main {
+  margin-top: 2rem;
+}
+.activities-chart {
+  
+  max-width: 45rem;
+  max-height: 30rem;
+  margin: 1rem;
+}
+.activities-chart .header {
+  margin: 1rem ;
+  text-align: center;
 
 }
 </style>
