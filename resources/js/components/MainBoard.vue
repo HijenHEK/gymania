@@ -37,6 +37,10 @@
     </div>
 
     <div class="main">
+      <div class="main-el Expiring-memberships">
+        <h3 class="header">Exp Memberships</h3>
+        <expiring-memberships v-if="memberships.length > 0 " :memberships="memberships"></expiring-memberships> 
+      </div>
       <div class="main-el activities-chart">
         <h3 class="header">Active members per Activity</h3>
     <activities-chart v-if="activities.length > 1 " :activities="activities"></activities-chart> 
@@ -44,10 +48,6 @@
       <div class="main-el top-packages">
         <h3 class="header">Famous Packages</h3>
         <top-packages v-if="packages.length > 0 " :packages="packages"></top-packages> 
-      </div>
-      <div class="main-el Expiring-memberships">
-        <h3 class="header">Exp Memberships</h3>
-        <expiring-memberships v-if="memberships.length > 0 " :memberships="memberships"></expiring-memberships> 
       </div>
     </div>
   </div>
@@ -166,6 +166,9 @@ export default {
   text-align: center;
   color : rgb(36, 36, 36);
 
+}
+.Expiring-memberships {
+  flex-basis: 100%;
 }
 .top-packages {
   max-height: unset;
