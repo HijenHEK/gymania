@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\ModelStatus\HasStatuses;
@@ -20,6 +21,16 @@ class Package extends Model
     public function memberships() {
         return $this->hasMany(Membership::class);
     }
-
+    public function activeMemberships() {
+        $active = [] ;
+        foreach ($this->memberships()  as $m) {
+            if ($m->status == "active") {
+                array_push($active,$m);
+            }
+        }
+        $active = new Collection($active);
+        return $active ;
+        
+    }
 
 }

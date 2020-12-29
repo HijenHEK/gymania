@@ -134,4 +134,12 @@
         }
         
     }
+        @media (max-width : 450px) {
+        .content {
+            
+            padding: 1rem 2rem 1rem 4rem;
+
+        }
+        
+    }
 </style>

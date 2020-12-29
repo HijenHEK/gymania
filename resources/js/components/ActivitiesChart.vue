@@ -71,11 +71,13 @@ export default {
 				}
 		} 
   },
-  watch: {
-  chartData () {
-    this.$data._chart.update()
-  }
-},
+  watch : {
+	  activities : function(){
+		  	this.generateData()
+			this.renderChart(this.chartData, this.options)
+
+	  }
+  },
   methods : {
 	  generateData(){
 			var labels = []
@@ -96,7 +98,16 @@ export default {
 
     },
   },
+  
   mounted () {
+	//   Echo.channel('updates')
+	// 		.listen('MemberUpdate' , ()=>{
+	// 				this.generateData()
+	// 				this.renderChart(this.chartData, this.options)
+
+
+
+	// 		})
 	this.generateData()
 	this.renderChart(this.chartData, this.options)
 

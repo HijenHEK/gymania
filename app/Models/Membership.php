@@ -23,5 +23,5 @@ class Membership extends Model
         $this->expired_at = Carbon::createFromTimeString($this->expired_at)->addDays($n)->setTime(0, 0, 0);
         $this->save();
     }
-
+    
 }

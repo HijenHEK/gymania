@@ -6,6 +6,7 @@ use App\Events\MembershipUpdate;
 use App\Events\MemberUpdate;
 use App\Models\Member;
 use App\Models\Membership;
+use DateTime;
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller
@@ -21,9 +22,15 @@ class MembershipController extends Controller
             
             return $member->memberships()->with(['package' , 'statuses' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->get();
         }
-        return Request('all') ? Membership::with(['member' , 'statuses' , 'package' ])->orderBy('expired_at' , 'ASC')->get()  : Membership::with(['member' , 'statuses' , 'package'])->orderBy('expired_at' , 'ASC')->paginate(10);
-    }
+        
+        if(Request('exp')) {
+            $exp = Request('exp');
+            return Request('all') ? Membership::with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])->where('expired_at' , '<' ,  now()->addDays($exp))->orderBy('expired_at' , 'ASC')->get()  : Membership::with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])->where('expired_at' , '>' ,  now()->addDays(-3))->orderBy('expired_at' , 'ASC')->paginate(10);
+        }
 
+        return Request('all') ? Membership::with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->get()  : Membership::with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->paginate(10);
+    }
+    
     /**
      * Store a newly created resource in storage.
      *

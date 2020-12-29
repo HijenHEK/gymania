@@ -37,19 +37,31 @@
     </div>
 
     <div class="main">
-    <div class="activities-chart">
-    <h4 class="header">Active members per Activity</h4>
+      <div class="main-el activities-chart">
+        <h3 class="header">Active members per Activity</h3>
     <activities-chart v-if="activities.length > 1 " :activities="activities"></activities-chart> 
-    </div>
+      </div>
+      <div class="main-el top-packages">
+        <h3 class="header">Famous Packages</h3>
+        <top-packages v-if="packages.length > 0 " :packages="packages"></top-packages> 
+      </div>
+      <div class="main-el Expiring-memberships">
+        <h3 class="header">Exp Memberships</h3>
+        <expiring-memberships v-if="memberships.length > 0 " :memberships="memberships"></expiring-memberships> 
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ActivitiesChart from './ActivitiesChart.vue'
+import ExpiringMemberships from './ExpiringMemberships.vue'
+import TopPackages from './TopPackages.vue'
 export default {
   components : {
-    ActivitiesChart
+    TopPackages,
+    ActivitiesChart,
+    ExpiringMemberships
   },
   data(){
     return {
@@ -104,7 +116,15 @@ export default {
       axios.get('/activities?all=true').then((response) => {this.activities = response.data})
     }
   },
-  created(){
+  mounted(){
+    Echo.channel('updates')
+			.listen('MemberUpdate' , ()=>{
+          this.getMemberships()
+          this.getMembers()
+          this.getPackages()
+          this.getActivities()
+
+			})
     this.getMemberships()
     this.getMembers()
     this.getPackages()
@@ -129,16 +149,36 @@ export default {
 }
 .main {
   margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
-.activities-chart {
-  
-  max-width: 45rem;
-  max-height: 30rem;
+.main-el {
+  flex-basis: 35rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 16rem;
   margin: 1rem;
 }
-.activities-chart .header {
-  margin: 1rem ;
+
+.main-el .header {
+  margin: 2rem ;
   text-align: center;
+  color : rgb(36, 36, 36);
+
+}
+.top-packages {
+  max-height: unset;
+}
+
+
+@media (max-width : 600px) {
+  .main {
+    margin-top: 1rem;
+  }
+  .main-el {
+    margin: 0.2;
+  }
 
 }
 </style>
