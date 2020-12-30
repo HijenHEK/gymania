@@ -3,7 +3,7 @@
 		<div class="data-title data-item" >
 			<div class="name">Name</div>
 			<div class="activity">Activity</div>
-			<div class="cycle">Cycle</div>
+			<div class="cycle">Paid</div>
 			<div class="active-members">Members</div>
 
 		</div>

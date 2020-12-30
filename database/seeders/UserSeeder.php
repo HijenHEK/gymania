@@ -29,6 +29,6 @@ class UserSeeder extends Seeder
         $admin->save();
 
 
-        Member::factory()->count(10)->create();
+        Member::factory()->count(30)->create();
     }
 }

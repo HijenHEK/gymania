@@ -27,10 +27,12 @@ class MembershipStatusController extends Controller
 
     }
     public function renew(Membership $membership) {
+
         $date = Carbon::createFromTimeString($membership->expired_at) ;
-        dd($membership->package->cycle->period);
-        $membership->expired_at = $date->addDays($membership->package->cycle->period);
+        // dd($date , now()->addHour()->addSecond() , $date > now()->addHour()->addSecond());
+        $membership->expired_at = $date < now()->addHour()->addSecond() ? now()->addHour()->addDays($membership->package->cycle->period)->setTime(0,0,0) : $date->addDays($membership->package->cycle->period)->setTime(0,0,0);
         $membership->setStatus('active');
+        $membership->save();
         event(new MembershipUpdate());
         return $membership;
 

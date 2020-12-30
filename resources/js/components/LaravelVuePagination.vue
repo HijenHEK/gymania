@@ -1,5 +1,5 @@
 <template>
-    <nav v-if="data" role="navigation" aria-label="Pagination Navigation" class="nav">
+    <nav v-if="data && data.last_page != 1" role="navigation" aria-label="Pagination Navigation" class="nav">
         <div class="sm">
                 <span v-if="data.current_page == 1" class="icon">
                     <svg  fill="currentColor" viewBox="0 0 20 20">

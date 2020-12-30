@@ -31,6 +31,11 @@ class CycleSeeder extends Seeder
             'period' => 365,
 
         ]);
+        Cycle::create([
+            'name' => 'daily',
+            'period' => 1,
+
+        ]);
 
     }
 }

@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-            Membership::currentStatus('active')->where('expired_at' , '<' , now())->get()->map->setStatus('expired');
+            Membership::currentStatus('active')->where('expired_at' , '<' , now()->addHours(1)->addMinutes(1))->get()->map->setStatus('expired');
             Membership::currentStatus('suspended')->get()->map->expand(1);
             event(new MembershipUpdate());
         })->dailyAt('23:00');

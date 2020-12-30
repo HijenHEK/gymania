@@ -23,12 +23,35 @@ class MembershipController extends Controller
             return $member->memberships()->with(['package' , 'statuses' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->get();
         }
         
-        if(Request('exp')) {
-            $exp = Request('exp');
-            return Request('all') ? Membership::with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])->where('expired_at' , '<' ,  now()->addDays($exp))->orderBy('expired_at' , 'ASC')->get()  : Membership::with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])->where('expired_at' , '>' ,  now()->addDays(-3))->orderBy('expired_at' , 'ASC')->paginate(10);
+        if(Request('expiring')) {
+            $exp = Request('expiring');
+            return Request('all') ? 
+                Membership::currentStatus('active')->with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])
+                            ->where('expired_at' , '<' ,  now()->addDays($exp))->orderBy('expired_at' , 'ASC')->get()  
+                : Membership::currentStatus('active')->with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])
+                            ->where('expired_at' , '<' ,  now()->addDays($exp))->orderBy('expired_at' , 'ASC')->paginate(5);
         }
-
-        return Request('all') ? Membership::with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->get()  : Membership::with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])->orderBy('expired_at' , 'ASC')->paginate(10);
+        if(Request('expired')) {
+            // $exp = Request('expiring');
+            return Request('all') ?  
+                Membership::currentStatus('expired')->with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])
+                    ->orderBy('expired_at' , 'ASC')->get()  
+                : Membership::currentStatus('expired')->with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])
+                    ->orderBy('expired_at' , 'ASC')->paginate(5);
+        }
+        if(Request('suspended')) {
+            // $exp = Request('expiring');
+            return Request('all') ?  
+                Membership::currentStatus('suspended')->with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])
+                    ->orderBy('expired_at' , 'ASC')->get()  
+                : Membership::currentStatus('suspended')->with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])
+                    ->orderBy('expired_at' , 'ASC')->paginate(5);
+        }
+        return Request('all') ? 
+            Membership::with(['member' , 'statuses' , 'package' ,'package.cycle' , 'package.activity'])
+                ->orderBy('expired_at' , 'ASC')->get()  
+            : Membership::with(['member' , 'statuses' , 'package' , 'package.cycle' , 'package.activity'])
+                ->orderBy('expired_at' , 'ASC')->paginate(10);
     }
     
     /**
