@@ -39,7 +39,7 @@
         <cu-member v-if="modal=='addMember'" @done="modal=null" @next-step="addPackagesModal"></cu-member>
         <add-package v-if="modal=='addpackage'" @done="modal=null" :member="createdMember" ></add-package>
     </modal-ui>
-            <laravel-vue-pagination :data="members" @pagination="loadData" />
+            <laravel-vue-pagination v-show="!selected" :data="members" @pagination="loadData" />
 
  </div>
 </template>

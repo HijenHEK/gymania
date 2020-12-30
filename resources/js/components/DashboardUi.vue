@@ -64,11 +64,13 @@
     .content {
         flex: 100%;
         height: 100%;
-        padding: 1rem 2rem 1rem 5rem;
         overflow: scroll;
 
     }
+    .content .view {
+                padding: 1rem 2rem 1rem 5rem;
 
+    }
     .content--expend {
         
         padding: 0 1rem;
@@ -135,9 +137,9 @@
         
     }
         @media (max-width : 450px) {
-        .content {
+        .content .view{
             
-            padding: 1rem 2rem 1rem 4rem;
+            padding: 1rem 2rem 1rem 6rem;
 
         }
         

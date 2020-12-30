@@ -1,5 +1,5 @@
 <template>
-  <div  v-if="loaded">
+  <div  class="main-board"   v-if="loaded">
   <div class="cards">
   <router-link to="/memberships/active">
       <dashboard-card color="blue" >
@@ -54,7 +54,7 @@
       <div class="activities main-el">
         <div class=" activities-chart">
           <h3 class="header">Active members per Activity</h3>
-          <activities-chart v-if="activities.length > 1 " :activities="activities"></activities-chart> 
+          <activities-chart v-if="activities.length > 0.5 " :activities="activities"></activities-chart> 
         </div>
         <div class=" top-packages">
           <h3 class="header">Famous Packages</h3>
@@ -150,6 +150,7 @@ export default {
 </script>
 
 <style scoped>
+
 .cards {
   display: flex;
   justify-content: center;
@@ -196,6 +197,14 @@ export default {
 @media (max-width : 600px) {
   .main {
     margin-top: 1rem;
+
+  }
+  .main-board {
+        padding: 0.5rem 0.5rem 0.5rem 3rem !important;
+
+  }
+   .cards {
+    font-size: 0.85rem;
   }
   .main-el {
     margin: 0.2;
@@ -203,6 +212,13 @@ export default {
 
 }
 @media(max-width : 710px) {
+  .main-board  {
+    padding: 1rem 1rem 1rem 4rem !important;
+
+}
+  .cards {
+    font-size: 0.9rem;
+  }
   .memberships {
     font-size: 0.8rem;
   }

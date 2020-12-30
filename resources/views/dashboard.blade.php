@@ -116,7 +116,7 @@
     
             <div class="content" :class="{'content--expend' : !compact}">
 
-                <router-view></router-view>
+                <router-view class="view"></router-view>
             </div>
         </div>
     </dashboard-ui>
