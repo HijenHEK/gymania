@@ -12,12 +12,13 @@ this project is for my uni assignment and its a work in progress
 
     $ git clone https://github.com/HijenHEK/gymania.git
     $ cd gymania
-    $ cp .env.example .env
+    $ cp .env.example .env (add pusher details & db credentials)
     $ composer install
     $ php artisan key:generate
     $ php artisan storage:link
     $ npm install
     $ npm run dev
+
 ## prepare the database and seed it
 
 <strong> setup you database and its credentials in your .env file then migrate </strong>
