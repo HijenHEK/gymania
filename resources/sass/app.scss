@@ -109,12 +109,12 @@ input[type=number] {
     }
     height: 100%;
     display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-    background: url('../img/bg1.jpg'); /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, rgba(67, 198, 172, 0.4), rgba(25, 22, 84, 0.5)) , url('../img/bg1.jpg'); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, rgba(27, 34, 73, 0.6), rgba(44, 44, 44, 0.7)) , url('../img/bg1.jpg'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: url('../storage/images/bg1.jpg'); /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, rgba(67, 198, 172, 0.4), rgba(25, 22, 84, 0.5)) , url('../storage/images/bg1.jpg'); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, rgba(27, 34, 73, 0.6), rgba(44, 44, 44, 0.7)) , url('../storage/images/bg1.jpg'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
        
     .aside {
         .header {
