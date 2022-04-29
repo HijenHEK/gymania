@@ -28,8 +28,25 @@ this project is for my uni assignment and its a work in progress
 <strong> you ll have a default admin user </strong>
     <pre>
     <span class="pl-ent">username</span>: <span class="pl-s">admin</span>
-    <span class="pl-ent">password</span>: <span class="pl-s">adminpassword</span>
+    <span class="pl-ent">password</span>: <span class="pl-s">password</span>
     </pre>
+
+## set up pusher env
+
+```
+BROADCAST_DRIVER=pusher
+
+// Set these variables as you wish
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+```
+
+run :
+    $ npm run dev
+
+
+
 
 ## run the servers
 

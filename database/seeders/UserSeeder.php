@@ -20,9 +20,9 @@ class UserSeeder extends Seeder
         $admin = User::make([
             'name' => 'admin' ,
             'username' => 'admin' ,
-            'email' => 'admin@gymnia.com',
-            'password' => Hash::make('adminpassword')
-            
+            'email' => 'admin@gymania.com',
+            'password' => Hash::make('password')
+
         ]);
 
         $admin->assignRole('Admin');
