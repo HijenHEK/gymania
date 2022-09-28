@@ -3,7 +3,12 @@
 Gymania is a web application for managing gyms subscriptions and staff 
 built using Laravel 8 and Vuejs 2
 
-this project is for my uni assignment and its a work in progress
+this project is for my uni assignment and its a work in progress [demo video](https://drive.google.com/file/d/1R3dyh4t94tD9G4o6TbINGu1wm1rv1-3g/view)
+
+the dashbboard is made from scratch with scss
+
+![image](https://drive.google.com/uc?export=view&id=1MJm9o3EmWOjmbtNFm1QNDRz0n2CQtmQo)
+
 
 # set up
 
